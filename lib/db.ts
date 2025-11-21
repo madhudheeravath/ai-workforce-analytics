@@ -8,15 +8,32 @@
 
 import { neon } from '@neondatabase/serverless';
 
-// Validate environment variable
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    'DATABASE_URL is not defined. Please add it to your .env.local file.'
-  );
+// Lazy initialization to avoid build-time errors
+let _sql: ReturnType<typeof neon> | null = null;
+
+function getSQL() {
+  if (!_sql) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error(
+        'DATABASE_URL is not defined. Please add it to your .env.local file.'
+      );
+    }
+    _sql = neon(process.env.DATABASE_URL);
+  }
+  return _sql;
 }
 
-// Create serverless SQL client
-export const sql = neon(process.env.DATABASE_URL);
+// Create serverless SQL client with lazy initialization
+export const sql = new Proxy({} as ReturnType<typeof neon>, {
+  get: (target, prop) => {
+    const sqlInstance = getSQL();
+    return sqlInstance[prop as keyof typeof sqlInstance];
+  },
+  apply: (target, thisArg, args) => {
+    const sqlInstance = getSQL();
+    return sqlInstance(...args);
+  }
+});
 
 // Type definitions for our data models
 export interface SurveyRespondent {
