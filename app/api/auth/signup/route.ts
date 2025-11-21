@@ -2,6 +2,15 @@ import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
+type SignupUserRecord = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  created_at: string;
+};
+
 export async function POST(request: Request) {
   try {
     const { name, email, password, role, department } = await request.json();
@@ -22,9 +31,11 @@ export async function POST(request: Request) {
     }
 
     // Check if user already exists
-    const existingUser = await sql`
+    const existingUserResult = await sql`
       SELECT id FROM users WHERE email = ${email} LIMIT 1
     `;
+
+    const existingUser = existingUserResult as { id: number }[];
 
     if (existingUser.length > 0) {
       return NextResponse.json(
@@ -43,7 +54,8 @@ export async function POST(request: Request) {
       RETURNING id, name, email, role, department, created_at
     `;
 
-    const newUser = result[0];
+    const rows = result as SignupUserRecord[];
+    const newUser = rows[0];
 
     return NextResponse.json({
       message: "User created successfully",

@@ -5,6 +5,17 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type ExportUserRecord = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  status: string | null;
+  last_login: string | null;
+  created_at: string;
+};
+
 // GET - Export users to CSV
 export async function GET(request: Request) {
   try {
@@ -17,7 +28,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const users = await sql`
+    const usersResult = await sql`
       SELECT 
         id, 
         name, 
@@ -30,6 +41,8 @@ export async function GET(request: Request) {
       FROM users
       ORDER BY created_at DESC
     `;
+
+    const users = usersResult as ExportUserRecord[];
 
     // Generate CSV
     const headers = ['ID', 'Name', 'Email', 'Role', 'Department', 'Status', 'Last Login', 'Created At'];

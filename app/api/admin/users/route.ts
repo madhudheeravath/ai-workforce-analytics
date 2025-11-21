@@ -5,6 +5,17 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type AdminUserRecord = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  status: string | null;
+  last_login: string | null;
+  created_at: string;
+};
+
 // GET - List all users
 export async function GET(request: Request) {
   try {
@@ -17,7 +28,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const users = await sql`
+    const usersResult = await sql`
       SELECT 
         id, 
         name, 
@@ -30,6 +41,8 @@ export async function GET(request: Request) {
       FROM users
       ORDER BY created_at DESC
     `;
+
+    const users = usersResult as AdminUserRecord[];
 
     return NextResponse.json({ users });
   } catch (error) {
@@ -65,9 +78,11 @@ export async function POST(request: Request) {
     }
 
     // Check if user already exists
-    const existingUser = await sql`
+    const existingUserResult = await sql`
       SELECT id FROM users WHERE email = ${email}
     `;
+
+    const existingUser = existingUserResult as { id: number }[];
 
     if (existingUser.length > 0) {
       return NextResponse.json(
@@ -81,11 +96,13 @@ export async function POST(request: Request) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create user
-    const newUser = await sql`
+    const newUserResult = await sql`
       INSERT INTO users (name, email, password, role, department, status)
       VALUES (${name}, ${email}, ${hashedPassword}, ${role}, ${department}, 'active')
       RETURNING id, name, email, role, department, status, created_at
     `;
+
+    const newUser = newUserResult as AdminUserRecord[];
 
     // Log audit entry
     await sql`

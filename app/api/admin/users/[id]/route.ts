@@ -5,6 +5,16 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type AdminUserRecord = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  status: string | null;
+  created_at: string;
+};
+
 // PUT - Update user
 export async function PUT(
   request: Request,
@@ -33,7 +43,7 @@ export async function PUT(
     }
 
     // Update user
-    const updatedUser = await sql`
+    const updatedUserResult = await sql`
       UPDATE users
       SET 
         name = ${name},
@@ -43,6 +53,8 @@ export async function PUT(
       WHERE id = ${userId}
       RETURNING id, name, email, role, department, status, created_at
     `;
+
+    const updatedUser = updatedUserResult as AdminUserRecord[];
 
     if (updatedUser.length === 0) {
       return NextResponse.json(
@@ -96,9 +108,11 @@ export async function DELETE(
     }
 
     // Get user info before deleting
-    const userToDelete = await sql`
+    const userToDeleteResult = await sql`
       SELECT name, email FROM users WHERE id = ${userId}
     `;
+
+    const userToDelete = userToDeleteResult as { name: string; email: string }[];
 
     if (userToDelete.length === 0) {
       return NextResponse.json(

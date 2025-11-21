@@ -5,6 +5,17 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type AuditLogRecord = {
+  id: number;
+  created_at: string;
+  admin_name?: string | null;
+  action_type: string;
+  target_type?: string | null;
+  target_id?: string | number | null;
+  details?: string | null;
+  status: string;
+};
+
 // GET - Fetch audit logs
 export async function GET(request: Request) {
   try {
@@ -17,7 +28,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const logs = await sql`
+    const logsResult = await sql`
       SELECT 
         al.*,
         u.name as admin_name
@@ -27,8 +38,10 @@ export async function GET(request: Request) {
       LIMIT 500
     `.catch(() => {
       // If audit_logs table doesn't exist, return empty array
-      return [];
+      return [] as AuditLogRecord[];
     });
+
+    const logs = logsResult as AuditLogRecord[];
 
     return NextResponse.json({ logs });
   } catch (error) {

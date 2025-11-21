@@ -5,6 +5,13 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type SystemSettingRecord = {
+  setting_key: string;
+  setting_value: string;
+  setting_type: string;
+  category: string;
+};
+
 // GET - Fetch all settings
 export async function GET(request: Request) {
   try {
@@ -17,19 +24,21 @@ export async function GET(request: Request) {
       );
     }
 
-    const settings = await sql`
+    const settingsResult = await sql`
       SELECT setting_key, setting_value, setting_type, category
       FROM system_settings
       ORDER BY category, setting_key
     `.catch(() => {
       // If table doesn't exist, return defaults
-      return [];
+      return [] as SystemSettingRecord[];
     });
+
+    const settings = settingsResult as SystemSettingRecord[];
 
     // Convert to object format
     const settingsObj: Record<string, any> = {};
     for (const setting of settings) {
-      let value = setting.setting_value;
+      let value: any = setting.setting_value;
       
       // Convert to appropriate type
       if (setting.setting_type === 'boolean') {

@@ -5,6 +5,11 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type UserStatusRecord = {
+  name: string;
+  status: string | null;
+};
+
 // POST - Toggle user status (enable/disable)
 export async function POST(
   request: Request,
@@ -23,9 +28,11 @@ export async function POST(
     const userId = parseInt(params.id);
 
     // Get current status
-    const currentUser = await sql`
+    const currentUserResult = await sql`
       SELECT name, status FROM users WHERE id = ${userId}
     `;
+
+    const currentUser = currentUserResult as UserStatusRecord[];
 
     if (currentUser.length === 0) {
       return NextResponse.json(
