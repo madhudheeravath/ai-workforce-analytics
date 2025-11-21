@@ -276,7 +276,7 @@ export default function OrgMaturityPage() {
           ) : (
             <>
               <div className="text-3xl font-bold text-emerald-900 mb-1">
-                {data?.maturityLevels?.reduce((sum, item) => sum + item.sustainabilityRate, 0) / (data?.maturityLevels?.length || 1) || 0}%
+                {((data?.maturityLevels?.reduce((sum, item) => sum + item.sustainabilityRate, 0) || 0) / (data?.maturityLevels?.length || 1)).toFixed(1)}%
               </div>
               <p className="text-sm text-emerald-700">
                 Using AI for sustainability
