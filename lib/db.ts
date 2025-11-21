@@ -29,9 +29,9 @@ export const sql = new Proxy({} as ReturnType<typeof neon>, {
     const sqlInstance = getSQL();
     return sqlInstance[prop as keyof typeof sqlInstance];
   },
-  apply: (target, thisArg, args) => {
+  apply: (target, thisArg, args: any[]) => {
     const sqlInstance = getSQL();
-    return sqlInstance(...args);
+    return (sqlInstance as any)(...args);
   }
 });
 
