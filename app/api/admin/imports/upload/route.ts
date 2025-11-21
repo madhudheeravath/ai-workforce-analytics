@@ -5,6 +5,13 @@ import { sql } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
+type ImportHistoryRecord = {
+  id: number;
+  file_name: string;
+  total_rows: number;
+  status: string;
+};
+
 // POST - Upload CSV file
 export async function POST(request: Request) {
   try {
@@ -49,7 +56,7 @@ export async function POST(request: Request) {
     const totalRows = lines.length - 1; // Exclude header
 
     // Create import history record
-    const importRecord = await sql`
+    const importRecords = await sql`
       INSERT INTO import_history (
         file_name, 
         uploader_id, 
@@ -73,7 +80,9 @@ export async function POST(request: Request) {
         total_rows: totalRows,
         status: 'uploaded'
       }];
-    });
+    }) as ImportHistoryRecord[];
+
+    const importRecord = importRecords[0];
 
     // Log audit entry
     await sql`
@@ -82,7 +91,7 @@ export async function POST(request: Request) {
         ${session.user.id}, 
         'data_import', 
         'import', 
-        ${importRecord[0].id}, 
+        ${importRecord.id}, 
         ${`Uploaded file: ${file.name} with ${totalRows} rows`}, 
         'success'
       )
@@ -90,7 +99,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       message: 'File uploaded successfully',
-      import: importRecord[0]
+      import: importRecord
     });
   } catch (error) {
     console.error('Error uploading file:', error);
