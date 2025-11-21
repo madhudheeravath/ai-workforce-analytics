@@ -1,0 +1,21 @@
+# ============================================================================
+# AI Workforce Analytics Platform - Python Dependencies
+# ============================================================================
+
+# Core Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+
+# Data Validation
+jsonschema>=4.17.0
+
+# Utilities
+python-dotenv>=1.0.0
+
+# Optional: For advanced analytics
+scipy>=1.10.0
+scikit-learn>=1.2.0

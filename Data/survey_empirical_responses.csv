@@ -1,0 +1,501 @@
+age_bracket,education_level,income_bracket,gender,geographic_region,urban_rural,industry_sector,job_type,ai_familiarity_score,ai_use_frequency,task_performance_metric,confidence_change,behavioral_intent_change,self_reported_productivity_change_pct,concerns,use_cases
+45-54,Bachelor's,25-50k,male,West,urban,Finance,Executive,6,rarely,79.72656806,3.307034978,1.291705685,2.972071247,privacy|regulation|job_loss,customer_service
+25-34,High School or less,50-100k,female,South,urban,Government,Executive,8,never,55.9874033,1.572374293,1.80285163,7.305099433,privacy|accuracy,content_generation
+25-34,Some college / Associate,100-200k,male,West,urban,Finance,Executive,4,never,72.52477091,0.66355336,0.393079899,10.98169171,regulation,augmentation
+25-34,Some college / Associate,<25k,female,Northeast,urban,Retail,Manager,4,never,95.63430269,1.563179276,-0.991990398,2.550816482,regulation,automation|analytics
+35-44,Some college / Associate,25-50k,female,Northeast,urban,Services,Manager,4,never,57.59515168,0.206797454,0.373526726,11.33017962,privacy|ethics,agents
+25-34,High School or less,100-200k,male,South,suburban,Technology,Individual Contributor,4,monthly,84.42055084,0.406184268,0.836629903,0.953356177,transparency,customer_service
+55-64,Some college / Associate,25-50k,male,Northeast,suburban,Retail,Clerical/Support,7,daily,64.53110553,2.667674886,1.722207997,1.645636516,job_loss,augmentation
+25-34,Some college / Associate,50-100k,male,Midwest,urban,Other,Individual Contributor,6,never,75.41960494,2.92088698,0.877950316,3.679279877,transparency|regulation,content_generation
+45-54,Bachelor's,50-100k,male,Midwest,urban,Education,Individual Contributor,2,rarely,67.02080958,2.419656032,3.17350743,6.719956075,bias|regulation,automation
+45-54,High School or less,100-200k,male,Northeast,urban,Healthcare,Manager,5,rarely,52.63599242,0.609642762,0.36514931,5.341969339,job_loss,augmentation
+25-34,Master's,<25k,female,West,suburban,Manufacturing,Individual Contributor,6,never,89.53942003,3.93165321,3.864678177,-0.060165659,bias,automation|customer_service
+35-44,Some college / Associate,25-50k,female,Northeast,urban,Finance,Individual Contributor,2,monthly,35.77543917,0.437033263,-0.546022273,2.247431658,safety,automation
+25-34,High School or less,<25k,male,West,suburban,Services,Individual Contributor,9,rarely,84.99189743,-0.2492504,-0.498460264,4.945522695,bias,augmentation|analytics
+45-54,Bachelor's,25-50k,male,Northeast,urban,Manufacturing,Clerical/Support,7,never,78.25149289,3.472519781,2.903545749,-5.297631897,privacy,content_generation
+35-44,Master's,50-100k,female,West,suburban,Education,Clerical/Support,4,never,62.23660555,-0.59648084,1.189621143,2.338182608,accuracy,analytics|agents
+45-54,Some college / Associate,100-200k,male,West,suburban,Technology,Manager,8,never,96.26802576,4.288811515,2.14494085,12.1087347,regulation,analytics
+55-64,Bachelor's,25-50k,male,South,urban,Other,Clerical/Support,6,never,64.07053531,0.608172611,-0.390838657,-3.643082715,regulation,customer_service
+55-64,Some college / Associate,<25k,male,South,urban,Services,Clerical/Support,6,never,73.3136664,1.592446728,2.234228823,9.533106802,privacy|ethics,analytics
+35-44,Bachelor's,50-100k,female,South,urban,Retail,Manager,8,never,82.27083995,-0.644674238,1.243003758,6.446025162,accuracy,automation
+55-64,Bachelor's,50-100k,female,West,urban,Finance,Skilled Trade,2,never,61.43758647,2.392481116,2.61592997,4.484285001,privacy|bias,automation|analytics
+25-34,Doctorate/Prof,25-50k,female,South,urban,Other,Skilled Trade,7,never,62.95124719,-0.389772169,0.262144775,6.074337571,safety,customer_service
+35-44,High School or less,200k+,female,West,urban,Healthcare,Skilled Trade,1,monthly,85.02365891,2.362357037,0.249900842,-3.479089457,privacy|transparency,analytics
+25-34,High School or less,25-50k,female,West,urban,Healthcare,Skilled Trade,6,never,75.8798448,0.987842571,0.246642452,4.946482904,job_loss|bias|transparency,analytics
+55-64,High School or less,100-200k,female,Midwest,urban,Services,Clerical/Support,6,never,67.7242153,-0.079174218,-0.310837345,5.607395855,accuracy,customer_service
+25-34,Bachelor's,<25k,female,South,urban,Services,Clerical/Support,5,never,42.32245102,1.318219727,-0.030061412,14.46713913,privacy,augmentation
+65+,High School or less,50-100k,male,West,urban,Healthcare,Executive,5,never,80.12656542,1.785441557,1.977314063,15.32308411,bias,automation
+35-44,Some college / Associate,<25k,male,Midwest,urban,Other,Clerical/Support,4,never,68.78950758,2.202511522,0.273034974,8.142391666,accuracy|transparency,content_generation
+55-64,Bachelor's,25-50k,female,South,suburban,Manufacturing,Individual Contributor,5,daily,91.3987403,4.127091466,5.152908773,-0.275948597,safety|regulation,content_generation
+45-54,Some college / Associate,50-100k,female,Northeast,suburban,Healthcare,Individual Contributor,10,never,74.74220114,1.016026844,-1.525137204,15.1723624,accuracy|transparency,analytics
+45-54,Bachelor's,50-100k,male,West,rural,Education,Individual Contributor,3,monthly,65.18046913,0.512211209,2.235677738,14.83008769,job_loss|privacy|bias,agents
+65+,High School or less,50-100k,female,West,urban,Finance,Individual Contributor,6,never,89.48023044,0.012101892,1.708289396,10.29721113,accuracy|transparency|ethics,customer_service
+25-34,Bachelor's,100-200k,male,Midwest,rural,Healthcare,Manager,1,never,77.75066363,0.658038024,2.695437624,-0.633894652,job_loss,augmentation|hiring
+18-24,Bachelor's,25-50k,female,Midwest,rural,Education,Individual Contributor,3,never,76.83256087,-0.408135953,2.867891404,-4.574514465,accuracy,automation|analytics
+25-34,High School or less,<25k,female,West,urban,Other,Individual Contributor,3,rarely,89.91561022,1.84311745,1.824951643,1.942327373,bias,hiring
+25-34,Some college / Associate,50-100k,male,South,urban,Technology,Manager,5,never,66.80523031,-1.7259556,-0.731804382,-6.171816255,bias,automation
+25-34,Some college / Associate,50-100k,male,South,urban,Manufacturing,Individual Contributor,4,rarely,72.03792645,0.984676563,-0.625167883,2.238425654,job_loss|accuracy|transparency,customer_service
+25-34,Bachelor's,<25k,male,West,suburban,Finance,Executive,4,rarely,88.85893557,1.898854947,1.277887809,-0.357544151,privacy,content_generation
+18-24,Some college / Associate,<25k,male,South,urban,Finance,Individual Contributor,4,never,80.5842124,1.5893699,0.032386436,3.3766538,accuracy,augmentation
+25-34,Bachelor's,100-200k,female,South,rural,Services,Executive,9,never,66.17861754,3.254571052,2.865515422,12.08967738,safety,automation
+35-44,Some college / Associate,<25k,female,South,urban,Healthcare,Individual Contributor,6,never,61.99343782,1.682289023,2.239178207,14.71811522,privacy,augmentation
+35-44,Bachelor's,100-200k,male,South,urban,Technology,Clerical/Support,8,rarely,65.65055503,3.644966666,2.291750677,0.24890447,regulation,automation
+18-24,Bachelor's,50-100k,female,South,urban,Services,Individual Contributor,6,never,100,1.268710828,-1.482853682,-1.353705722,accuracy,customer_service|analytics
+45-54,Bachelor's,<25k,male,Midwest,suburban,Healthcare,Clerical/Support,6,never,69.99684309,-0.188225927,0.46876262,14.55975865,transparency,customer_service
+35-44,High School or less,25-50k,female,Northeast,suburban,Other,Individual Contributor,9,rarely,81.80422422,2.00588084,2.814525453,1.228817975,job_loss,augmentation
+25-34,Doctorate/Prof,25-50k,male,South,rural,Retail,Manager,3,never,78.89254998,1.006467157,1.000797047,4.30793887,privacy,agents
+18-24,Some college / Associate,25-50k,female,South,urban,Finance,Manager,6,never,79.62543337,-0.120858205,-1.203371737,10.81178472,privacy|safety,automation|analytics
+35-44,Doctorate/Prof,50-100k,male,West,urban,Other,Individual Contributor,7,never,60.43163061,2.947349832,1.710617842,-1.915454493,job_loss,analytics
+45-54,Bachelor's,50-100k,male,South,suburban,Retail,Individual Contributor,6,never,93.51894759,2.611440405,2.606021443,8.086343696,bias|transparency,customer_service
+45-54,Doctorate/Prof,200k+,female,South,rural,Technology,Individual Contributor,6,never,100,3.302420282,3.041104133,-0.238330945,ethics,augmentation
+45-54,Bachelor's,25-50k,male,South,suburban,Services,Manager,2,never,41.19851138,1.794621088,3.044928765,3.259686991,ethics,automation
+25-34,Master's,25-50k,female,Northeast,suburban,Government,Individual Contributor,8,monthly,57.31009053,-0.220990032,0.254956973,6.584153454,privacy,augmentation
+65+,Some college / Associate,25-50k,female,Midwest,urban,Services,Skilled Trade,8,never,80.18364331,1.916580295,2.765767384,3.898014187,job_loss,automation|customer_service
+18-24,Bachelor's,50-100k,male,West,urban,Finance,Manager,7,never,74.45616973,0.780115046,-0.466356705,13.36272067,job_loss|transparency,customer_service
+45-54,High School or less,25-50k,female,Midwest,urban,Services,Individual Contributor,3,monthly,84.2260698,-0.180980855,0.749071537,-7.473685856,job_loss|privacy,agents
+65+,Bachelor's,25-50k,nonbinary,Midwest,suburban,Education,Individual Contributor,6,never,76.50842762,0.093380426,2.839631439,6.683437799,privacy,customer_service
+45-54,Bachelor's,25-50k,female,Northeast,urban,Other,Individual Contributor,6,monthly,75.35409152,1.065083839,0.271917096,8.652395906,regulation,augmentation|analytics
+45-54,High School or less,25-50k,female,Northeast,urban,Other,Individual Contributor,6,rarely,100,3.328866529,2.698071097,4.393474084,job_loss|regulation,automation
+18-24,Master's,50-100k,male,Midwest,urban,Finance,Individual Contributor,6,never,70.55179377,3.455839395,0.484559615,7.274129763,regulation,augmentation
+18-24,High School or less,<25k,female,South,rural,Manufacturing,Individual Contributor,5,rarely,68.19577126,3.353165612,3.511868023,5.896533429,job_loss,analytics
+18-24,High School or less,50-100k,male,Northeast,suburban,Technology,Individual Contributor,6,never,80.37319942,0.629141035,0.783891671,9.127550745,privacy,augmentation|analytics
+55-64,Master's,50-100k,female,South,suburban,Services,Individual Contributor,5,never,61.35707524,2.383010844,1.621733515,2.194791644,job_loss,analytics
+55-64,Some college / Associate,50-100k,male,South,suburban,Technology,Manager,5,never,83.66232825,2.296259169,0.742395252,0.531754503,accuracy,automation
+18-24,Bachelor's,200k+,male,Northeast,urban,Services,Individual Contributor,7,weekly,50.94102788,2.074399123,1.536252522,5.226932371,transparency|regulation,analytics
+45-54,High School or less,25-50k,male,West,suburban,Finance,Individual Contributor,9,never,82.53152391,5.559170507,2.898622307,-4.988011738,privacy|accuracy,augmentation
+65+,High School or less,50-100k,male,Northeast,suburban,Finance,Individual Contributor,6,rarely,91.93386067,3.080385789,3.216550916,7.721003563,safety,analytics
+55-64,Some college / Associate,100-200k,female,South,rural,Technology,Individual Contributor,7,never,95.7433674,0.023303991,0.187935189,13.28022475,transparency,customer_service|agents
+45-54,High School or less,100-200k,male,Midwest,urban,Other,Individual Contributor,7,rarely,70.34273199,-0.860840643,0.479164612,15.40209783,privacy,augmentation
+25-34,Bachelor's,50-100k,female,West,rural,Technology,Manager,8,rarely,81.27262626,-0.308494875,1.064228919,2.112307709,job_loss,customer_service
+55-64,Bachelor's,25-50k,male,South,rural,Technology,Individual Contributor,8,never,63.78885884,3.171471784,2.542078181,5.314965579,accuracy,customer_service
+35-44,Some college / Associate,50-100k,male,Northeast,urban,Technology,Individual Contributor,6,never,54.2168101,3.229362068,4.347583434,-2.032757396,privacy,customer_service
+25-34,Some college / Associate,200k+,male,South,rural,Other,Individual Contributor,5,rarely,61.45717996,3.208590937,1.516428538,-6.953762577,bias,augmentation
+18-24,Bachelor's,50-100k,female,Midwest,rural,Finance,Clerical/Support,4,never,69.62687786,1.734039786,0.905278777,-6.796983149,transparency,automation|analytics
+25-34,Some college / Associate,200k+,male,West,rural,Government,Individual Contributor,5,never,61.69345038,0.69402678,1.363483377,9.180686455,job_loss,analytics
+35-44,High School or less,<25k,male,West,urban,Manufacturing,Executive,4,rarely,43.06907361,1.598115642,0.524263287,-2.158180649,privacy,hiring
+55-64,High School or less,100-200k,female,West,urban,Healthcare,Individual Contributor,8,never,72.40667288,2.819159266,2.858992279,-1.113188136,job_loss,customer_service
+55-64,Bachelor's,50-100k,male,West,suburban,Education,Individual Contributor,6,weekly,76.93673153,2.716777587,2.646415163,3.970796138,transparency,automation|augmentation
+65+,Doctorate/Prof,200k+,male,Northeast,suburban,Other,Clerical/Support,4,monthly,73.84391454,1.254470136,0.876305875,8.537392333,transparency,augmentation|automation
+35-44,High School or less,<25k,male,Midwest,rural,Services,Individual Contributor,2,never,56.21439561,1.206377093,3.781293087,-3.954784972,privacy,hiring
+25-34,Master's,50-100k,male,West,suburban,Healthcare,Individual Contributor,5,monthly,100,0.024832938,-0.393392862,5.462687899,safety,analytics
+35-44,Master's,50-100k,male,Northeast,urban,Services,Individual Contributor,7,never,66.14552737,2.343232225,1.650375857,8.580330811,ethics,customer_service|content_generation
+35-44,Some college / Associate,25-50k,female,Midwest,suburban,Retail,Skilled Trade,6,rarely,71.96486983,1.38602988,1.773618215,1.675687014,job_loss,customer_service
+35-44,Some college / Associate,50-100k,female,Midwest,urban,Services,Individual Contributor,6,rarely,70.36620751,3.022696117,4.713798376,-1.15190693,regulation,agents
+18-24,Some college / Associate,<25k,male,Midwest,suburban,Services,Manager,5,never,76.65766011,2.48798837,3.635313651,0.177888503,job_loss,augmentation
+45-54,Bachelor's,100-200k,female,South,urban,Services,Individual Contributor,6,never,83.7714131,1.794273115,1.004850328,6.908316606,ethics,augmentation
+55-64,Bachelor's,50-100k,male,South,suburban,Technology,Individual Contributor,4,never,80.74516297,1.647944937,1.078332607,4.084604252,job_loss,automation
+25-34,High School or less,<25k,male,Northeast,suburban,Technology,Executive,2,never,63.02277991,0.488031751,2.360866621,3.360067546,job_loss|safety,augmentation
+35-44,Some college / Associate,<25k,male,Northeast,urban,Services,Skilled Trade,5,monthly,79.36098506,1.825833073,2.179542309,8.338366335,privacy,automation
+55-64,Bachelor's,50-100k,male,South,urban,Manufacturing,Individual Contributor,6,rarely,72.91753683,-0.458105839,0.203426743,1.509432601,safety|transparency,augmentation
+55-64,Some college / Associate,25-50k,male,Midwest,urban,Services,Individual Contributor,9,rarely,66.05375483,3.754978871,0.864845401,8.338173654,privacy,content_generation
+25-34,High School or less,50-100k,male,South,urban,Education,Individual Contributor,10,never,82.74401938,5.238720255,1.796761368,1.961655246,accuracy,augmentation
+25-34,Some college / Associate,50-100k,female,Northeast,rural,Other,Executive,5,never,68.75522911,3.27877395,3.14123269,-0.360308161,privacy,agents
+35-44,Some college / Associate,25-50k,female,South,suburban,Other,Individual Contributor,9,never,75.28803349,0.770472197,-0.780232186,13.32692897,regulation,automation|agents
+45-54,Doctorate/Prof,50-100k,male,South,urban,Education,Individual Contributor,4,never,56.27777031,-1.768779713,0.153173307,19.78781132,job_loss|safety,analytics
+35-44,Doctorate/Prof,50-100k,female,Northeast,urban,Manufacturing,Executive,3,never,63.69358181,-0.260171761,2.251937307,-1.131012983,privacy|safety,customer_service
+35-44,Bachelor's,50-100k,male,Midwest,suburban,Retail,Individual Contributor,4,never,75.43824793,1.949286594,0.890789492,4.15181113,bias,analytics
+35-44,Bachelor's,25-50k,female,Northeast,urban,Other,Manager,6,never,81.8390145,1.562662783,1.615004151,9.363081114,transparency|ethics,automation
+55-64,Some college / Associate,25-50k,female,West,urban,Manufacturing,Manager,6,never,52.96842929,1.121542486,-0.089249719,4.16737015,bias|accuracy,hiring|analytics
+65+,Some college / Associate,50-100k,nonbinary,South,suburban,Other,Individual Contributor,0,never,53.05267586,-1.640516681,-0.759910529,0.643462508,accuracy,customer_service
+25-34,Some college / Associate,25-50k,female,South,urban,Healthcare,Manager,8,rarely,44.78817943,0.906470713,-0.372980951,0.579227827,privacy|accuracy,analytics
+55-64,Master's,<25k,female,South,suburban,Healthcare,Individual Contributor,4,rarely,63.16159223,0.857557148,1.927723004,8.954718805,transparency,analytics|agents
+25-34,Some college / Associate,25-50k,female,Northeast,suburban,Manufacturing,Clerical/Support,6,never,71.92212626,0.950334272,-0.9219584,12.55655343,job_loss|accuracy|regulation,augmentation
+45-54,Doctorate/Prof,<25k,female,Midwest,urban,Technology,Manager,8,never,83.31831442,2.439907634,2.593090259,13.87335338,ethics,augmentation|analytics
+18-24,Master's,50-100k,female,Midwest,urban,Technology,Manager,6,monthly,74.45852777,1.637990655,0.910930684,3.20778726,bias,content_generation
+35-44,High School or less,100-200k,male,Midwest,suburban,Services,Manager,5,weekly,77.73878924,1.461194938,1.400875429,7.98294288,bias,analytics
+45-54,Master's,25-50k,male,West,urban,Finance,Executive,4,never,67.48719288,1.294342953,3.157714134,-3.679107558,accuracy,automation
+35-44,Some college / Associate,25-50k,male,South,rural,Healthcare,Individual Contributor,3,never,63.37370857,-1.723388765,0.641968408,6.775887854,bias|transparency,agents
+18-24,High School or less,50-100k,female,South,suburban,Government,Individual Contributor,7,never,47.8038617,2.784939465,0.585589317,4.568797588,accuracy|transparency,augmentation|analytics
+55-64,High School or less,<25k,male,South,urban,Healthcare,Individual Contributor,1,never,39.4258986,-0.223070369,-0.163782291,9.073103664,safety,augmentation|analytics
+18-24,Some college / Associate,50-100k,female,South,urban,Finance,Manager,6,rarely,76.70279417,2.285569631,2.471044635,-5.706363945,accuracy,augmentation|agents
+35-44,Master's,<25k,female,South,urban,Healthcare,Individual Contributor,6,never,90.14415337,1.585997268,3.609786822,11.76698372,ethics,augmentation|analytics
+25-34,Some college / Associate,100-200k,male,West,urban,Other,Manager,0,never,68.14662953,1.346298355,4.317004946,-1.824740016,bias,automation|augmentation
+45-54,Some college / Associate,50-100k,female,Midwest,urban,Finance,Individual Contributor,3,daily,80.68546909,3.185418292,2.914917237,-2.057134878,privacy,hiring|agents
+55-64,Some college / Associate,25-50k,male,Midwest,urban,Other,Individual Contributor,6,never,80.62554559,1.776577659,0.728521907,4.044235128,bias,agents
+55-64,High School or less,50-100k,female,West,urban,Healthcare,Individual Contributor,3,rarely,63.6392675,3.638863413,2.186057186,-0.1380423,regulation,content_generation|customer_service
+25-34,Some college / Associate,25-50k,female,Midwest,urban,Other,Individual Contributor,7,never,76.30063225,-0.020083735,3.380056944,1.836736558,privacy,augmentation|analytics
+18-24,Some college / Associate,100-200k,male,South,suburban,Other,Individual Contributor,5,weekly,78.00351738,2.403775774,2.946534,6.593500851,accuracy|regulation,customer_service|analytics
+25-34,Some college / Associate,50-100k,female,South,suburban,Education,Clerical/Support,7,rarely,66.76050829,4.443730711,2.572520571,-9.706640805,privacy|bias,automation
+65+,Some college / Associate,200k+,male,Midwest,urban,Government,Individual Contributor,8,never,83.08613979,3.916370414,2.727360645,9.035875642,bias|ethics,automation
+55-64,Bachelor's,<25k,female,Midwest,rural,Other,Manager,6,monthly,80.41658379,3.690034702,2.422311365,1.02970549,safety,analytics
+55-64,High School or less,<25k,nonbinary,West,urban,Services,Individual Contributor,5,never,81.26536102,3.806935659,2.773022131,9.592126655,privacy,analytics
+18-24,High School or less,100-200k,female,Northeast,suburban,Services,Individual Contributor,8,weekly,67.14712696,1.780335823,2.036387492,13.82020736,job_loss,automation
+55-64,High School or less,25-50k,female,South,urban,Manufacturing,Individual Contributor,6,daily,77.08439022,0.469113899,-0.288227512,6.96487447,job_loss|privacy|regulation,hiring|analytics
+18-24,Some college / Associate,25-50k,male,South,suburban,Finance,Manager,7,never,68.43087268,3.755209185,2.459485449,8.657366836,privacy,content_generation
+45-54,Bachelor's,25-50k,male,South,suburban,Other,Individual Contributor,1,never,77.45337545,-0.660956292,1.275632996,13.60240878,bias,customer_service
+35-44,Bachelor's,<25k,female,Midwest,rural,Finance,Individual Contributor,5,daily,74.92667415,-1.462875561,0.936679792,0.778737114,accuracy,hiring|analytics
+65+,Bachelor's,25-50k,female,West,rural,Healthcare,Manager,10,monthly,66.92788248,1.902514079,2.804063026,8.18962209,job_loss|accuracy,augmentation
+25-34,Bachelor's,50-100k,female,West,urban,Other,Individual Contributor,7,never,92.27849271,3.16998522,1.172118899,-7.517804744,ethics,augmentation
+18-24,High School or less,50-100k,female,West,urban,Retail,Manager,6,never,81.84187773,4.273827431,1.81671868,9.916656943,ethics,augmentation
+18-24,Doctorate/Prof,100-200k,female,Midwest,urban,Education,Manager,6,never,91.60551066,4.139943861,2.059499455,5.94225639,privacy,augmentation
+65+,Some college / Associate,50-100k,male,West,rural,Services,Individual Contributor,7,never,61.47129901,1.128717093,1.153601032,9.351478553,safety,analytics|automation
+25-34,Master's,50-100k,male,Midwest,urban,Other,Individual Contributor,3,never,92.16512753,1.533334203,1.020596106,0.348164506,accuracy,analytics
+25-34,Bachelor's,50-100k,male,Midwest,suburban,Other,Manager,5,never,74.59415458,1.246291166,1.673099121,7.415714957,privacy,analytics|augmentation
+35-44,High School or less,25-50k,female,West,urban,Technology,Individual Contributor,1,never,66.9884911,0.109143446,-0.444116268,5.019703484,privacy,content_generation
+35-44,Some college / Associate,50-100k,male,Northeast,urban,Technology,Manager,5,rarely,76.55766628,2.397183622,1.559424456,-2.408285379,privacy,augmentation|analytics
+45-54,Some college / Associate,25-50k,male,South,urban,Education,Individual Contributor,8,daily,83.87420058,3.959561261,1.253398351,13.31945426,regulation,augmentation
+65+,High School or less,50-100k,male,South,suburban,Other,Executive,7,never,78.90810209,3.044360081,1.248698294,2.707149038,transparency,automation
+55-64,High School or less,25-50k,male,West,urban,Manufacturing,Manager,4,never,74.5431653,2.14110616,2.993346874,11.66863013,job_loss,augmentation
+25-34,High School or less,100-200k,female,West,suburban,Services,Individual Contributor,5,never,79.83244594,0.285037801,-0.062068611,1.86147328,privacy,augmentation|agents
+45-54,Master's,100-200k,male,West,suburban,Services,Individual Contributor,6,never,81.06949532,2.232487598,1.13682615,3.152991941,bias,content_generation
+18-24,Bachelor's,100-200k,female,West,urban,Education,Individual Contributor,4,never,86.79776466,0.638443172,0.285137301,4.563365788,privacy|accuracy,automation|hiring
+35-44,Master's,25-50k,male,West,urban,Retail,Individual Contributor,6,monthly,76.58405181,1.964699836,2.368205684,5.749246974,transparency,analytics
+25-34,High School or less,25-50k,male,Midwest,urban,Other,Manager,10,rarely,65.94870186,4.016519985,2.037449447,7.975713539,bias,analytics|content_generation
+55-64,Master's,25-50k,male,South,urban,Services,Clerical/Support,3,never,88.28701239,-1.994066799,-0.258883916,-2.315663705,transparency,automation
+65+,High School or less,100-200k,male,South,urban,Government,Individual Contributor,5,never,47.69258171,1.559912105,-0.399906046,-8.140920637,privacy|safety,agents
+45-54,Bachelor's,200k+,male,South,rural,Healthcare,Individual Contributor,5,rarely,90.85696315,0.900436114,1.113059239,-0.612517222,bias,augmentation
+35-44,Doctorate/Prof,25-50k,female,West,urban,Education,Individual Contributor,7,rarely,98.20592161,-0.801638921,0.364336824,4.636996653,bias,analytics
+55-64,High School or less,100-200k,female,Northeast,urban,Education,Manager,7,rarely,51.45673739,1.444757674,-0.187326643,5.630412555,transparency,automation
+25-34,Master's,100-200k,female,Northeast,rural,Manufacturing,Individual Contributor,8,never,56.9848005,3.829265077,0.130497316,7.92980425,privacy,customer_service
+25-34,Some college / Associate,50-100k,female,South,urban,Finance,Clerical/Support,8,never,100,1.376994086,-1.329489394,6.820190182,privacy,automation
+45-54,High School or less,<25k,female,Northeast,suburban,Healthcare,Manager,1,monthly,77.72694117,0.93185754,1.654495624,0.062704062,job_loss,agents
+18-24,Bachelor's,50-100k,female,Midwest,suburban,Services,Individual Contributor,9,never,81.39276352,3.245737025,2.248730038,2.852534268,job_loss|accuracy|ethics,analytics
+55-64,Master's,50-100k,female,South,suburban,Retail,Individual Contributor,4,never,77.6331303,2.34986396,3.385113995,1.267206298,job_loss|bias|accuracy,automation
+65+,Bachelor's,<25k,male,South,urban,Services,Individual Contributor,5,never,78.07957206,2.622411143,2.156828843,4.069455729,regulation,automation
+65+,Some college / Associate,50-100k,male,Midwest,suburban,Services,Manager,8,never,93.49979073,0.950031213,0.250109736,3.3545633,bias,customer_service|automation
+55-64,Some college / Associate,25-50k,male,West,urban,Manufacturing,Skilled Trade,8,monthly,68.85534075,3.285226264,3.176582369,2.667399015,ethics,analytics
+35-44,Some college / Associate,50-100k,male,South,suburban,Retail,Individual Contributor,7,rarely,100,5.718961018,2.120722892,8.218494345,safety,analytics
+25-34,Some college / Associate,50-100k,male,South,urban,Other,Manager,6,never,59.09677116,1.095564867,3.117082626,-3.51756699,job_loss,analytics
+18-24,Bachelor's,100-200k,female,West,urban,Services,Individual Contributor,5,never,81.42686092,3.927104034,0.831503915,0.772465745,safety,content_generation
+65+,Some college / Associate,200k+,male,South,urban,Healthcare,Clerical/Support,8,never,100,4.176071594,3.100502032,11.10755517,bias,analytics|agents
+25-34,High School or less,50-100k,male,Midwest,urban,Manufacturing,Individual Contributor,9,never,71.4092426,-1.12036275,-0.381085296,1.951435429,transparency,analytics|content_generation
+45-54,High School or less,<25k,male,Midwest,urban,Other,Skilled Trade,8,never,79.61413917,3.819846582,1.69799555,5.878064436,privacy,augmentation
+45-54,Bachelor's,50-100k,female,West,suburban,Manufacturing,Individual Contributor,4,rarely,78.63325263,0.255298538,3.559908359,3.093418582,job_loss,agents|content_generation
+45-54,Bachelor's,50-100k,male,South,urban,Finance,Manager,5,never,77.39414771,0.386382163,-0.628222384,3.161339906,safety,analytics
+65+,High School or less,25-50k,female,Northeast,suburban,Services,Individual Contributor,5,never,75.80360262,-0.522290861,-0.222686649,1.896919515,transparency,content_generation
+35-44,Bachelor's,50-100k,female,West,suburban,Healthcare,Individual Contributor,8,rarely,76.26896757,0.474072481,1.001982625,-3.909705092,job_loss,customer_service|analytics
+65+,High School or less,25-50k,female,West,urban,Healthcare,Individual Contributor,6,monthly,61.06583454,0.122115129,0.268636834,9.59043498,bias,customer_service
+35-44,Some college / Associate,50-100k,male,South,suburban,Finance,Skilled Trade,9,never,45.9219787,1.392018202,2.188254041,1.40041255,transparency,automation
+55-64,High School or less,100-200k,male,Midwest,urban,Services,Individual Contributor,6,daily,81.01789371,1.171788425,0.411091575,2.449989798,transparency|ethics,customer_service
+35-44,High School or less,<25k,female,West,rural,Technology,Individual Contributor,7,rarely,67.2742821,0.3069316,0.057179241,4.392478299,safety,analytics
+35-44,Bachelor's,50-100k,male,West,rural,Finance,Executive,7,never,74.63896947,1.917276975,0.812333565,-1.205606598,ethics,analytics
+45-54,Bachelor's,<25k,female,Northeast,suburban,Other,Manager,7,rarely,100,3.908551686,4.38852034,-5.439431029,job_loss,augmentation
+25-34,High School or less,50-100k,male,South,urban,Manufacturing,Individual Contributor,6,rarely,88.46006454,5.93655941,2.981362035,0.702930659,bias,customer_service|analytics
+45-54,Bachelor's,<25k,female,South,urban,Manufacturing,Clerical/Support,7,never,72.00466481,0.957396855,-0.800674367,-1.943270596,privacy|transparency|regulation,augmentation
+45-54,Some college / Associate,200k+,male,West,rural,Government,Individual Contributor,5,never,71.55631661,0.742855496,-2.11333225,7.073329804,bias,automation
+55-64,Bachelor's,<25k,male,South,rural,Government,Individual Contributor,6,rarely,63.89215807,2.246829007,1.961605931,-2.291721594,transparency,analytics
+25-34,Bachelor's,200k+,female,Midwest,urban,Technology,Skilled Trade,8,rarely,71.95411594,1.84407733,-0.925069349,1.754725938,accuracy,augmentation
+65+,Doctorate/Prof,200k+,male,South,suburban,Other,Individual Contributor,4,weekly,73.86310087,1.260029781,2.275125986,1.802029259,safety,augmentation
+55-64,Bachelor's,25-50k,female,South,suburban,Manufacturing,Manager,6,weekly,59.81139451,0.437876206,0.247789226,6.212016003,privacy,augmentation
+55-64,Bachelor's,50-100k,female,Midwest,urban,Retail,Individual Contributor,8,never,73.08433152,0.112099352,0.322403113,2.844144434,privacy|transparency,automation|analytics
+25-34,High School or less,50-100k,female,South,suburban,Other,Executive,5,daily,65.33225508,0.843907096,-0.478043557,9.665692942,privacy,analytics
+65+,Bachelor's,50-100k,male,West,urban,Retail,Individual Contributor,4,never,70.79243605,0.583210552,1.24311836,6.169733881,transparency,customer_service
+65+,Bachelor's,<25k,female,Midwest,rural,Healthcare,Clerical/Support,7,never,71.26806486,-1.053408455,-1.103825989,5.226551529,accuracy,automation|analytics
+65+,Some college / Associate,25-50k,male,West,suburban,Government,Clerical/Support,4,weekly,75.67180824,2.392431412,2.483805244,2.325497565,bias|accuracy|safety,content_generation
+35-44,High School or less,25-50k,male,South,rural,Other,Manager,7,never,88.51932507,1.142895206,1.174849272,-4.225906435,job_loss,agents
+55-64,Some college / Associate,25-50k,female,South,urban,Services,Manager,6,never,51.88411581,1.346910027,2.054351413,7.709849295,accuracy|ethics,hiring|analytics
+55-64,High School or less,50-100k,male,West,urban,Retail,Individual Contributor,1,never,63.51554145,0.469441175,1.56299141,3.214797897,safety,augmentation
+55-64,Doctorate/Prof,50-100k,female,Midwest,suburban,Finance,Manager,7,never,98.21788981,2.526841045,0.407269777,12.80938026,bias,content_generation
+45-54,Some college / Associate,50-100k,male,South,suburban,Other,Clerical/Support,5,never,62.82800204,1.529209489,3.284637405,-1.122919734,privacy,automation
+25-34,High School or less,<25k,male,West,urban,Manufacturing,Individual Contributor,6,never,76.80867087,3.674792398,2.952480717,2.947109102,privacy,augmentation|content_generation
+45-54,Bachelor's,100-200k,male,West,rural,Other,Clerical/Support,8,never,87.49284236,2.598778309,0.738610675,20.94461098,accuracy,analytics|agents
+45-54,Bachelor's,50-100k,male,West,suburban,Other,Executive,4,never,91.24756975,2.243025689,1.429001332,-5.246307074,job_loss,hiring
+35-44,Some college / Associate,25-50k,female,Northeast,urban,Other,Individual Contributor,5,monthly,62.62472696,0.467013893,-0.053490653,0.718236704,ethics,content_generation
+35-44,Master's,25-50k,female,Northeast,urban,Retail,Individual Contributor,6,never,52.63612494,0.646741183,1.131381731,-2.79670725,job_loss,customer_service|hiring
+55-64,Some college / Associate,25-50k,female,Northeast,suburban,Services,Skilled Trade,7,never,58.77336524,2.339208103,1.160746342,-8.983522979,privacy,augmentation|customer_service
+18-24,Bachelor's,50-100k,female,Northeast,rural,Healthcare,Manager,7,rarely,86.47270939,1.872583862,3.247601549,15.78517544,transparency,augmentation
+25-34,Some college / Associate,100-200k,male,West,suburban,Services,Manager,9,never,91.85704852,0.839060353,0.491160276,1.073453667,job_loss,analytics
+55-64,Some college / Associate,<25k,male,Northeast,suburban,Services,Individual Contributor,7,never,53.6149436,4.134082591,1.132372272,3.763974723,privacy,hiring|content_generation
+25-34,Doctorate/Prof,<25k,male,Midwest,rural,Manufacturing,Executive,5,never,48.32874037,1.617102462,1.010351723,7.11279003,accuracy|transparency,agents
+65+,Bachelor's,<25k,male,South,urban,Finance,Individual Contributor,7,never,67.67255247,-0.939945993,-0.236825408,5.218428018,accuracy|regulation,analytics|agents
+55-64,Bachelor's,50-100k,male,Midwest,urban,Other,Manager,6,daily,85.11312426,1.190312601,1.792546426,-1.970671401,transparency,analytics
+35-44,Some college / Associate,<25k,female,Northeast,urban,Services,Manager,9,rarely,87.8671512,2.953234933,1.761313927,13.36217341,bias|transparency,augmentation|analytics
+45-54,Bachelor's,100-200k,male,South,urban,Healthcare,Manager,1,never,58.37264003,-1.564380126,0.455287897,7.943664427,job_loss,analytics|content_generation
+25-34,Bachelor's,50-100k,male,South,urban,Services,Executive,4,never,52.234047,2.445072368,1.692252817,-0.980183338,privacy,augmentation
+35-44,High School or less,50-100k,nonbinary,Northeast,suburban,Other,Individual Contributor,7,never,91.43354424,5.038893698,2.368837162,2.374341781,job_loss,augmentation
+45-54,Bachelor's,50-100k,male,West,urban,Healthcare,Individual Contributor,4,weekly,53.63093308,2.955982865,0.976586943,1.414891118,privacy|transparency,agents
+25-34,Some college / Associate,<25k,male,South,suburban,Other,Individual Contributor,4,never,70.88394108,-0.747944336,-0.621110574,7.520702053,ethics,augmentation
+25-34,High School or less,50-100k,female,West,rural,Manufacturing,Manager,8,never,86.09469449,0.178862892,-1.44118532,-1.68217639,accuracy|safety|transparency,analytics
+65+,Master's,50-100k,female,West,urban,Manufacturing,Manager,7,never,65.94136978,-1.578395871,1.411402022,2.300592315,ethics,customer_service
+18-24,High School or less,50-100k,male,South,urban,Other,Manager,4,monthly,94.82724837,1.772129194,2.009888502,6.03179068,accuracy,customer_service
+55-64,Some college / Associate,25-50k,female,West,urban,Healthcare,Individual Contributor,4,never,80.18929327,-0.123316554,0.38339964,10.2592952,ethics,augmentation
+55-64,High School or less,25-50k,female,Northeast,suburban,Technology,Individual Contributor,6,never,86.46099199,1.946723766,0.760913508,0.783730286,safety,automation
+35-44,Master's,200k+,male,West,urban,Healthcare,Individual Contributor,7,rarely,72.11767293,0.782284248,2.739515433,3.186068532,transparency|regulation,analytics
+45-54,Bachelor's,200k+,female,South,urban,Services,Individual Contributor,6,never,34.26073198,-0.195400235,0.833143152,5.258241815,bias|transparency,customer_service
+18-24,Some college / Associate,50-100k,female,Midwest,urban,Finance,Manager,5,never,72.60530417,1.25652986,0.165557433,1.07698817,transparency,customer_service
+35-44,Some college / Associate,25-50k,female,South,suburban,Healthcare,Clerical/Support,2,never,67.54477482,0.788121326,0.495585306,16.99732436,accuracy,agents
+45-54,Doctorate/Prof,<25k,nonbinary,West,suburban,Finance,Individual Contributor,7,never,49.68570947,0.817355365,4.171913688,-4.119104583,transparency,agents
+35-44,High School or less,50-100k,male,West,suburban,Healthcare,Individual Contributor,6,never,70.63130569,3.145113863,2.786889599,6.123603478,transparency,automation
+35-44,Some college / Associate,<25k,female,South,suburban,Services,Individual Contributor,1,never,49.40130232,0.961471329,0.59684612,-2.311590343,accuracy,customer_service
+55-64,Bachelor's,50-100k,female,South,suburban,Government,Individual Contributor,6,daily,77.08708742,3.29158859,3.853595941,4.968287733,privacy|regulation,content_generation
+55-64,Bachelor's,25-50k,male,West,suburban,Manufacturing,Individual Contributor,3,never,77.52314987,0.636181217,1.409866269,7.09891227,accuracy|ethics,analytics
+55-64,Bachelor's,<25k,female,Midwest,urban,Technology,Manager,5,never,76.43491433,1.739549558,-0.114914844,11.10249688,job_loss|privacy|accuracy,augmentation
+35-44,Some college / Associate,50-100k,female,West,urban,Other,Individual Contributor,5,rarely,68.02675139,4.156985286,2.688223564,-2.409566371,safety,automation
+35-44,Some college / Associate,<25k,female,Northeast,urban,Retail,Individual Contributor,7,rarely,62.81649148,2.794935106,4.827514226,2.039845309,accuracy|transparency,augmentation|agents
+25-34,High School or less,50-100k,male,South,suburban,Healthcare,Individual Contributor,6,daily,44.25896372,2.557271835,1.589549845,12.05993432,job_loss|ethics,hiring
+18-24,Bachelor's,25-50k,male,South,rural,Other,Individual Contributor,6,rarely,56.13027702,2.241563488,1.383805739,-4.356247294,accuracy,content_generation
+25-34,Doctorate/Prof,50-100k,female,Midwest,urban,Manufacturing,Individual Contributor,3,never,62.93522679,0.901842507,3.321191864,4.827785681,job_loss|bias|accuracy,augmentation
+45-54,Bachelor's,50-100k,male,South,rural,Technology,Clerical/Support,5,never,69.2862829,0.290260151,-0.032840302,-7.643986981,transparency,automation
+25-34,Master's,100-200k,male,South,rural,Finance,Individual Contributor,4,never,74.18825718,0.705430479,0.76857964,-3.027057204,privacy,analytics
+25-34,High School or less,25-50k,female,West,rural,Other,Individual Contributor,4,rarely,50.99155801,-0.503359841,1.465082361,-9.193501193,job_loss,customer_service
+35-44,Doctorate/Prof,25-50k,male,South,rural,Healthcare,Skilled Trade,4,rarely,69.8814604,1.659587286,3.743160363,2.427177474,privacy|bias,analytics
+18-24,Bachelor's,<25k,female,West,suburban,Healthcare,Individual Contributor,8,never,59.22312362,-0.05537796,-1.012019499,0.734830164,privacy,automation|hiring
+35-44,Doctorate/Prof,100-200k,female,West,urban,Services,Individual Contributor,8,never,71.56539592,3.41722226,2.67721859,4.724105927,accuracy,customer_service
+65+,High School or less,50-100k,female,South,urban,Services,Manager,5,never,99.12512335,2.793532765,3.575332184,-3.012960366,accuracy,augmentation
+25-34,Master's,<25k,female,South,suburban,Healthcare,Individual Contributor,3,never,79.18137593,1.019144074,-0.061745334,4.015504968,bias,customer_service|content_generation
+25-34,Some college / Associate,<25k,female,Midwest,suburban,Education,Manager,7,never,59.29363549,1.91592857,3.884775231,0.033602978,safety,automation|customer_service
+25-34,Some college / Associate,25-50k,male,South,urban,Healthcare,Individual Contributor,9,daily,79.61649536,4.492394017,1.455746292,1.536897592,accuracy|ethics,analytics
+25-34,High School or less,100-200k,male,Midwest,rural,Education,Manager,4,rarely,63.00000337,2.105158431,4.511149304,1.29203482,bias,analytics|agents
+25-34,Bachelor's,50-100k,male,South,suburban,Services,Manager,7,never,65.85220679,1.218798015,1.085040181,-4.495082451,job_loss,analytics
+25-34,Master's,200k+,female,West,suburban,Other,Individual Contributor,6,never,72.55007712,1.094548053,0.044172937,10.32110075,privacy,content_generation
+25-34,Some college / Associate,50-100k,male,South,urban,Other,Individual Contributor,5,rarely,64.84973451,3.083836377,1.190765054,12.64207135,job_loss|safety,automation
+18-24,Some college / Associate,25-50k,female,Midwest,urban,Services,Manager,9,weekly,58.72704059,0.082668534,-0.232257538,-0.575760912,job_loss,automation
+45-54,Master's,50-100k,nonbinary,Midwest,suburban,Government,Manager,6,weekly,81.59623196,1.9454176,0.741553286,10.7390945,safety,augmentation
+55-64,High School or less,<25k,male,West,urban,Manufacturing,Individual Contributor,5,rarely,69.72941868,1.96347045,0.059299432,5.360307338,safety,automation
+18-24,Some college / Associate,100-200k,male,South,rural,Retail,Manager,5,never,80.66278016,-0.243619557,3.461706793,0.327637894,bias|accuracy,automation|analytics
+25-34,Some college / Associate,200k+,male,South,urban,Other,Manager,3,never,72.66336197,0.32238203,0.524753916,-1.852749125,privacy|job_loss|accuracy,augmentation
+55-64,Some college / Associate,100-200k,male,West,suburban,Other,Manager,6,monthly,67.91681221,2.372794806,1.540111167,-6.745154862,job_loss,analytics
+35-44,Some college / Associate,50-100k,female,Midwest,suburban,Manufacturing,Individual Contributor,7,never,59.35418674,3.354321294,1.39259714,15.32451445,job_loss,content_generation
+55-64,Master's,25-50k,male,West,urban,Finance,Clerical/Support,6,never,81.82718963,0.465464525,1.873651859,-6.674596615,safety,customer_service
+65+,Bachelor's,25-50k,female,Northeast,suburban,Services,Clerical/Support,4,never,62.22683398,0.794147746,-0.732433306,-7.799173505,bias,automation
+25-34,High School or less,25-50k,male,South,urban,Services,Individual Contributor,6,never,70.19367061,2.689108887,3.151646977,8.268429082,bias|safety,augmentation
+65+,High School or less,25-50k,female,West,urban,Manufacturing,Individual Contributor,10,weekly,72.31689581,4.126242732,3.584469156,6.935766278,transparency,augmentation
+25-34,Some college / Associate,200k+,male,Northeast,urban,Healthcare,Individual Contributor,8,never,82.77222168,-0.240895962,0.890440214,-1.13756405,accuracy|safety,augmentation|analytics
+25-34,High School or less,25-50k,female,Northeast,suburban,Technology,Individual Contributor,6,never,62.72272538,0.702302931,1.713704348,5.13761746,transparency,automation
+35-44,Bachelor's,200k+,male,West,urban,Retail,Manager,7,rarely,89.17352226,-0.508912921,-0.565937603,13.18476884,accuracy,analytics
+45-54,Bachelor's,<25k,male,South,urban,Finance,Individual Contributor,5,never,72.23232222,2.035515641,0.345682119,1.317604754,job_loss,automation
+18-24,High School or less,100-200k,male,South,urban,Finance,Individual Contributor,8,monthly,74.82592732,1.134372286,0.284655804,5.961679064,job_loss,augmentation
+25-34,High School or less,50-100k,male,West,urban,Technology,Individual Contributor,9,daily,53.58258118,0.757465207,0.105212876,7.578445226,job_loss,analytics
+18-24,Master's,<25k,male,South,urban,Other,Individual Contributor,5,never,75.9966158,-1.931706702,-0.762691523,-8.205006302,bias|transparency,augmentation|analytics
+65+,Bachelor's,100-200k,male,West,urban,Manufacturing,Clerical/Support,7,rarely,100,-0.30095512,0.30762809,-8.288520085,bias,augmentation
+25-34,High School or less,50-100k,female,Midwest,suburban,Finance,Manager,5,rarely,64.54391213,-0.061759001,-0.519158242,6.509301912,transparency,agents
+18-24,Bachelor's,50-100k,male,West,suburban,Services,Skilled Trade,4,never,52.97312887,2.522830924,3.250289378,1.666707089,transparency,analytics
+45-54,High School or less,200k+,male,Northeast,urban,Technology,Manager,5,never,77.31106722,0.658789253,1.187100795,2.911040203,bias,automation|agents
+55-64,High School or less,200k+,male,West,urban,Manufacturing,Manager,7,never,83.23395169,3.21774051,1.978705416,4.483972177,bias,automation
+45-54,Master's,<25k,male,South,suburban,Technology,Manager,0,never,74.29580105,-0.324564533,2.872327749,-11.24817225,privacy,automation|augmentation
+55-64,Bachelor's,25-50k,male,Northeast,urban,Healthcare,Individual Contributor,5,weekly,77.79995887,1.506398692,0.638889931,7.228650522,privacy,customer_service
+18-24,Bachelor's,100-200k,female,South,urban,Finance,Individual Contributor,2,never,80.72852458,0.658172406,3.468139385,6.90136576,accuracy,customer_service|analytics
+25-34,High School or less,50-100k,female,Midwest,rural,Services,Manager,7,never,71.5632877,2.536980508,1.465770039,1.366977983,accuracy,content_generation
+35-44,Master's,<25k,male,Midwest,urban,Finance,Skilled Trade,2,never,63.73856763,-1.846116351,0.599651806,-5.209646168,accuracy,augmentation
+25-34,High School or less,<25k,male,Northeast,rural,Healthcare,Individual Contributor,4,never,70.75799718,2.73475776,2.713920815,2.336182773,safety,augmentation
+25-34,Bachelor's,50-100k,female,West,suburban,Government,Individual Contributor,6,never,86.95604365,1.544108972,2.272792629,4.403889853,job_loss|transparency,automation|customer_service
+45-54,Master's,<25k,male,Northeast,urban,Retail,Clerical/Support,5,never,70.81043338,2.23841987,-1.005738006,-6.515354134,job_loss,automation|hiring
+25-34,High School or less,50-100k,female,South,suburban,Government,Manager,4,never,93.66292336,1.875021083,3.083893968,12.70050496,job_loss,analytics
+35-44,Master's,50-100k,female,West,suburban,Other,Individual Contributor,8,never,82.76431045,2.650831975,1.864360094,1.846337244,ethics,automation
+35-44,Master's,25-50k,male,South,urban,Finance,Manager,7,weekly,56.6446128,0.159048662,-0.97469582,3.038757635,transparency|ethics,content_generation
+55-64,Some college / Associate,50-100k,female,West,rural,Services,Manager,3,never,55.78785966,2.214276412,1.109238484,0.851166289,transparency,augmentation
+55-64,High School or less,25-50k,female,West,urban,Other,Individual Contributor,0,never,69.95361962,0.290969997,-0.591686089,-2.39443852,job_loss|bias,analytics
+25-34,Bachelor's,50-100k,male,West,suburban,Services,Skilled Trade,9,rarely,77.54419778,5.144025007,3.251561026,6.926969608,bias,augmentation|customer_service
+18-24,Some college / Associate,<25k,female,Midwest,suburban,Finance,Manager,6,never,79.58452864,2.478059419,1.577557472,6.495569782,accuracy,analytics
+18-24,Some college / Associate,50-100k,male,Midwest,urban,Manufacturing,Manager,7,monthly,66.51875969,0.541616798,0.235721858,14.74326675,job_loss|privacy|bias,analytics
+45-54,Some college / Associate,25-50k,female,Midwest,urban,Other,Skilled Trade,5,never,96.63321747,2.866632967,3.595887837,-4.684344628,privacy,analytics
+18-24,High School or less,25-50k,female,Midwest,suburban,Retail,Individual Contributor,6,never,61.70225795,4.304488093,3.111231071,-2.347204785,bias|transparency,augmentation|content_generation
+45-54,High School or less,<25k,female,South,urban,Services,Individual Contributor,5,never,70.94178102,0.992156431,0.774947751,-5.604635396,regulation,augmentation|agents
+25-34,Bachelor's,50-100k,male,South,suburban,Government,Individual Contributor,6,never,75.75222749,0.898084087,1.959401905,6.730676602,ethics,augmentation
+45-54,High School or less,100-200k,male,West,urban,Services,Manager,5,rarely,66.52673892,1.073678076,-0.494525351,3.636899424,regulation,content_generation
+18-24,Master's,50-100k,male,West,urban,Other,Manager,6,rarely,87.93525206,1.101861784,0.980465231,1.610496851,safety|transparency|bias,analytics
+45-54,High School or less,25-50k,female,South,suburban,Healthcare,Manager,5,weekly,90.27801783,0.904452064,3.568742333,5.347244696,accuracy,automation
+45-54,Some college / Associate,25-50k,male,Midwest,suburban,Education,Manager,5,weekly,76.73890038,3.981744033,3.644899309,15.58949098,accuracy,content_generation
+25-34,Some college / Associate,50-100k,female,South,suburban,Other,Individual Contributor,4,never,50.1066356,3.175660214,2.032686491,6.126157544,job_loss,analytics
+55-64,Some college / Associate,<25k,female,West,suburban,Finance,Individual Contributor,7,never,77.72123793,3.050665781,3.623100981,-1.526263955,regulation,analytics
+65+,High School or less,25-50k,male,Midwest,suburban,Retail,Individual Contributor,9,never,88.28112373,2.036764291,1.171237573,2.905453548,safety,automation|analytics
+25-34,Some college / Associate,200k+,female,South,urban,Technology,Individual Contributor,7,never,69.92272139,3.486210291,3.992990454,-3.419079136,safety,analytics
+35-44,Bachelor's,100-200k,male,Midwest,suburban,Other,Clerical/Support,8,daily,70.88511959,0.017261474,-1.034357007,-0.627781531,privacy,content_generation
+25-34,High School or less,<25k,female,South,rural,Technology,Individual Contributor,6,monthly,80.41645877,1.016781859,1.406035932,9.762148176,job_loss,analytics|agents
+25-34,Bachelor's,50-100k,male,West,urban,Technology,Skilled Trade,6,rarely,69.40618447,3.964292503,4.201120249,-2.822829246,job_loss,content_generation
+55-64,Doctorate/Prof,<25k,male,South,urban,Manufacturing,Manager,2,never,73.19848701,0.20745678,3.916459961,-4.051426808,transparency,augmentation
+55-64,Bachelor's,25-50k,female,Midwest,urban,Manufacturing,Individual Contributor,6,rarely,72.56377518,2.703223289,1.096326449,6.157352776,accuracy,hiring
+45-54,Some college / Associate,25-50k,male,South,urban,Healthcare,Manager,5,never,44.96748133,2.12712442,1.673383811,1.002835526,ethics,augmentation|analytics
+18-24,Some college / Associate,100-200k,male,South,urban,Services,Individual Contributor,6,never,90.72572464,-0.025097525,0.580254319,5.173854734,ethics,automation
+18-24,Master's,25-50k,female,Midwest,suburban,Retail,Individual Contributor,10,never,87.600539,-0.415742953,-0.483075644,1.026256077,job_loss|privacy,analytics
+35-44,Master's,25-50k,male,West,rural,Finance,Manager,8,never,59.27024754,1.444346785,2.334848703,4.690946106,bias,customer_service
+35-44,High School or less,100-200k,male,South,urban,Healthcare,Individual Contributor,7,rarely,92.04365888,3.577169922,3.412540797,6.411005571,bias|ethics,agents|content_generation
+25-34,Master's,<25k,male,South,urban,Healthcare,Manager,5,never,89.00911602,0.804063776,-0.37651123,6.855961335,job_loss|transparency|ethics,analytics
+55-64,Master's,25-50k,male,Midwest,urban,Technology,Individual Contributor,5,rarely,60.9497503,2.151802891,1.401887842,7.711483148,ethics,automation
+25-34,Some college / Associate,<25k,male,South,suburban,Education,Manager,10,weekly,81.01072054,4.0127879,1.931541954,5.327147101,ethics,hiring|content_generation
+35-44,Bachelor's,25-50k,male,Midwest,suburban,Manufacturing,Manager,9,never,87.25961094,2.422709708,1.848640572,5.156872955,privacy,augmentation
+45-54,Some college / Associate,25-50k,male,Midwest,urban,Services,Individual Contributor,5,rarely,67.91707819,-0.90792273,0.526098322,-0.510656783,bias,agents
+25-34,High School or less,<25k,male,West,rural,Other,Individual Contributor,7,never,80.01217061,2.260759824,0.17687907,-4.012508514,accuracy,augmentation|analytics
+25-34,Some college / Associate,<25k,female,West,urban,Retail,Manager,2,weekly,85.23663209,-0.022073463,0.430169715,-0.415680946,job_loss,augmentation
+25-34,High School or less,100-200k,female,Northeast,urban,Technology,Manager,6,never,71.16535134,1.965444579,1.451034196,12.81594916,job_loss,augmentation
+45-54,Bachelor's,50-100k,female,West,rural,Education,Individual Contributor,9,never,81.22340126,-0.706995014,1.742177251,2.695028638,job_loss,augmentation
+25-34,Some college / Associate,<25k,female,South,urban,Services,Individual Contributor,5,never,56.04881405,-0.045349077,0.181737315,0.802028998,accuracy,augmentation|agents
+35-44,Some college / Associate,<25k,male,South,urban,Manufacturing,Individual Contributor,5,rarely,75.26351722,3.243472403,2.320248147,4.594875198,privacy,analytics|content_generation
+45-54,Some college / Associate,25-50k,male,Northeast,suburban,Manufacturing,Manager,6,never,71.7011963,5.021673692,2.049503726,15.38360118,job_loss|regulation,agents|content_generation
+45-54,Some college / Associate,25-50k,male,South,suburban,Services,Individual Contributor,8,never,67.49136491,1.198217032,-1.437072391,-0.786674204,job_loss,augmentation
+35-44,High School or less,100-200k,male,South,suburban,Healthcare,Individual Contributor,6,never,79.85456615,-0.082403457,0.283318139,4.042933471,accuracy,automation
+25-34,High School or less,25-50k,male,Northeast,urban,Services,Individual Contributor,4,never,82.83185987,1.6268674,3.065533392,-1.724193721,transparency,augmentation
+25-34,High School or less,25-50k,female,South,urban,Healthcare,Clerical/Support,9,never,61.1115919,2.883930945,0.792030241,0.780546621,accuracy|safety|ethics,augmentation
+25-34,Doctorate/Prof,100-200k,male,Midwest,suburban,Manufacturing,Manager,7,daily,49.0628924,1.538265874,1.305904777,0.440241946,bias,augmentation
+45-54,Some college / Associate,50-100k,female,South,urban,Other,Manager,7,rarely,81.00409558,3.355166903,2.616343001,3.261913992,regulation,customer_service
+45-54,Some college / Associate,50-100k,male,West,urban,Manufacturing,Manager,3,rarely,57.21408449,0.346392471,1.094479255,14.21813549,transparency,analytics
+25-34,Bachelor's,50-100k,female,West,rural,Other,Individual Contributor,3,never,92.33109137,0.985893562,0.909248076,0.825971676,job_loss,automation|augmentation
+25-34,Bachelor's,25-50k,female,South,rural,Other,Individual Contributor,4,never,64.7459616,-2.018499786,0.1543653,4.769474814,job_loss|safety|transparency,automation|customer_service
+35-44,Master's,50-100k,female,South,urban,Other,Clerical/Support,9,never,69.03189194,0.933948406,-0.630016081,7.825860145,job_loss|accuracy,analytics
+55-64,Bachelor's,25-50k,female,Northeast,suburban,Services,Individual Contributor,7,never,65.93263285,-1.329466498,-1.11944342,3.882775362,job_loss,augmentation|customer_service
+45-54,High School or less,<25k,male,West,urban,Technology,Individual Contributor,10,never,88.53986392,0.690120281,0.66136516,0.674316497,accuracy|transparency,content_generation|analytics
+25-34,Master's,25-50k,female,Midwest,urban,Retail,Individual Contributor,3,weekly,60.00789283,0.363182174,-0.300306829,-0.947963544,ethics,automation
+25-34,High School or less,25-50k,male,Northeast,urban,Services,Manager,6,rarely,77.53363603,2.795311074,3.296076914,-7.233940651,transparency,augmentation
+35-44,High School or less,<25k,female,West,suburban,Healthcare,Individual Contributor,7,rarely,85.74850966,4.426638233,2.584637053,7.02881199,job_loss,automation|hiring
+45-54,High School or less,200k+,female,South,urban,Technology,Individual Contributor,2,never,73.79748431,-0.331894584,0.347104127,4.148517908,transparency,augmentation
+35-44,Master's,<25k,female,West,suburban,Education,Individual Contributor,3,never,77.96793782,0.727158721,2.451052664,6.590134434,accuracy,hiring
+55-64,Some college / Associate,50-100k,female,South,suburban,Technology,Individual Contributor,6,never,91.22707673,3.746079727,2.206235033,-1.935630501,ethics,analytics
+25-34,Master's,<25k,female,South,urban,Technology,Individual Contributor,7,daily,66.97265768,1.262026869,-0.23571464,4.33727211,accuracy,agents
+25-34,Bachelor's,<25k,male,Northeast,urban,Other,Clerical/Support,4,never,59.21115186,2.096126069,0.378703374,7.260892306,job_loss|regulation,augmentation
+35-44,High School or less,50-100k,male,West,suburban,Services,Individual Contributor,4,rarely,53.43186941,0.55279098,2.090027391,6.78564795,job_loss,content_generation
+35-44,Some college / Associate,25-50k,male,Northeast,urban,Finance,Individual Contributor,5,rarely,67.88594,-0.203698396,3.529746992,-2.046165479,regulation,automation
+35-44,Bachelor's,25-50k,male,South,urban,Finance,Individual Contributor,9,never,73.18543182,1.725640927,0.759634295,0.648823603,privacy|transparency,customer_service
+55-64,Bachelor's,100-200k,female,Midwest,urban,Services,Manager,6,rarely,73.37818081,1.800673185,-0.201305441,9.761490964,accuracy,automation
+25-34,Bachelor's,<25k,female,South,suburban,Healthcare,Individual Contributor,8,daily,63.89377937,2.150778733,1.623316393,9.692505434,transparency,analytics
+18-24,Some college / Associate,<25k,female,Northeast,suburban,Healthcare,Individual Contributor,5,never,74.03109013,0.397474038,0.908128861,5.982427406,accuracy,automation|analytics
+45-54,High School or less,50-100k,female,South,suburban,Services,Individual Contributor,4,never,66.2429148,0.744943873,2.204152277,12.89631386,privacy,analytics
+25-34,High School or less,<25k,male,South,suburban,Other,Individual Contributor,5,never,84.73317684,0.919039737,2.773880354,7.201678414,transparency,customer_service|analytics
+25-34,Bachelor's,50-100k,female,South,urban,Healthcare,Clerical/Support,3,never,79.06301164,1.503816368,-0.601953683,1.402327605,ethics,automation
+45-54,Bachelor's,50-100k,male,Midwest,suburban,Retail,Manager,5,never,82.3465346,0.349309565,1.199119522,7.711730258,ethics,augmentation|customer_service
+35-44,Master's,200k+,male,South,urban,Other,Individual Contributor,9,never,78.68019126,-0.708810344,0.229750847,8.82430746,privacy|regulation,agents
+35-44,Bachelor's,50-100k,male,West,suburban,Finance,Clerical/Support,4,never,83.13306668,-0.012767253,0.839623697,3.968534665,job_loss|accuracy,customer_service
+45-54,Master's,25-50k,female,Midwest,suburban,Services,Executive,7,weekly,67.26860361,3.328093821,2.437543874,12.06199297,privacy,agents
+55-64,Doctorate/Prof,50-100k,female,Midwest,suburban,Manufacturing,Manager,5,never,98.93810633,0.740063799,1.052866482,8.52408022,privacy|accuracy|regulation,hiring|agents
+55-64,Bachelor's,25-50k,female,South,suburban,Healthcare,Manager,9,never,75.63906411,2.044658998,0.065168664,7.869339783,ethics,augmentation
+45-54,Some college / Associate,25-50k,female,South,urban,Other,Manager,5,never,54.29066744,0.683587759,0.732646355,9.104486137,job_loss|bias,analytics
+45-54,High School or less,50-100k,female,Northeast,urban,Other,Individual Contributor,6,never,80.95676044,1.793558386,3.118924194,4.302936799,safety,augmentation|analytics
+45-54,Some college / Associate,25-50k,female,South,suburban,Technology,Executive,1,rarely,74.77364111,-1.795472036,1.115597951,0.673008168,accuracy,automation|augmentation
+35-44,High School or less,25-50k,male,West,urban,Government,Clerical/Support,6,never,72.91790513,0.456121332,0.799424202,-5.408990927,transparency,content_generation
+18-24,High School or less,<25k,male,West,rural,Healthcare,Executive,6,never,76.05170789,-1.572963661,-1.531803556,-1.949892623,privacy|transparency,analytics
+25-34,Bachelor's,<25k,male,Northeast,rural,Other,Individual Contributor,3,never,59.79976376,0.683262288,-0.161856874,2.425562603,bias|transparency,augmentation
+65+,Bachelor's,50-100k,female,Midwest,suburban,Manufacturing,Manager,9,daily,59.82768801,4.2917707,2.404722633,-2.978582207,transparency,automation|customer_service
+25-34,Master's,50-100k,female,West,urban,Healthcare,Individual Contributor,8,never,73.98459694,-0.412730373,-1.288305958,5.550753203,accuracy|safety,analytics
+25-34,Some college / Associate,<25k,female,Northeast,suburban,Manufacturing,Manager,8,rarely,79.42373218,4.117507617,2.944568276,5.411326627,privacy|accuracy|transparency,automation
+25-34,Bachelor's,25-50k,nonbinary,Northeast,urban,Healthcare,Individual Contributor,8,never,46.62560804,4.882326933,1.992774573,3.588517948,privacy,agents
+65+,Some college / Associate,25-50k,male,Northeast,urban,Services,Individual Contributor,4,never,49.13672181,-0.083982119,0.945965704,4.052032845,privacy,automation
+18-24,High School or less,25-50k,female,South,urban,Other,Individual Contributor,7,never,74.91879318,4.070148875,2.388335805,10.52267792,privacy|safety|transparency,analytics
+18-24,High School or less,<25k,female,South,suburban,Other,Individual Contributor,9,never,59.51069988,6.187199908,3.625737361,14.89136213,transparency,customer_service
+25-34,Bachelor's,25-50k,male,Northeast,urban,Technology,Individual Contributor,4,never,90.50028477,0.84660747,0.562963387,7.111759152,privacy,augmentation
+35-44,Doctorate/Prof,50-100k,female,Midwest,suburban,Services,Manager,5,never,57.09353843,-1.206789824,2.143138673,10.50198909,job_loss|privacy|transparency,analytics
+25-34,Bachelor's,50-100k,female,Midwest,suburban,Finance,Individual Contributor,9,daily,52.81421331,1.041135858,1.17825019,11.40194169,bias,augmentation|agents
+18-24,Master's,100-200k,male,South,urban,Healthcare,Manager,5,never,88.38818079,0.225280475,0.309065579,12.05669918,ethics,analytics
+35-44,Bachelor's,100-200k,male,South,suburban,Education,Manager,7,never,100,2.675033292,1.659112031,-3.986887902,job_loss|accuracy,augmentation
+55-64,Some college / Associate,50-100k,female,West,suburban,Finance,Individual Contributor,5,rarely,59.32714423,0.57581666,1.136477248,-4.500932892,transparency,automation
+25-34,High School or less,100-200k,male,Northeast,suburban,Other,Individual Contributor,7,never,75.66474932,2.148674041,2.16098045,-1.12372908,job_loss|privacy|safety,content_generation
+35-44,Bachelor's,50-100k,female,West,urban,Education,Individual Contributor,4,never,63.75526461,2.038877875,3.385974834,4.906836894,privacy,automation|content_generation
+25-34,High School or less,25-50k,female,South,rural,Finance,Individual Contributor,7,never,54.89131048,3.75475009,2.212699022,0.536727649,privacy,customer_service
+25-34,High School or less,<25k,female,Midwest,urban,Education,Individual Contributor,3,daily,81.20110137,0.952200524,3.19804828,-3.672383954,job_loss|privacy,analytics
+25-34,Some college / Associate,50-100k,male,Midwest,urban,Education,Individual Contributor,2,never,100,-0.149497156,1.627681439,-2.299868278,ethics,customer_service
+35-44,Bachelor's,100-200k,female,Midwest,urban,Other,Individual Contributor,4,never,65.40352832,1.23464789,1.221678564,3.254569738,privacy,analytics
+25-34,High School or less,<25k,female,Northeast,suburban,Education,Individual Contributor,7,never,79.69545278,5.023105354,0.591924947,13.36499417,ethics,augmentation
+18-24,Doctorate/Prof,200k+,male,South,urban,Government,Individual Contributor,4,never,75.86408374,0.757165681,1.351355269,12.21882951,job_loss|privacy|ethics,augmentation
+55-64,Bachelor's,100-200k,male,Northeast,urban,Other,Individual Contributor,7,never,100,5.164217012,2.904924958,10.13975546,transparency,customer_service
+45-54,Bachelor's,50-100k,female,Midwest,urban,Other,Individual Contributor,5,rarely,89.41438178,2.793489684,3.378314563,8.649038149,safety|transparency,customer_service|analytics
+25-34,Bachelor's,50-100k,female,South,rural,Finance,Individual Contributor,5,daily,52.98446684,0.654551009,1.813153237,8.177503534,accuracy|regulation,analytics
+45-54,Some college / Associate,25-50k,female,Midwest,urban,Finance,Manager,5,rarely,85.3791814,0.93964977,2.71203133,-0.183181689,safety,automation
+35-44,High School or less,100-200k,male,West,suburban,Other,Skilled Trade,9,never,60.98541988,3.319455592,2.858962787,5.811601402,job_loss|accuracy,automation
+18-24,Some college / Associate,100-200k,male,Northeast,urban,Technology,Clerical/Support,4,rarely,92.80488734,-2.148532542,0.894655056,10.97624746,privacy|bias,augmentation|hiring
+45-54,Bachelor's,25-50k,female,Midwest,suburban,Other,Skilled Trade,7,never,100,1.897318042,1.472165739,-5.416872562,job_loss|transparency,agents
+35-44,Some college / Associate,50-100k,male,Northeast,suburban,Retail,Individual Contributor,5,monthly,85.74174651,-1.148456343,-1.110679479,-0.646024733,job_loss,analytics
+18-24,Master's,100-200k,female,West,urban,Manufacturing,Skilled Trade,5,rarely,69.52772344,-0.695431043,0.590884371,-0.872578618,transparency,analytics
+25-34,Some college / Associate,200k+,nonbinary,West,suburban,Technology,Manager,7,never,72.24222116,2.634411809,3.283125885,14.02822935,ethics,analytics
+45-54,High School or less,<25k,male,South,suburban,Services,Skilled Trade,5,monthly,58.50371325,0.588601812,1.13498829,-6.850858065,job_loss,automation|augmentation
+45-54,High School or less,<25k,male,South,urban,Healthcare,Individual Contributor,3,monthly,89.71603039,2.65083907,1.871937924,-0.037895892,bias,augmentation
+45-54,Bachelor's,100-200k,female,West,urban,Services,Manager,5,never,60.27970277,1.477560802,0.777743072,16.42061487,job_loss|privacy,agents|augmentation
+65+,Some college / Associate,25-50k,female,Midwest,rural,Services,Individual Contributor,7,rarely,78.37981355,2.23338327,3.580965586,1.806171733,bias|ethics,automation|content_generation
+45-54,Some college / Associate,50-100k,female,Midwest,urban,Healthcare,Individual Contributor,5,never,83.06697386,2.764390097,3.367417519,4.135752733,regulation,automation
+35-44,Bachelor's,50-100k,nonbinary,Midwest,rural,Manufacturing,Manager,7,never,85.7166153,4.688339432,2.281307669,-3.775190019,accuracy,customer_service|content_generation
+55-64,Bachelor's,50-100k,female,West,suburban,Other,Manager,5,never,80.93871718,2.195922976,1.875513604,5.653500503,job_loss|ethics,automation|augmentation
+65+,Some college / Associate,25-50k,female,South,urban,Finance,Manager,9,rarely,82.42049233,3.36465535,0.811732466,5.838182255,accuracy,customer_service
+65+,Bachelor's,25-50k,female,Northeast,urban,Finance,Manager,9,never,51.93623458,5.94502567,2.475515007,8.470636514,privacy|regulation,hiring
+25-34,Some college / Associate,<25k,female,South,urban,Retail,Individual Contributor,6,never,69.77970619,2.426421936,2.187966718,2.707708209,job_loss,customer_service|content_generation
+55-64,High School or less,25-50k,female,Midwest,urban,Healthcare,Individual Contributor,3,never,42.14771066,2.352894523,0.898426171,-5.18686599,bias|transparency,automation
+55-64,High School or less,<25k,male,South,urban,Retail,Individual Contributor,3,never,80.40605569,-1.538406438,0.42472462,-4.247328906,privacy,analytics
+35-44,Some college / Associate,50-100k,nonbinary,West,suburban,Finance,Executive,8,never,91.54948942,-0.146526024,-1.51018668,0.2639636,privacy,augmentation
+25-34,Master's,50-100k,male,Northeast,urban,Healthcare,Individual Contributor,6,never,64.64641115,2.931638779,2.014692421,-6.954779349,safety,analytics
+25-34,Bachelor's,<25k,male,Northeast,urban,Government,Individual Contributor,6,never,67.93553708,0.483974166,-0.204046096,8.316139476,transparency,hiring
+35-44,Bachelor's,50-100k,male,Midwest,urban,Services,Individual Contributor,8,never,84.2000271,-2.573102745,-0.402156459,0.601065879,regulation,hiring
+25-34,Master's,50-100k,male,South,urban,Other,Clerical/Support,3,never,58.08247169,2.304178605,2.918897191,9.057351525,job_loss|safety,automation
+55-64,Bachelor's,50-100k,female,South,urban,Services,Individual Contributor,3,never,67.68766367,1.940044677,2.589243436,10.12360516,job_loss,analytics|content_generation
+25-34,Bachelor's,50-100k,female,West,suburban,Healthcare,Individual Contributor,6,daily,67.59963167,1.084326813,-0.325377027,12.55353006,accuracy,content_generation
+25-34,High School or less,25-50k,male,Midwest,urban,Other,Individual Contributor,6,never,92.3948079,3.660041687,2.476346121,6.647580113,transparency,augmentation|content_generation
+65+,Master's,<25k,male,South,suburban,Finance,Skilled Trade,0,never,47.77118925,0.669519461,0.978242918,4.160209878,accuracy,analytics
+25-34,Bachelor's,100-200k,male,Midwest,urban,Education,Individual Contributor,4,daily,64.47258548,0.028283545,0.730707113,7.117459251,bias,augmentation|customer_service
+55-64,High School or less,100-200k,male,South,urban,Manufacturing,Individual Contributor,7,daily,63.19439938,0.569402849,0.223723128,5.520917856,bias|ethics,analytics
+35-44,Some college / Associate,25-50k,female,West,urban,Healthcare,Clerical/Support,8,never,78.31021363,2.609635197,0.21438915,22.52627142,privacy|transparency,augmentation|customer_service
+18-24,High School or less,25-50k,male,South,urban,Education,Manager,2,never,85.354625,2.416743306,1.393238678,-2.488102906,ethics,content_generation
+55-64,High School or less,25-50k,female,South,suburban,Finance,Individual Contributor,6,never,77.03895003,0.504197171,1.791961175,7.676490402,job_loss|privacy,augmentation
+25-34,Some college / Associate,50-100k,female,West,rural,Manufacturing,Manager,5,weekly,73.13039973,0.98322265,1.013675901,-1.151951255,job_loss,automation|analytics
+65+,Doctorate/Prof,<25k,female,Midwest,rural,Retail,Individual Contributor,6,daily,89.27600222,1.77494047,2.574253139,1.00450041,privacy,analytics
+45-54,Bachelor's,25-50k,female,South,suburban,Technology,Individual Contributor,5,never,80.2602428,-0.208259929,2.355284305,1.561513593,regulation,customer_service|agents
+35-44,Some college / Associate,50-100k,female,South,urban,Services,Clerical/Support,4,never,76.57097795,1.557857635,1.608045777,7.523859044,accuracy,hiring
+45-54,High School or less,50-100k,female,South,suburban,Healthcare,Individual Contributor,5,monthly,77.13373635,-0.114526432,1.13157585,-1.999171594,ethics|regulation,analytics
+45-54,High School or less,200k+,female,Midwest,urban,Other,Individual Contributor,2,never,64.61870288,-0.653693792,0.049341109,8.173766508,regulation,augmentation
+45-54,Some college / Associate,25-50k,male,West,urban,Finance,Manager,0,never,44.02808561,0.914827527,0.010713777,7.513262687,transparency,automation
+18-24,Doctorate/Prof,100-200k,female,Midwest,rural,Retail,Manager,8,never,74.41830933,2.221997094,1.656665775,7.493287871,accuracy|ethics|regulation,analytics
+18-24,Some college / Associate,25-50k,female,Northeast,urban,Services,Skilled Trade,5,rarely,76.10960819,0.981350336,0.173516886,-1.715941558,privacy,augmentation|customer_service
+35-44,Bachelor's,25-50k,female,Northeast,urban,Services,Individual Contributor,7,never,71.09249507,4.584567972,1.771092795,1.069237934,job_loss|transparency|regulation,customer_service
+25-34,High School or less,50-100k,female,Northeast,suburban,Other,Clerical/Support,4,never,65.09532455,1.746769367,3.072873888,-2.643819217,job_loss,augmentation|hiring
+45-54,Some college / Associate,200k+,female,West,urban,Other,Individual Contributor,5,rarely,79.68175149,0.730326717,1.894546299,11.78680608,privacy,automation
+18-24,Bachelor's,25-50k,female,South,suburban,Services,Skilled Trade,7,never,76.80830973,-0.425495653,-0.099192132,12.3257226,job_loss,augmentation|automation
+25-34,Bachelor's,25-50k,female,South,urban,Other,Individual Contributor,4,daily,83.5987453,-0.263361045,-0.085777012,-12.12269333,bias,automation
+55-64,Some college / Associate,50-100k,male,West,urban,Technology,Skilled Trade,1,never,82.39357852,0.258960489,3.932929488,8.268203705,accuracy,automation|customer_service
+35-44,Bachelor's,50-100k,female,South,urban,Other,Skilled Trade,4,never,67.84812152,0.119515691,3.692670066,9.845168445,bias,analytics
+45-54,Master's,50-100k,female,West,urban,Finance,Individual Contributor,1,never,70.4697315,-0.950680068,-0.373046282,3.228609153,ethics,analytics
+45-54,Doctorate/Prof,100-200k,male,Midwest,urban,Manufacturing,Manager,8,never,74.4528022,2.876910813,2.083749934,1.125567889,bias|accuracy|ethics,analytics
+35-44,Bachelor's,<25k,female,South,urban,Government,Manager,4,rarely,92.79747102,0.775498564,2.581754456,-8.854680852,bias,automation|analytics
+35-44,Bachelor's,<25k,male,South,urban,Finance,Manager,2,rarely,56.62339286,-0.045401426,2.6568749,1.699833384,safety,analytics
+45-54,Some college / Associate,<25k,female,West,suburban,Technology,Manager,6,never,92.22716862,1.791159209,2.600181271,7.269265573,privacy,customer_service
+45-54,Some college / Associate,25-50k,female,South,suburban,Services,Individual Contributor,9,monthly,69.55332488,2.974413842,2.348468026,7.091041952,regulation,automation|augmentation
+18-24,High School or less,50-100k,female,Midwest,suburban,Healthcare,Individual Contributor,5,rarely,73.80201782,-0.472195031,-0.09717662,1.638326028,privacy,analytics
+65+,High School or less,25-50k,male,South,urban,Services,Individual Contributor,7,never,93.05458774,3.350310604,1.211533867,8.516739766,privacy,analytics
+25-34,Doctorate/Prof,100-200k,male,Midwest,suburban,Retail,Clerical/Support,6,never,84.41944284,-0.309387864,-0.087721556,4.531271019,bias,automation
+18-24,High School or less,<25k,male,South,suburban,Services,Manager,5,never,76.09253354,1.063333086,-0.220891117,19.36195086,job_loss,augmentation|agents
+55-64,High School or less,50-100k,male,South,urban,Services,Individual Contributor,6,daily,73.29536721,0.447200772,-0.128187708,6.791457197,transparency,analytics|content_generation
+35-44,High School or less,50-100k,female,West,urban,Technology,Clerical/Support,3,never,60.86383645,1.190586237,3.551983582,14.16111395,job_loss|ethics,automation|augmentation
+45-54,Some college / Associate,25-50k,female,South,urban,Other,Manager,4,weekly,79.20126169,1.289161288,1.746409311,9.081459251,privacy,augmentation|analytics
+35-44,High School or less,25-50k,male,South,suburban,Other,Skilled Trade,4,never,70.94022788,1.206278104,-0.88241712,4.307656298,safety,automation
+25-34,High School or less,<25k,nonbinary,South,suburban,Services,Skilled Trade,8,weekly,89.89110927,4.488652263,3.015592844,-2.470585931,safety,analytics|content_generation
+55-64,High School or less,50-100k,female,South,urban,Education,Clerical/Support,4,rarely,78.91608019,0.848190412,0.44788752,3.385733946,job_loss,augmentation
+65+,Master's,100-200k,male,South,urban,Services,Individual Contributor,5,daily,46.5270317,0.233267461,0.062097629,13.07945648,accuracy,augmentation|content_generation
+25-34,Bachelor's,25-50k,male,South,suburban,Education,Individual Contributor,10,daily,82.89909711,5.528284431,2.221421142,7.937345461,transparency,augmentation
+45-54,Bachelor's,100-200k,female,Midwest,urban,Other,Individual Contributor,9,never,67.09826157,4.366472295,2.675648875,1.669291787,privacy,customer_service
+55-64,High School or less,<25k,female,South,urban,Services,Individual Contributor,0,never,70.91883664,0.567431496,2.921734348,-6.208372721,privacy,hiring
+25-34,Some college / Associate,25-50k,nonbinary,Northeast,rural,Retail,Manager,2,never,55.82349934,0.592357613,0.669149401,-8.235182467,job_loss|regulation,customer_service|content_generation
+45-54,High School or less,25-50k,female,Midwest,rural,Retail,Manager,10,rarely,71.0163013,6.110735541,2.077243814,11.20730233,privacy,analytics
+18-24,Bachelor's,25-50k,male,South,rural,Services,Individual Contributor,6,never,72.68418117,-1.338605907,1.268896469,6.896851066,bias,customer_service|content_generation
+35-44,High School or less,25-50k,male,South,suburban,Manufacturing,Individual Contributor,4,never,75.0264082,0.38646837,-0.285151159,-0.472326295,accuracy,analytics
+18-24,Master's,100-200k,male,West,urban,Services,Individual Contributor,7,never,72.83948229,2.316715636,1.560784672,3.834900447,transparency,augmentation
+35-44,High School or less,50-100k,male,South,urban,Other,Individual Contributor,8,rarely,65.04251963,6.487707355,2.476342527,-5.633401091,ethics,customer_service|automation
+25-34,High School or less,25-50k,female,Midwest,urban,Finance,Individual Contributor,3,never,77.96483235,-0.439667688,1.029484809,-8.838711866,job_loss|privacy,customer_service
+55-64,High School or less,25-50k,female,Northeast,urban,Other,Manager,1,weekly,63.19063704,-0.197485015,0.637716989,-5.324061275,safety|transparency,analytics
+35-44,Some college / Associate,50-100k,female,South,urban,Government,Clerical/Support,9,monthly,93.90068995,5.438234845,1.472258685,11.83911556,privacy,automation
+25-34,High School or less,<25k,male,Northeast,urban,Healthcare,Individual Contributor,5,weekly,83.60867213,3.135869775,1.557485632,7.779450104,accuracy,automation|augmentation
+45-54,Some college / Associate,50-100k,male,West,urban,Finance,Clerical/Support,5,never,64.29274175,0.029023455,-0.403832939,-5.961909954,privacy,analytics
+35-44,High School or less,25-50k,female,South,urban,Other,Clerical/Support,4,rarely,97.50892236,1.511228703,2.64838085,4.207940151,bias|regulation,augmentation|analytics
+65+,High School or less,50-100k,female,Midwest,urban,Education,Executive,6,weekly,89.04212348,1.182001978,2.523360776,1.452853987,privacy,automation
+65+,Bachelor's,<25k,male,Midwest,urban,Other,Individual Contributor,8,never,58.1010307,1.112818937,0.722955845,6.332391348,ethics,augmentation
+25-34,Master's,<25k,male,Northeast,rural,Technology,Individual Contributor,6,rarely,66.73402057,0.042622505,-0.563981757,9.097997043,job_loss,hiring|content_generation
+35-44,High School or less,100-200k,male,Northeast,urban,Other,Individual Contributor,6,rarely,79.37129204,3.633285843,3.577550561,8.51474047,regulation,analytics
+55-64,High School or less,<25k,male,Midwest,suburban,Services,Individual Contributor,3,never,58.45684763,2.537059492,2.627062594,-0.269613872,job_loss,customer_service|content_generation
+65+,Some college / Associate,50-100k,female,South,suburban,Other,Individual Contributor,7,never,53.99533102,0.588797703,1.106387814,10.70981268,job_loss|transparency,content_generation
+25-34,High School or less,25-50k,male,West,rural,Services,Individual Contributor,4,rarely,75.85770363,2.429164678,-0.266988687,5.712903792,accuracy|ethics,customer_service
+45-54,Some college / Associate,50-100k,female,South,urban,Services,Skilled Trade,7,never,77.12751645,2.831276736,2.470146903,-4.022761008,job_loss,augmentation
+35-44,Master's,<25k,female,South,urban,Other,Clerical/Support,0,weekly,77.06788396,-0.015465587,0.681681666,-4.479711475,bias,augmentation|agents
+35-44,Bachelor's,25-50k,female,Midwest,urban,Government,Individual Contributor,4,rarely,56.65602817,1.750133187,1.540147279,-7.31004346,job_loss,automation|augmentation
+25-34,Some college / Associate,50-100k,female,Midwest,urban,Services,Individual Contributor,4,never,57.2952996,-0.336977952,-0.697438218,-0.67530763,accuracy|ethics,hiring
+18-24,High School or less,25-50k,female,South,urban,Services,Individual Contributor,0,never,93.27859766,-0.011112136,0.837614297,1.282848948,bias,automation
+45-54,Doctorate/Prof,50-100k,male,South,urban,Retail,Skilled Trade,7,never,71.88827756,1.71133208,1.86043226,11.18724789,bias,customer_service
+18-24,Bachelor's,100-200k,male,Northeast,suburban,Healthcare,Clerical/Support,6,never,67.25713058,1.196301003,1.604128233,16.97141205,accuracy|regulation,analytics
+45-54,Bachelor's,50-100k,female,West,urban,Services,Manager,5,rarely,73.47980989,1.281675544,1.137586912,8.280651765,job_loss|bias|ethics,augmentation
+35-44,Some college / Associate,25-50k,male,Northeast,rural,Finance,Individual Contributor,8,rarely,84.82917753,4.711154005,1.782822907,4.601580865,bias,automation|augmentation
+35-44,High School or less,25-50k,female,Northeast,urban,Services,Individual Contributor,6,never,60.51467563,1.699922371,-0.203057418,15.19298621,privacy,analytics
+25-34,Bachelor's,25-50k,male,Northeast,urban,Other,Individual Contributor,5,never,68.99852228,1.003896953,1.576870357,7.630143649,accuracy,analytics
+25-34,High School or less,50-100k,male,Midwest,urban,Healthcare,Individual Contributor,6,rarely,74.78009596,-0.469411792,-0.209862694,15.1303341,privacy|accuracy,analytics
+55-64,High School or less,50-100k,nonbinary,South,suburban,Services,Individual Contributor,1,never,68.89820689,-1.092480139,2.618431079,-7.054625427,accuracy|safety,content_generation
+45-54,High School or less,50-100k,male,West,urban,Other,Manager,8,daily,72.03534158,2.978094014,3.567399054,-1.72312304,privacy,augmentation
+18-24,Bachelor's,50-100k,female,West,suburban,Healthcare,Individual Contributor,1,monthly,83.36118807,-0.533947723,-0.123853693,7.292423617,accuracy,analytics
+45-54,Master's,100-200k,female,Midwest,urban,Other,Individual Contributor,1,never,75.00523004,0.439776218,1.176844069,2.950537418,bias,automation|content_generation
+55-64,Doctorate/Prof,50-100k,male,Midwest,suburban,Other,Individual Contributor,6,rarely,65.14445396,-1.285611488,-0.064012371,8.621943208,bias|transparency,agents
+18-24,Bachelor's,25-50k,male,South,urban,Retail,Manager,3,monthly,46.89660594,1.159100471,2.999823755,-3.568155115,bias,content_generation
+25-34,Some college / Associate,50-100k,male,South,urban,Other,Individual Contributor,4,never,80.19560149,1.573899079,0.983924,5.627921222,safety,customer_service
+25-34,Some college / Associate,25-50k,male,Midwest,urban,Technology,Manager,4,never,68.99610956,-1.779102762,-0.963125987,9.620197416,privacy|transparency,analytics
+35-44,High School or less,<25k,female,South,urban,Education,Individual Contributor,9,rarely,56.99573953,1.927332158,1.194250776,16.49422227,job_loss,analytics
+25-34,Some college / Associate,25-50k,male,Midwest,suburban,Technology,Manager,5,never,76.92634836,0.952936516,0.244326454,4.195555147,job_loss,customer_service
+45-54,High School or less,200k+,male,Northeast,urban,Government,Skilled Trade,7,rarely,74.8225811,4.18100551,2.630850445,2.946312864,accuracy,augmentation
+65+,Some college / Associate,25-50k,male,West,urban,Services,Manager,1,monthly,84.67413706,1.388096452,2.354148634,-0.996347897,bias,augmentation|agents
+45-54,Master's,25-50k,female,South,urban,Other,Executive,7,never,80.0682555,2.193065971,4.060066118,11.65327668,accuracy,automation
+18-24,Some college / Associate,<25k,female,West,rural,Other,Individual Contributor,4,weekly,46.01495093,0.61961676,0.929689663,8.524702631,accuracy|transparency,augmentation|analytics
+35-44,High School or less,25-50k,female,South,urban,Manufacturing,Manager,5,never,68.0747383,3.359678577,1.609242738,-0.671957693,transparency,automation|content_generation
+45-54,High School or less,<25k,male,Midwest,urban,Finance,Skilled Trade,9,rarely,92.86325032,2.993525658,2.007016953,0.429149003,privacy|accuracy|transparency,analytics
+45-54,Bachelor's,100-200k,female,West,suburban,Retail,Individual Contributor,5,daily,58.23795418,-0.310221347,-1.257839386,4.898654349,privacy,augmentation|customer_service
+18-24,High School or less,25-50k,male,South,urban,Finance,Individual Contributor,1,weekly,48.43166241,-1.313632427,3.06134133,-1.266141474,safety,analytics|agents
+65+,High School or less,200k+,male,Northeast,urban,Other,Skilled Trade,10,never,69.05005671,-1.097424918,0.729033956,-0.692536183,transparency,augmentation
+18-24,High School or less,50-100k,female,Midwest,urban,Technology,Individual Contributor,6,never,74.98887572,-0.583413632,0.519528955,-4.272027973,accuracy,automation|customer_service
+25-34,Master's,50-100k,female,Midwest,urban,Manufacturing,Individual Contributor,6,never,70.84456607,3.018710469,2.56916088,7.247986696,privacy,automation
+25-34,Master's,25-50k,nonbinary,Midwest,rural,Services,Individual Contributor,7,never,94.73086584,4.170621832,2.619135277,-3.288750843,job_loss|ethics,customer_service|hiring
