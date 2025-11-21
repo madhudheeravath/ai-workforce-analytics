@@ -165,8 +165,8 @@ export default function OrgMaturityPage() {
     );
   }
 
-  const totalOrgs = data?.maturityLevels.reduce((sum, item) => sum + item.organizations, 0) || 0;
-  const withPolicy = data?.policyBySize.reduce((sum, item) => sum + item.withPolicy, 0) || 0;
+  const totalOrgs = data?.maturityLevels?.reduce((sum, item) => sum + item.organizations, 0) || 0;
+  const withPolicy = data?.policyBySize?.reduce((sum, item) => sum + item.withPolicy, 0) || 0;
   const policyRate = totalOrgs > 0 ? (withPolicy / totalOrgs) * 100 : 0;
 
   return (
@@ -276,7 +276,7 @@ export default function OrgMaturityPage() {
           ) : (
             <>
               <div className="text-3xl font-bold text-emerald-900 mb-1">
-                {data?.maturityLevels.reduce((sum, item) => sum + item.sustainabilityRate, 0) / (data?.maturityLevels.length || 1) || 0}%
+                {data?.maturityLevels?.reduce((sum, item) => sum + item.sustainabilityRate, 0) / (data?.maturityLevels?.length || 1) || 0}%
               </div>
               <p className="text-sm text-emerald-700">
                 Using AI for sustainability
