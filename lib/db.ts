@@ -11,7 +11,7 @@ import { neon } from '@neondatabase/serverless';
 // Lazy initialization to avoid build-time errors
 let _sql: ReturnType<typeof neon> | null = null;
 
-function getSQL() {
+function getSQL(): ReturnType<typeof neon> {
   if (!_sql) {
     if (!process.env.DATABASE_URL) {
       throw new Error(
@@ -23,17 +23,11 @@ function getSQL() {
   return _sql;
 }
 
-// Create serverless SQL client with lazy initialization
-export const sql = new Proxy({} as ReturnType<typeof neon>, {
-  get: (target, prop) => {
-    const sqlInstance = getSQL();
-    return sqlInstance[prop as keyof typeof sqlInstance];
-  },
-  apply: (target, thisArg, args: any[]) => {
-    const sqlInstance = getSQL();
-    return (sqlInstance as any)(...args);
-  }
-});
+// Simple helper that forwards template calls to the Neon client
+export function sql(strings: TemplateStringsArray, ...values: any[]): Promise<any> {
+  const sqlInstance = getSQL();
+  return (sqlInstance as any)(strings, ...values);
+}
 
 // Type definitions for our data models
 export interface SurveyRespondent {
