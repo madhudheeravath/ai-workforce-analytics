@@ -3,6 +3,15 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
+type AuthUserRecord = {
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+  department: string | null;
+  password: string;
+};
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -22,11 +31,13 @@ export const authOptions: NextAuthOptions = {
             SELECT * FROM users WHERE email = ${credentials.email} LIMIT 1
           `;
 
-          if (result.length === 0) {
+          const rows = result as AuthUserRecord[];
+
+          if (rows.length === 0) {
             throw new Error("No user found with this email");
           }
 
-          const user = result[0];
+          const user = rows[0];
 
           // Verify password
           const isPasswordValid = await bcrypt.compare(
@@ -43,7 +54,7 @@ export const authOptions: NextAuthOptions = {
             email: user.email,
             name: user.name,
             role: user.role,
-            department: user.department,
+            department: user.department ?? undefined,
           };
         } catch (error) {
           console.error("Auth error:", error);
