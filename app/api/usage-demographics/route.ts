@@ -173,13 +173,7 @@ export async function GET(request: Request) {
       FROM survey_respondents
       ${experienceWhere}
       GROUP BY 1
-      ORDER BY 
-        CASE experience_band
-          WHEN 'Beginner' THEN 1
-          WHEN 'Intermediate' THEN 2
-          WHEN 'Advanced' THEN 3
-          WHEN 'Expert' THEN 4
-        END;
+      ORDER BY 1;
     `;
 
     const byExperience = await sqlClient(usageByExperienceQuery);
