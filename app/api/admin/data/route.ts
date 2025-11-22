@@ -21,13 +21,15 @@ export async function GET() {
       );
     }
 
-    const rows = await sql<TableStatsRow[]>`
+    const result = await sql`
       SELECT
         relname AS table_name,
         n_live_tup AS row_estimate
       FROM pg_stat_user_tables
       ORDER BY relname;
     `.catch(() => [] as TableStatsRow[]);
+
+    const rows = result as TableStatsRow[];
 
     const tables = rows.map((row) => ({
       name: row.table_name,
