@@ -1,74 +1,53 @@
 import { NextResponse } from 'next/server';
-import { sql } from '@/lib/db';
 import { neon } from '@neondatabase/serverless';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 function buildWhereClause(searchParams: URLSearchParams): string {
-  const conditions: string[] = ['company_size IS NOT NULL'];
-  
-  // Age Group filter
-  const ageGroups = searchParams.getAll('ageGroup');
-  if (ageGroups.length > 0) {
-    const ageConditions = ageGroups.map(age => `age_group = '${age}'`).join(' OR ');
-    conditions.push(`(${ageConditions})`);
-  }
-  
-  // Industry filter
+  const conditions: string[] = ['company_size_bucket IS NOT NULL'];
+
+  // Industry filter (matches industry_sector in all datasets)
   const industries = searchParams.getAll('industry');
   if (industries.length > 0) {
-    const industryConditions = industries.map(ind => `industry_sector = '${ind}'`).join(' OR ');
+    const industryConditions = industries
+      .map((ind) => `industry_sector = '${ind}'`)
+      .join(' OR ');
     conditions.push(`(${industryConditions})`);
   }
-  
-  // Job Role filter
-  const jobRoles = searchParams.getAll('jobRole');
-  if (jobRoles.length > 0) {
-    const roleConditions = jobRoles.map(role => `job_role = '${role}'`).join(' OR ');
-    conditions.push(`(${roleConditions})`);
-  }
-  
-  // Company Size filter
+
+  // Company Size filter - map legacy values to new buckets
   const companySizes = searchParams.getAll('companySize');
   if (companySizes.length > 0) {
-    const sizeConditions = companySizes.map(size => `company_size = '${size}'`).join(' OR ');
+    const mappedSizes = companySizes.map((size) => {
+      switch (size) {
+        case '1-50':
+          return 'micro';
+        case '51-200':
+          return 'small';
+        case '201-1000':
+          return 'medium';
+        case '1000+':
+          return 'large';
+        default:
+          return size;
+      }
+    });
+
+    const sizeConditions = mappedSizes
+      .map((size) => `company_size_bucket = '${size}'`)
+      .join(' OR ');
     conditions.push(`(${sizeConditions})`);
   }
-  
-  // AI User Status filter
+
+  // AI User Status filter using has_used_ai_on_job where available
   const aiUser = searchParams.get('aiUser');
   if (aiUser === 'yes') {
-    conditions.push('is_ai_user = true');
+    conditions.push('COALESCE(has_used_ai_on_job, false) = true');
   } else if (aiUser === 'no') {
-    conditions.push('is_ai_user = false');
+    conditions.push('COALESCE(has_used_ai_on_job, false) = false');
   }
-  
-  // Training Status filter
-  const trained = searchParams.get('trained');
-  if (trained === 'yes') {
-    conditions.push('ai_training_received = true');
-  } else if (trained === 'no') {
-    conditions.push('ai_training_received = false');
-  }
-  
-  // Sentiment filter
-  const sentiments = searchParams.getAll('sentiment');
-  if (sentiments.length > 0) {
-    const sentimentConditions = sentiments.map(s => {
-      switch (s.toLowerCase()) {
-        case 'worried': return 'is_worried = true';
-        case 'hopeful': return 'is_hopeful = true';
-        case 'overwhelmed': return 'is_overwhelmed = true';
-        case 'excited': return 'is_excited = true';
-        default: return '';
-      }
-    }).filter(c => c).join(' OR ');
-    if (sentimentConditions) {
-      conditions.push(`(${sentimentConditions})`);
-    }
-  }
-  
+
   return `WHERE ${conditions.join(' AND ')}`;
 }
 
@@ -80,30 +59,31 @@ export async function GET(request: Request) {
     const sqlClient = neon(process.env.DATABASE_URL!);
     const query = `
       SELECT 
-        company_size,
-        COUNT(*) as total_respondents,
-        SUM(CASE WHEN is_ai_user THEN 1 ELSE 0 END) as ai_users,
-        ROUND(AVG(CASE WHEN is_ai_user THEN 1 ELSE 0 END) * 100, 2) as adoption_rate,
-        ROUND(AVG(productivity_change), 2) as avg_productivity
+        company_size_bucket AS company_size,
+        COUNT(*) as total_rows,
+        ROUND(AVG(pct_employees_using_ai)::numeric, 2) as avg_pct_using_ai,
+        ROUND(AVG(productivity_change_pct)::numeric, 2) as avg_productivity
       FROM survey_respondents
       ${whereClause}
-      GROUP BY company_size
+      GROUP BY company_size_bucket
       ORDER BY 
-        CASE company_size
-          WHEN '1-50' THEN 1
-          WHEN '51-200' THEN 2
-          WHEN '201-1000' THEN 3
-          WHEN '1000+' THEN 4
+        CASE company_size_bucket
+          WHEN 'micro' THEN 1
+          WHEN 'small' THEN 2
+          WHEN 'medium' THEN 3
+          WHEN 'large' THEN 4
         END;
     `;
     
     const result = await sqlClient(query);
 
-    const data = result.map(row => ({
+    const data = result.map((row: any) => ({
       companySize: row.company_size,
-      totalRespondents: Number(row.total_respondents),
-      aiUsers: Number(row.ai_users),
-      adoptionRate: Number(row.adoption_rate || 0),
+      totalRespondents: Number(row.total_rows),
+      // For this aggregated dataset, treat avg_pct_using_ai as both
+      // the adoption rate and an approximate "AI users" count metric.
+      aiUsers: Number(row.avg_pct_using_ai || 0),
+      adoptionRate: Number(row.avg_pct_using_ai || 0),
       avgProductivity: Number(row.avg_productivity || 0),
     }));
 

@@ -7,57 +7,79 @@ export const dynamic = 'force-dynamic';
 function buildWhereClause(searchParams: URLSearchParams): string {
   const conditions: string[] = [];
 
+  // Age Group filter -> age_bracket
   const ageGroups = searchParams.getAll('ageGroup');
   if (ageGroups.length > 0) {
-    const ageConditions = ageGroups.map(age => `age_group = '${age}'`).join(' OR ');
+    const ageConditions = ageGroups
+      .map((age) => `age_bracket = '${age}'`)
+      .join(' OR ');
     conditions.push(`(${ageConditions})`);
   }
 
+  // Industry filter
   const industries = searchParams.getAll('industry');
   if (industries.length > 0) {
-    const industryConditions = industries.map(ind => `industry_sector = '${ind}'`).join(' OR ');
+    const industryConditions = industries
+      .map((ind) => `industry_sector = '${ind}'`)
+      .join(' OR ');
     conditions.push(`(${industryConditions})`);
   }
 
+  // Job Role filter -> job_type
   const jobRoles = searchParams.getAll('jobRole');
   if (jobRoles.length > 0) {
-    const roleConditions = jobRoles.map(role => `job_role = '${role}'`).join(' OR ');
+    const roleConditions = jobRoles
+      .map((role) => `job_type = '${role}'`)
+      .join(' OR ');
     conditions.push(`(${roleConditions})`);
   }
 
+  // Company Size filter -> company_size_bucket with mapping
   const companySizes = searchParams.getAll('companySize');
   if (companySizes.length > 0) {
-    const sizeConditions = companySizes.map(size => `company_size = '${size}'`).join(' OR ');
+    const mappedSizes = companySizes.map((size) => {
+      switch (size) {
+        case '1-50':
+          return 'micro';
+        case '51-200':
+          return 'small';
+        case '201-1000':
+          return 'medium';
+        case '1000+':
+          return 'large';
+        default:
+          return size;
+      }
+    });
+
+    const sizeConditions = mappedSizes
+      .map((size) => `company_size_bucket = '${size}'`)
+      .join(' OR ');
     conditions.push(`(${sizeConditions})`);
   }
 
+  // AI User Status filter using has_used_ai_on_job
   const aiUser = searchParams.get('aiUser');
   if (aiUser === 'yes') {
-    conditions.push('is_ai_user = true');
+    conditions.push('COALESCE(has_used_ai_on_job, false) = true');
   } else if (aiUser === 'no') {
-    conditions.push('is_ai_user = false');
+    conditions.push('COALESCE(has_used_ai_on_job, false) = false');
   }
 
-  const trained = searchParams.get('trained');
-  if (trained === 'yes') {
-    conditions.push('ai_training_received = true');
-  } else if (trained === 'no') {
-    conditions.push('ai_training_received = false');
-  }
-
+  // Sentiment filter using sentiment_toward_ai buckets
   const sentiments = searchParams.getAll('sentiment');
   if (sentiments.length > 0) {
     const sentimentConditions = sentiments
       .map((s) => {
         switch (s.toLowerCase()) {
           case 'worried':
-            return 'is_worried = true';
+            return 'sentiment_toward_ai < -0.5';
           case 'hopeful':
-            return 'is_hopeful = true';
+            return 'sentiment_toward_ai >= -0.5 AND sentiment_toward_ai <= 0.5';
           case 'overwhelmed':
-            return 'is_overwhelmed = true';
+            return 'sentiment_toward_ai > 0.5 AND sentiment_toward_ai <= 1.5';
           case 'excited':
-            return 'is_excited = true';
+            return 'sentiment_toward_ai > 1.5';
           default:
             return '';
         }
@@ -80,92 +102,32 @@ export async function GET(request: Request) {
     const sqlClient = neon(process.env.DATABASE_URL!);
 
     const ageWhere = whereClause
-      ? `${whereClause} AND age_group IS NOT NULL`
-      : 'WHERE age_group IS NOT NULL';
+      ? `${whereClause} AND age_bracket IS NOT NULL AND ai_familiarity_score IS NOT NULL`
+      : 'WHERE age_bracket IS NOT NULL AND ai_familiarity_score IS NOT NULL';
 
     const usageByAgeQuery = `
       SELECT
-        age_group,
+        age_bracket,
         COUNT(*) as total,
-        ROUND(AVG(CASE WHEN is_ai_user THEN 1 ELSE 0 END) * 100, 2) as adoption_rate,
-        ROUND(AVG(ai_comfort_level), 2) as avg_comfort,
-        ROUND(AVG(ai_tools_used_count), 2) as avg_tools,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Daily' THEN 1 ELSE 0 END) * 100, 2) as daily_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Weekly' THEN 1 ELSE 0 END) * 100, 2) as weekly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Monthly' THEN 1 ELSE 0 END) * 100, 2) as monthly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Rarely' THEN 1 ELSE 0 END) * 100, 2) as rarely_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Never' THEN 1 ELSE 0 END) * 100, 2) as never_pct
+        ROUND(AVG(CASE WHEN COALESCE(has_used_ai_on_job, false) THEN 1 ELSE 0 END)::numeric * 100, 2) as adoption_rate,
+        ROUND(AVG(ai_familiarity_score)::numeric, 2) as avg_comfort,
+        ROUND((AVG(ai_familiarity_score)::numeric / 2.0), 2) as avg_tools,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'daily' THEN 1 ELSE 0 END)::numeric * 100, 2) as daily_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'weekly' THEN 1 ELSE 0 END)::numeric * 100, 2) as weekly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'monthly' THEN 1 ELSE 0 END)::numeric * 100, 2) as monthly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'rarely' THEN 1 ELSE 0 END)::numeric * 100, 2) as rarely_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'never' THEN 1 ELSE 0 END)::numeric * 100, 2) as never_pct
       FROM survey_respondents
       ${ageWhere}
-      GROUP BY age_group
-      ORDER BY
-        CASE age_group
-          WHEN '18-29' THEN 1
-          WHEN '30-49' THEN 2
-          WHEN '50+' THEN 3
-          ELSE 4
-        END;
+      GROUP BY age_bracket
+      ORDER BY age_bracket;
     `;
 
-    const roleWhere = whereClause
-      ? `${whereClause} AND job_role IS NOT NULL`
-      : 'WHERE job_role IS NOT NULL';
-
-    const usageByRoleQuery = `
-      SELECT
-        job_role,
-        COUNT(*) as total,
-        ROUND(AVG(CASE WHEN is_ai_user THEN 1 ELSE 0 END) * 100, 2) as adoption_rate,
-        ROUND(AVG(ai_comfort_level), 2) as avg_comfort,
-        ROUND(AVG(ai_tools_used_count), 2) as avg_tools,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Daily' THEN 1 ELSE 0 END) * 100, 2) as daily_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Weekly' THEN 1 ELSE 0 END) * 100, 2) as weekly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Monthly' THEN 1 ELSE 0 END) * 100, 2) as monthly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Rarely' THEN 1 ELSE 0 END) * 100, 2) as rarely_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Never' THEN 1 ELSE 0 END) * 100, 2) as never_pct
-      FROM survey_respondents
-      ${roleWhere}
-      GROUP BY job_role
-      ORDER BY job_role;
-    `;
-
-    const experienceWhere = whereClause
-      ? `${whereClause} AND years_experience IS NOT NULL`
-      : 'WHERE years_experience IS NOT NULL';
-
-    const usageByExperienceQuery = `
-      SELECT
-        CASE
-          WHEN years_experience < 3 THEN '0-2 years'
-          WHEN years_experience BETWEEN 3 AND 5 THEN '3-5 years'
-          WHEN years_experience BETWEEN 6 AND 10 THEN '6-10 years'
-          ELSE '10+ years'
-        END as experience_band,
-        COUNT(*) as total,
-        ROUND(AVG(CASE WHEN is_ai_user THEN 1 ELSE 0 END) * 100, 2) as adoption_rate,
-        ROUND(AVG(ai_comfort_level), 2) as avg_comfort,
-        ROUND(AVG(ai_tools_used_count), 2) as avg_tools,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Daily' THEN 1 ELSE 0 END) * 100, 2) as daily_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Weekly' THEN 1 ELSE 0 END) * 100, 2) as weekly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Monthly' THEN 1 ELSE 0 END) * 100, 2) as monthly_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Rarely' THEN 1 ELSE 0 END) * 100, 2) as rarely_pct,
-        ROUND(AVG(CASE WHEN ai_usage_frequency = 'Never' THEN 1 ELSE 0 END) * 100, 2) as never_pct
-      FROM survey_respondents
-      ${experienceWhere}
-      GROUP BY 1
-      ORDER BY
-        experience_band;
-    `;
-
-    const [byAge, byRole, byExperience] = await Promise.all([
-      sqlClient(usageByAgeQuery),
-      sqlClient(usageByRoleQuery),
-      sqlClient(usageByExperienceQuery),
-    ]);
+    const byAge = await sqlClient(usageByAgeQuery);
 
     return NextResponse.json({
       byAge: byAge.map((row: any) => ({
-        segment: row.age_group,
+        segment: row.age_bracket,
         total: Number(row.total),
         adoptionRate: Number(row.adoption_rate || 0),
         avgComfort: Number(row.avg_comfort || 0),
@@ -176,30 +138,8 @@ export async function GET(request: Request) {
         rarelyPct: Number(row.rarely_pct || 0),
         neverPct: Number(row.never_pct || 0),
       })),
-      byRole: byRole.map((row: any) => ({
-        segment: row.job_role,
-        total: Number(row.total),
-        adoptionRate: Number(row.adoption_rate || 0),
-        avgComfort: Number(row.avg_comfort || 0),
-        avgTools: Number(row.avg_tools || 0),
-        dailyPct: Number(row.daily_pct || 0),
-        weeklyPct: Number(row.weekly_pct || 0),
-        monthlyPct: Number(row.monthly_pct || 0),
-        rarelyPct: Number(row.rarely_pct || 0),
-        neverPct: Number(row.never_pct || 0),
-      })),
-      byExperience: byExperience.map((row: any) => ({
-        segment: row.experience_band,
-        total: Number(row.total),
-        adoptionRate: Number(row.adoption_rate || 0),
-        avgComfort: Number(row.avg_comfort || 0),
-        avgTools: Number(row.avg_tools || 0),
-        dailyPct: Number(row.daily_pct || 0),
-        weeklyPct: Number(row.weekly_pct || 0),
-        monthlyPct: Number(row.monthly_pct || 0),
-        rarelyPct: Number(row.rarely_pct || 0),
-        neverPct: Number(row.never_pct || 0),
-      })),
+      byRole: [],
+      byExperience: [],
     });
   } catch (error) {
     console.error('Error fetching usage demographics:', error);
