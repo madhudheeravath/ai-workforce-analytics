@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import SheDevLogo from '../SheDev logo.png';
 import { 
   LayoutDashboard, 
   Heart, 
@@ -44,16 +46,16 @@ export default function RoleBasedSidebar() {
       roles: [ROLES.SUPER_ADMIN, ROLES.HR]
     },
     { 
-      name: 'Training Impact', 
+      name: 'Usage Across Demographics', 
+      href: '/dashboard/usage', 
+      icon: Users,
+      roles: [ROLES.SUPER_ADMIN, ROLES.HR]
+    },
+    { 
+      name: 'ROI in AI', 
       href: '/dashboard/training', 
       icon: GraduationCap,
       roles: [ROLES.SUPER_ADMIN, ROLES.HR, ROLES.LND]
-    },
-    { 
-      name: 'Org Maturity', 
-      href: '/dashboard/org', 
-      icon: Building2,
-      roles: [ROLES.SUPER_ADMIN, ROLES.HR]
     },
     { 
       name: 'Reports', 
@@ -78,15 +80,9 @@ export default function RoleBasedSidebar() {
       roles: [ROLES.MANAGER]
     },
     { 
-      name: 'Team Productivity', 
+      name: 'Team ROI in AI', 
       href: '/dashboard/team/productivity', 
       icon: Activity,
-      roles: [ROLES.MANAGER]
-    },
-    { 
-      name: 'Team Training', 
-      href: '/dashboard/team/training', 
-      icon: Target,
       roles: [ROLES.MANAGER]
     },
   ];
@@ -94,7 +90,7 @@ export default function RoleBasedSidebar() {
   // L&D-specific navigation
   const lndNavigation = [
     { 
-      name: 'Training Dashboard', 
+      name: 'Readiness Overview', 
       href: '/dashboard/lnd', 
       icon: GraduationCap,
       roles: [ROLES.LND]
@@ -106,19 +102,19 @@ export default function RoleBasedSidebar() {
       roles: [ROLES.LND]
     },
     { 
-      name: 'Training Impact', 
+      name: 'ROI in AI', 
       href: '/dashboard/lnd/training-impact', 
       icon: TrendingUp,
       roles: [ROLES.LND]
     },
     { 
-      name: 'Training Needs', 
+      name: 'Upskilling Needs', 
       href: '/dashboard/lnd/training-needs', 
       icon: Users,
       roles: [ROLES.LND]
     },
     { 
-      name: 'Recommendations', 
+      name: 'Learning Paths', 
       href: '/dashboard/lnd/recommendations', 
       icon: FileText,
       roles: [ROLES.LND]
@@ -169,11 +165,16 @@ export default function RoleBasedSidebar() {
       {/* Logo */}
       <div className="px-6 py-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
+          <div className="w-10 h-10 flex items-center justify-center">
+            <Image
+              src={SheDevLogo}
+              alt="SheDev logo"
+              className="w-10 h-10 rounded-lg"
+              priority
+            />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-gray-900">AWAP</h2>
+            <h2 className="text-lg font-bold text-gray-900">SheDev</h2>
             <p className="text-xs text-gray-500">{session.user.role.toUpperCase()}</p>
           </div>
         </div>

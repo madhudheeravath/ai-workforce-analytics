@@ -161,14 +161,68 @@ Not Trained,${notTrained?.respondents || 0},${notTrained?.adoptionRate || 0}%,${
     ? trainedData.adoptionRate - untrainedData.adoptionRate 
     : 0;
 
+  const getHeatClass = (
+    metric: 'adoption' | 'comfort' | 'productivity' | 'tools',
+    value: number
+  ): string => {
+    if (!value || Number.isNaN(value)) {
+      return 'bg-gray-100 text-gray-700';
+    }
+
+    if (metric === 'adoption' || metric === 'productivity') {
+      if (value >= 20) return 'bg-emerald-200 text-emerald-900';
+      if (value >= 10) return 'bg-yellow-200 text-yellow-900';
+      return 'bg-rose-200 text-rose-900';
+    }
+
+    if (metric === 'comfort') {
+      if (value >= 3.5) return 'bg-emerald-200 text-emerald-900';
+      if (value >= 3.0) return 'bg-yellow-200 text-yellow-900';
+      return 'bg-rose-200 text-rose-900';
+    }
+
+    // tools used
+    if (value >= 3) return 'bg-emerald-200 text-emerald-900';
+    if (value >= 2) return 'bg-yellow-200 text-yellow-900';
+    return 'bg-rose-200 text-rose-900';
+  };
+
+  const roiHeatData = [
+    {
+      label: 'Trained',
+      adoptionRate: trainedData?.adoptionRate ?? 0,
+      comfort: trainedData?.avgComfortLevel ?? 0,
+      productivity: trainedData?.avgProductivityChange ?? 0,
+      tools: trainedData?.avgToolsUsed ?? 0,
+    },
+    {
+      label: 'Not Trained',
+      adoptionRate: untrainedData?.adoptionRate ?? 0,
+      comfort: untrainedData?.avgComfortLevel ?? 0,
+      productivity: untrainedData?.avgProductivityChange ?? 0,
+      tools: untrainedData?.avgToolsUsed ?? 0,
+    },
+  ];
+
+  const productivityChartData = [
+    {
+      status: 'Trained',
+      value: trainedData?.avgProductivityChange ?? 0,
+    },
+    {
+      status: 'Not Trained',
+      value: untrainedData?.avgProductivityChange ?? 0,
+    },
+  ];
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">Training Impact Analysis</h2>
+          <h2 className="text-3xl font-bold text-gray-900">ROI in AI</h2>
           <p className="text-gray-600 mt-1">
-            Measure the effectiveness of AI training programs on adoption and productivity
+            Analyze how AI usage and enablement affect adoption, comfort, and productivity across the workforce
           </p>
         </div>
         <PageActions
@@ -202,7 +256,7 @@ Not Trained,${notTrained?.respondents || 0},${notTrained?.adoptionRate || 0}%,${
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="card bg-gradient-to-br from-primary-50 to-primary-100">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-medium text-primary-900">Training Impact</h3>
+            <h3 className="text-sm font-medium text-primary-900">AI ROI Uplift</h3>
             <TrendingUp className="w-8 h-8 text-primary-600" />
           </div>
           {loading ? (
@@ -467,13 +521,145 @@ Not Trained,${notTrained?.respondents || 0},${notTrained?.adoptionRate || 0}%,${
         </div>
       </div>
 
+      {/* ROI Analytics Heat Map */}
+      <div className="card">
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">
+            ROI Analytics Heat Map
+          </h3>
+          <p className="text-sm text-gray-600 mt-1">
+            Color-coded view of adoption, comfort, productivity, and tool usage by training status
+          </p>
+        </div>
+
+        {loading ? (
+          <div className="h-[260px] flex items-center justify-center">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-4 py-2">Training Status</th>
+                  <th className="px-4 py-2">Adoption Rate</th>
+                  <th className="px-4 py-2">Comfort Level</th>
+                  <th className="px-4 py-2">Productivity Change</th>
+                  <th className="px-4 py-2">Avg Tools Used</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {roiHeatData.map(row => (
+                  <tr key={row.label}>
+                    <td className="px-4 py-3 text-gray-900 font-medium">
+                      {row.label}
+                    </td>
+                    <td className="px-4 py-3">
+                      <div
+                        className={`rounded-md px-3 py-2 text-xs font-medium text-center ${getHeatClass(
+                          'adoption',
+                          row.adoptionRate
+                        )}`}
+                      >
+                        {row.adoptionRate.toFixed(1)}%
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div
+                        className={`rounded-md px-3 py-2 text-xs font-medium text-center ${getHeatClass(
+                          'comfort',
+                          row.comfort
+                        )}`}
+                      >
+                        {row.comfort.toFixed(1)}/5
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div
+                        className={`rounded-md px-3 py-2 text-xs font-medium text-center ${getHeatClass(
+                          'productivity',
+                          row.productivity
+                        )}`}
+                      >
+                        {row.productivity.toFixed(1)}%
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div
+                        className={`rounded-md px-3 py-2 text-xs font-medium text-center ${getHeatClass(
+                          'tools',
+                          row.tools
+                        )}`}
+                      >
+                        {row.tools.toFixed(1)}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {/* Productivity Change by Training */}
+      <div className="card">
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">
+            Productivity Change by Training
+          </h3>
+          <p className="text-sm text-gray-600 mt-1">
+            Compare average productivity change for employees with and without training
+          </p>
+        </div>
+
+        {loading ? (
+          <div className="h-[300px] flex items-center justify-center">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={productivityChartData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <XAxis 
+                dataKey="status" 
+                tick={{ fill: '#6b7280', fontSize: 12 }}
+              />
+              <YAxis 
+                tick={{ fill: '#6b7280', fontSize: 12 }}
+                label={{ 
+                  value: 'Productivity Change (%)', 
+                  angle: -90, 
+                  position: 'insideLeft', 
+                  style: { fill: '#6b7280' },
+                }}
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#fff', 
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                }}
+                formatter={(value: number) => [`${value.toFixed(1)}%`, 'Productivity Change']}
+              />
+              <Bar 
+                dataKey="value" 
+                fill="#6366f1" 
+                radius={[8, 8, 0, 0]}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
+      </div>
+
       {/* ROI Insight */}
       <div className="card bg-gradient-to-br from-green-50 to-emerald-100">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
               <Award className="inline w-5 h-5 mr-2 text-green-600" />
-              Training ROI Insights
+              ROI in AI Insights
             </h3>
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex items-center space-x-2">

@@ -326,8 +326,8 @@ Dashboard: ${window.location.origin}/dashboard/team/productivity`;
             <Activity className="w-8 h-8" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">Team AI Usage & Productivity</h2>
-            <p className="text-white/90">Track how AI tools are used and their impact on performance</p>
+            <h2 className="text-2xl font-bold">Team ROI in AI</h2>
+            <p className="text-white/90">See how your teams AI usage patterns relate to productivity and value creation</p>
           </div>
         </div>
       </div>

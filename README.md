@@ -1,4 +1,4 @@
-# 🎯 AI Workforce Analytics Platform (AWAP)
+# 🎯 SheDev – AI Workforce Analytics Platform
 
 A comprehensive analytics platform for tracking AI adoption, workforce sentiment, training effectiveness, and organizational maturity.
 

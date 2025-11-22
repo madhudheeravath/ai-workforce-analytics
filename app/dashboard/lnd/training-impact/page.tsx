@@ -376,8 +376,8 @@ Dashboard: ${window.location.origin}/dashboard/lnd/training-impact`;
             <TrendingUp className="w-8 h-8" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">Training Impact Analysis</h2>
-            <p className="text-white/90">Measure training effectiveness and ROI</p>
+            <h2 className="text-2xl font-bold">ROI in AI (L&D View)</h2>
+            <p className="text-white/90">Understand how enablement and usage translate into productivity and business value</p>
           </div>
         </div>
       </div>
@@ -528,7 +528,7 @@ Dashboard: ${window.location.origin}/dashboard/lnd/training-impact`;
       {/* ROI Summary */}
       <div className="card bg-gradient-to-br from-green-50 to-emerald-100">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          💰 Training ROI Summary
+          💰 ROI in AI Summary
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>

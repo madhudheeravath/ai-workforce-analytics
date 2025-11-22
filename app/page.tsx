@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import SheDevLogo from '../SheDev logo.png';
 import { 
   TrendingUp, 
   BarChart3, 
@@ -26,11 +28,16 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <Image
+                  src={SheDevLogo}
+                  alt="SheDev logo"
+                  className="w-10 h-10 rounded-lg"
+                  priority
+                />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">AWAP</h1>
+                <h1 className="text-xl font-bold text-gray-900">SheDev</h1>
                 <p className="text-xs text-gray-500">AI Workforce Analytics</p>
               </div>
             </div>
@@ -83,8 +90,8 @@ export default function LandingPage() {
               </h1>
               
               <p className="text-xl text-gray-600 leading-relaxed">
-                Unlock powerful insights into AI adoption, employee sentiment, training effectiveness, 
-                and organizational maturity with our comprehensive analytics platform.
+                Unlock powerful insights into AI adoption, employee sentiment, usage across demographics,
+                and ROI in AI with our comprehensive analytics platform.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -198,7 +205,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900">Real-Time Analytics</h3>
               <p className="text-gray-600">
-                Track AI adoption, productivity, and training effectiveness with live, interactive dashboards.
+                Track AI adoption, productivity, and ROI with live, interactive dashboards.
               </p>
             </div>
             
@@ -216,9 +223,9 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
                 <Award className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900">Training Impact</h3>
+              <h3 className="text-xl font-semibold text-gray-900">ROI in AI</h3>
               <p className="text-gray-600">
-                Measure the ROI of AI training programs with before/after comparisons and metrics.
+                Measure how AI usage and enablement translate into productivity gains and business value.
               </p>
             </div>
             
@@ -226,9 +233,9 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center">
                 <Target className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900">Org Maturity Tracking</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Usage Across Demographics</h3>
               <p className="text-gray-600">
-                Assess your organization's AI maturity level and track progress over time.
+                Understand AI adoption and comfort across age groups, roles, departments, and experience levels.
               </p>
             </div>
             
@@ -298,7 +305,7 @@ export default function LandingPage() {
                 Built for Modern Workforce Leaders
               </h2>
               <p className="text-lg text-gray-600">
-                AWAP is designed specifically for HR teams, managers, and L&D departments who need 
+                SheDev is designed specifically for HR teams, managers, and L&D departments who need 
                 to make data-driven decisions about AI adoption and workforce development.
               </p>
               
@@ -397,7 +404,7 @@ export default function LandingPage() {
                   <TrendingUp className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">AWAP</h3>
+                  <h3 className="font-bold text-white">SheDev</h3>
                   <p className="text-xs">Analytics Platform</p>
                 </div>
               </div>
@@ -411,8 +418,7 @@ export default function LandingPage() {
               <ul className="space-y-2 text-sm">
                 <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
                 <li><Link href="/dashboard/sentiment" className="hover:text-white transition-colors">Sentiment</Link></li>
-                <li><Link href="/dashboard/training" className="hover:text-white transition-colors">Training</Link></li>
-                <li><Link href="/dashboard/org" className="hover:text-white transition-colors">Org Maturity</Link></li>
+                <li><Link href="/dashboard/training" className="hover:text-white transition-colors">ROI in AI</Link></li>
               </ul>
             </div>
             

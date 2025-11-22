@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import SheDevLogo from '../SheDev logo.png';
 import { 
   LayoutDashboard, 
   Heart, 
@@ -9,7 +11,8 @@ import {
   Building2, 
   BarChart3,
   Settings,
-  TrendingUp
+  TrendingUp,
+  Users,
 } from 'lucide-react';
 
 interface NavItem {
@@ -21,8 +24,8 @@ interface NavItem {
 const navigation: NavItem[] = [
   { name: 'Overview', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Sentiment Analysis', href: '/dashboard/sentiment', icon: Heart },
-  { name: 'Training Impact', href: '/dashboard/training', icon: GraduationCap },
-  { name: 'Org Maturity', href: '/dashboard/org', icon: Building2 },
+  { name: 'Usage Across Demographics', href: '/dashboard/usage', icon: Users },
+  { name: 'ROI in AI', href: '/dashboard/training', icon: GraduationCap },
   { name: 'Reports', href: '/dashboard/reports', icon: BarChart3 },
 ];
 
@@ -34,11 +37,16 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="px-6 py-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
+          <div className="w-10 h-10 flex items-center justify-center">
+            <Image
+              src={SheDevLogo}
+              alt="SheDev logo"
+              className="w-10 h-10 rounded-lg"
+              priority
+            />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-gray-900">AWAP</h2>
+            <h2 className="text-lg font-bold text-gray-900">SheDev</h2>
             <p className="text-xs text-gray-500">Analytics Platform</p>
           </div>
         </div>

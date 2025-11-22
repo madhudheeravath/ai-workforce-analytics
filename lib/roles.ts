@@ -38,8 +38,8 @@ export const ROLE_PERMISSIONS = {
     viewDashboard: true,
     viewSentiment: true,
     viewTraining: true,
-    viewOrgMaturity: true,
     viewReports: true,
+    viewUsage: true,
     exportData: true,
   },
   hr: {
@@ -47,8 +47,8 @@ export const ROLE_PERMISSIONS = {
     viewDashboard: true,
     viewSentiment: true,
     viewTraining: true,
-    viewOrgMaturity: true,
     viewReports: true,
+    viewUsage: true,
     exportData: true,
     viewAllDepartments: true,
   },
@@ -95,7 +95,7 @@ export function getAccessibleRoutes(role: Role): string[] {
   if (permissions.viewDashboard) routes.push('/dashboard');
   if ('viewSentiment' in permissions && permissions.viewSentiment) routes.push('/dashboard/sentiment');
   if ('viewTraining' in permissions && permissions.viewTraining) routes.push('/dashboard/training');
-  if ('viewOrgMaturity' in permissions && permissions.viewOrgMaturity) routes.push('/dashboard/org');
+  if ('viewUsage' in permissions && (permissions as any).viewUsage) routes.push('/dashboard/usage');
   if (permissions.viewReports) routes.push('/dashboard/reports');
   
   // Manager-specific routes
@@ -103,7 +103,6 @@ export function getAccessibleRoutes(role: Role): string[] {
     routes.push('/dashboard/team');
     routes.push('/dashboard/team/sentiment');
     routes.push('/dashboard/team/productivity');
-    routes.push('/dashboard/team/training');
   }
   
   // L&D-specific routes

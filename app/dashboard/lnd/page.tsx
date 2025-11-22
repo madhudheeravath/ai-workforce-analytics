@@ -243,8 +243,8 @@ Next Steps: Send to department managers and HR for immediate action.`;
             <GraduationCap className="w-8 h-8" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">L&D Training Dashboard</h2>
-            <p className="text-white/90">Organization-wide training status and skill development insights</p>
+            <h2 className="text-2xl font-bold">L&D Readiness Overview</h2>
+            <p className="text-white/90">Organization-wide skill readiness, comfort levels, and upskilling priorities</p>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import SheDevLogo from '../../../SheDev logo.png';
 import { TrendingUp, Mail, Lock, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function SignInPage() {
@@ -43,11 +45,16 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <Link href="/" className="flex items-center justify-center space-x-3 mb-8">
-          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-            <TrendingUp className="w-7 h-7 text-white" />
+          <div className="w-12 h-12 flex items-center justify-center">
+            <Image
+              src={SheDevLogo}
+              alt="SheDev logo"
+              className="w-12 h-12 rounded-lg"
+              priority
+            />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">AWAP</h1>
+            <h1 className="text-2xl font-bold text-gray-900">SheDev</h1>
             <p className="text-xs text-gray-500">AI Workforce Analytics</p>
           </div>
         </Link>

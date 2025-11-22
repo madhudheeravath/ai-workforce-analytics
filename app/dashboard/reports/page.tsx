@@ -79,18 +79,24 @@ Worried,275,55%
 Hopeful,200,40%
 Overwhelmed,175,35%
 Excited,125,25%`;
-    } else if (reportTitle.includes('Training')) {
-      return `Metric,With Training,Without Training,Improvement
-Adoption Rate,45.2%,28.9%,+16.3%
-Comfort Level,3.8/5,2.5/5,+1.3
-Productivity,+15.2%,+5.1%,+10.1%`;
+    } else if (reportTitle.includes('ROI')) {
+      return `Metric,Value
+Average Productivity Change,+3.8%
+Average Time Saved per Week,3.5 hours
+Estimated Annual Benefit per Employee,$2,850
+Estimated ROI,320%`;
+    } else if (reportTitle.includes('Usage')) {
+      return `Segment,Adoption Rate,Comfort Level
+Younger Employees (18-34),22.5%,3.4/5
+Mid-Career (35-44),18.2%,3.2/5
+Senior (45+),12.1%,2.9/5
+Managers,24.8%,3.8/5
+L&D & HR,28.3%,4.1/5`;
     } else {
-      return `Maturity Level,Organizations,Policy Rate,Productivity
-Not Started,50,15%,+2%
-Exploring,100,30%,+5%
-Piloting,150,45%,+10%
-Scaling,125,65%,+15%
-Advanced,75,85%,+20%`;
+      return `Metric,Value
+Sample Size,500
+Dashboards,3
+Data Points,29`;
     }
   };
 
@@ -114,8 +120,8 @@ Advanced,75,85%,+20%`;
       const reportTypes: { [key: string]: string } = {
         adoption: 'AI Adoption Report',
         sentiment: 'Sentiment Analysis Report',
-        training: 'Training Effectiveness Report',
-        maturity: 'Organizational Maturity Report',
+        roi: 'ROI in AI Report',
+        usage: 'Usage Across Demographics Report',
       };
       
       const reportTitle = reportTypes[formData.reportType] || 'Custom Report';
@@ -176,16 +182,16 @@ Advanced,75,85%,+20%`;
     },
     {
       id: 3,
-      title: 'Training Effectiveness Report',
-      description: 'ROI analysis of AI training programs and skill development',
+      title: 'ROI in AI Report',
+      description: 'Correlation between AI usage, productivity change, and estimated ROI',
       icon: BarChart3,
       color: 'purple',
       date: '2024-01-15',
     },
     {
       id: 4,
-      title: 'Organizational Maturity Report',
-      description: 'Assessment of AI maturity levels and policy implementation',
+      title: 'Usage Across Demographics Report',
+      description: 'Adoption and comfort across age groups, roles, and departments',
       icon: PieChart,
       color: 'orange',
       date: '2024-01-15',
@@ -280,8 +286,8 @@ Advanced,75,85%,+20%`;
             >
               <option value="adoption">AI Adoption</option>
               <option value="sentiment">Sentiment Analysis</option>
-              <option value="training">Training Effectiveness</option>
-              <option value="maturity">Organizational Maturity</option>
+              <option value="roi">ROI in AI</option>
+              <option value="usage">Usage Across Demographics</option>
             </select>
           </div>
           
