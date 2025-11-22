@@ -71,9 +71,7 @@ export default function SignInPage() {
             <p className="text-sm font-medium text-blue-900 mb-2">Demo Credentials:</p>
             <div className="space-y-1 text-xs text-blue-700">
               <p><strong>Super Admin:</strong> admin@awap.com / admin123</p>
-              <p><strong>HR Manager:</strong> hr@awap.com / hr123</p>
               <p><strong>Manager:</strong> manager@awap.com / manager123</p>
-              <p><strong>L&D:</strong> lnd@awap.com / lnd123</p>
             </div>
           </div>
 
