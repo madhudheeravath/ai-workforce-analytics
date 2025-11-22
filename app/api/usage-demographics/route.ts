@@ -125,6 +125,65 @@ export async function GET(request: Request) {
 
     const byAge = await sqlClient(usageByAgeQuery);
 
+    const roleWhere = whereClause
+      ? `${whereClause} AND job_type IS NOT NULL AND ai_familiarity_score IS NOT NULL`
+      : 'WHERE job_type IS NOT NULL AND ai_familiarity_score IS NOT NULL';
+
+    const usageByRoleQuery = `
+      SELECT
+        job_type,
+        COUNT(*) as total,
+        ROUND(AVG(CASE WHEN COALESCE(has_used_ai_on_job, false) THEN 1 ELSE 0 END)::numeric * 100, 2) as adoption_rate,
+        ROUND(AVG(ai_familiarity_score)::numeric, 2) as avg_comfort,
+        ROUND((AVG(ai_familiarity_score)::numeric / 2.0), 2) as avg_tools,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'daily' THEN 1 ELSE 0 END)::numeric * 100, 2) as daily_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'weekly' THEN 1 ELSE 0 END)::numeric * 100, 2) as weekly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'monthly' THEN 1 ELSE 0 END)::numeric * 100, 2) as monthly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'rarely' THEN 1 ELSE 0 END)::numeric * 100, 2) as rarely_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'never' THEN 1 ELSE 0 END)::numeric * 100, 2) as never_pct
+      FROM survey_respondents
+      ${roleWhere}
+      GROUP BY job_type
+      ORDER BY job_type;
+    `;
+
+    const byRole = await sqlClient(usageByRoleQuery);
+
+    const experienceWhere = whereClause
+      ? `${whereClause} AND ai_familiarity_score IS NOT NULL`
+      : 'WHERE ai_familiarity_score IS NOT NULL';
+
+    const usageByExperienceQuery = `
+      SELECT
+        CASE
+          WHEN ai_familiarity_score < 3 THEN 'Beginner'
+          WHEN ai_familiarity_score < 6 THEN 'Intermediate'
+          WHEN ai_familiarity_score < 8 THEN 'Advanced'
+          ELSE 'Expert'
+        END AS experience_band,
+        COUNT(*) as total,
+        ROUND(AVG(CASE WHEN COALESCE(has_used_ai_on_job, false) THEN 1 ELSE 0 END)::numeric * 100, 2) as adoption_rate,
+        ROUND(AVG(ai_familiarity_score)::numeric, 2) as avg_comfort,
+        ROUND((AVG(ai_familiarity_score)::numeric / 2.0), 2) as avg_tools,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'daily' THEN 1 ELSE 0 END)::numeric * 100, 2) as daily_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'weekly' THEN 1 ELSE 0 END)::numeric * 100, 2) as weekly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'monthly' THEN 1 ELSE 0 END)::numeric * 100, 2) as monthly_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'rarely' THEN 1 ELSE 0 END)::numeric * 100, 2) as rarely_pct,
+        ROUND(AVG(CASE WHEN ai_use_frequency = 'never' THEN 1 ELSE 0 END)::numeric * 100, 2) as never_pct
+      FROM survey_respondents
+      ${experienceWhere}
+      GROUP BY experience_band
+      ORDER BY 
+        CASE experience_band
+          WHEN 'Beginner' THEN 1
+          WHEN 'Intermediate' THEN 2
+          WHEN 'Advanced' THEN 3
+          WHEN 'Expert' THEN 4
+        END;
+    `;
+
+    const byExperience = await sqlClient(usageByExperienceQuery);
+
     return NextResponse.json({
       byAge: byAge.map((row: any) => ({
         segment: row.age_bracket,
@@ -138,8 +197,30 @@ export async function GET(request: Request) {
         rarelyPct: Number(row.rarely_pct || 0),
         neverPct: Number(row.never_pct || 0),
       })),
-      byRole: [],
-      byExperience: [],
+      byRole: byRole.map((row: any) => ({
+        segment: row.job_type,
+        total: Number(row.total),
+        adoptionRate: Number(row.adoption_rate || 0),
+        avgComfort: Number(row.avg_comfort || 0),
+        avgTools: Number(row.avg_tools || 0),
+        dailyPct: Number(row.daily_pct || 0),
+        weeklyPct: Number(row.weekly_pct || 0),
+        monthlyPct: Number(row.monthly_pct || 0),
+        rarelyPct: Number(row.rarely_pct || 0),
+        neverPct: Number(row.never_pct || 0),
+      })),
+      byExperience: byExperience.map((row: any) => ({
+        segment: row.experience_band,
+        total: Number(row.total),
+        adoptionRate: Number(row.adoption_rate || 0),
+        avgComfort: Number(row.avg_comfort || 0),
+        avgTools: Number(row.avg_tools || 0),
+        dailyPct: Number(row.daily_pct || 0),
+        weeklyPct: Number(row.weekly_pct || 0),
+        monthlyPct: Number(row.monthly_pct || 0),
+        rarelyPct: Number(row.rarely_pct || 0),
+        neverPct: Number(row.never_pct || 0),
+      })),
     });
   } catch (error) {
     console.error('Error fetching usage demographics:', error);
