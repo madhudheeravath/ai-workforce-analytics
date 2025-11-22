@@ -13,6 +13,7 @@ import {
   Settings,
   TrendingUp,
   Users,
+  User,
 } from 'lucide-react';
 
 interface NavItem {
@@ -77,14 +78,14 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Settings */}
+      {/* My Profile */}
       <div className="px-4 py-4 border-t border-gray-200">
         <Link
-          href="/dashboard/settings"
+          href="/dashboard/profile"
           className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200"
         >
-          <Settings className="w-5 h-5 text-gray-500" />
-          <span>Settings</span>
+          <User className="w-5 h-5 text-gray-500" />
+          <span>My Profile</span>
         </Link>
       </div>
 

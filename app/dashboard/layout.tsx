@@ -24,12 +24,7 @@ export default function DashboardLayout({
         </main>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-gray-200 px-6 py-3">
-          <div className="flex items-center justify-between text-sm text-gray-600">
-            <p>© 2024 AI Workforce Analytics Platform. Group 14.</p>
-            <p>Built with Next.js, Neon PostgreSQL, and Recharts</p>
-          </div>
-        </footer>
+        <footer className="bg-white border-t border-gray-200 px-6 py-3" />
       </div>
     </div>
   );

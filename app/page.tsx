@@ -444,7 +444,7 @@ export default function LandingPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
-            <p>© 2024 AI Workforce Analytics Platform. Built with Next.js, React, and Neon PostgreSQL.</p>
+            <p>© 2024 AI Workforce Analytics Platform.</p>
             <p className="mt-2 text-gray-500">Group 14 - Information Systems Project</p>
           </div>
         </div>

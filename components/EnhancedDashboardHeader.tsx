@@ -2,10 +2,12 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { LogOut, User, Search, Bell, Settings } from 'lucide-react';
 
 export default function EnhancedDashboardHeader() {
   const { data: session } = useSession();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -147,13 +149,12 @@ export default function EnhancedDashboardHeader() {
                 {/* Dropdown Menu */}
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-2">
-                    <button className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    <button
+                      onClick={() => router.push('/dashboard/profile')}
+                      className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
                       <User className="w-4 h-4" />
                       <span>My Profile</span>
-                    </button>
-                    <button className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-                      <Settings className="w-4 h-4" />
-                      <span>Settings</span>
                     </button>
                     <div className="border-t border-gray-200 my-1"></div>
                     <button
