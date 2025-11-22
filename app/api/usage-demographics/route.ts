@@ -172,7 +172,7 @@ export async function GET(request: Request) {
         ROUND(AVG(CASE WHEN ai_use_frequency = 'never' THEN 1 ELSE 0 END)::numeric * 100, 2) as never_pct
       FROM survey_respondents
       ${experienceWhere}
-      GROUP BY experience_band
+      GROUP BY 1
       ORDER BY 
         CASE experience_band
           WHEN 'Beginner' THEN 1
