@@ -66,12 +66,16 @@ function buildWhereClause(searchParams: URLSearchParams): string {
     conditions.push('COALESCE(has_used_ai_on_job, false) = false');
   }
 
-  // Training Status filter using training_hours_per_employee
+  // Training Status filter using skill/usage proxies
   const trained = searchParams.get('trained');
   if (trained === 'yes') {
-    conditions.push('COALESCE(training_hours_per_employee, 0) > 0');
+    conditions.push(
+      "(ai_familiarity_score >= 6 OR ai_use_frequency IN ('weekly', 'daily'))"
+    );
   } else if (trained === 'no') {
-    conditions.push('COALESCE(training_hours_per_employee, 0) = 0');
+    conditions.push(
+      "NOT (ai_familiarity_score >= 6 OR ai_use_frequency IN ('weekly', 'daily'))"
+    );
   }
 
   // Sentiment filter using sentiment_toward_ai
@@ -109,10 +113,13 @@ export async function GET(request: Request) {
     const whereClause = buildWhereClause(searchParams);
     const sqlClient = neon(process.env.DATABASE_URL!);
 
-    // Training impact comparison using training_hours_per_employee & has_used_ai_on_job
+    // Training impact comparison using skill/usage proxies & has_used_ai_on_job
     const trainingImpactQuery = `
       SELECT 
-        (COALESCE(training_hours_per_employee, 0) > 0) AS trained,
+        CASE
+          WHEN ai_familiarity_score >= 6 OR ai_use_frequency IN ('weekly', 'daily')
+          THEN true ELSE false
+        END AS trained,
         COUNT(*) as respondents,
         ROUND(AVG(CASE WHEN COALESCE(has_used_ai_on_job, false) THEN 1 ELSE 0 END)::numeric * 100, 2) as adoption_rate,
         ROUND(AVG(ai_familiarity_score)::numeric, 2) as avg_comfort_level,
