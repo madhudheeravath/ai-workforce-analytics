@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { sql } from '@/lib/db';
+import fs from 'fs';
+import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,10 +33,39 @@ export async function GET() {
 
     const rows = result as TableStatsRow[];
 
-    const tables = rows.map((row) => ({
+    const dbTables = rows.map((row) => ({
       name: row.table_name,
       rowEstimate: Number((row as any).row_estimate ?? 0),
     }));
+
+    const dataFiles = [
+      'industry_report_metrics.csv',
+      'public_opinion_responses.csv',
+      'survey_empirical_responses.csv',
+    ];
+
+    const dataDir = path.join(process.cwd(), 'Data');
+
+    const fileTables = dataFiles.map((filename) => {
+      try {
+        const fullPath = path.join(dataDir, filename);
+        const content = fs.readFileSync(fullPath, 'utf8');
+        const lines = content.trim().split('\n');
+        const rowEstimate = Math.max(lines.length - 1, 0);
+        return {
+          name: filename.replace('.csv', ''),
+          rowEstimate,
+        };
+      } catch (error) {
+        console.error('Error reading data file for admin tables:', filename, error);
+        return {
+          name: filename.replace('.csv', ''),
+          rowEstimate: 0,
+        };
+      }
+    });
+
+    const tables = [...fileTables, ...dbTables];
 
     return NextResponse.json({ tables });
   } catch (error) {
