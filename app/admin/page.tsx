@@ -34,8 +34,11 @@ export default function AdminDashboard() {
         const recordsData = await recordsResponse.json();
         
         setStats({
-          totalUsers: usersData.count || 4,
-          totalRecords: recordsData.totalRespondents || 500,
+          totalUsers: typeof usersData.count === 'number' ? usersData.count : 0,
+          totalRecords:
+            typeof recordsData.totalRespondents === 'number'
+              ? recordsData.totalRespondents
+              : 0,
           apiCalls: 1250,
           systemHealth: 'healthy',
         });
@@ -211,7 +214,7 @@ export default function AdminDashboard() {
               <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
               <div>
                 <p className="font-medium text-gray-900">Data loaded successfully</p>
-                <p className="text-gray-500">500 survey records imported</p>
+                <p className="text-gray-500">{stats.totalRecords} survey records imported</p>
               </div>
             </div>
           </div>

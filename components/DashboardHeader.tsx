@@ -3,7 +3,15 @@
 import { useSession, signOut } from 'next-auth/react';
 import { LogOut, User } from 'lucide-react';
 
-export default function DashboardHeader() {
+interface DashboardHeaderProps {
+  onToggleSidebar?: () => void;
+  sidebarHidden?: boolean;
+}
+
+export default function DashboardHeader({
+  onToggleSidebar,
+  sidebarHidden,
+}: DashboardHeaderProps) {
   const { data: session } = useSession();
 
   return (

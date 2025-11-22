@@ -23,7 +23,11 @@ import {
 } from 'lucide-react';
 import { ROLES, hasPermission } from '@/lib/roles';
 
-export default function RoleBasedSidebar() {
+interface RoleBasedSidebarProps {
+  onHideSidebar?: () => void;
+}
+
+export default function RoleBasedSidebar({ onHideSidebar }: RoleBasedSidebarProps) {
   const pathname = usePathname();
   const { data: session } = useSession();
   
@@ -43,13 +47,13 @@ export default function RoleBasedSidebar() {
       name: 'Sentiment Analysis', 
       href: '/dashboard/sentiment', 
       icon: Heart,
-      roles: [ROLES.SUPER_ADMIN, ROLES.HR]
+      roles: [ROLES.SUPER_ADMIN, ROLES.HR, ROLES.LND]
     },
     { 
       name: 'Usage Across Demographics', 
       href: '/dashboard/usage', 
       icon: Users,
-      roles: [ROLES.SUPER_ADMIN, ROLES.HR]
+      roles: [ROLES.SUPER_ADMIN, ROLES.HR, ROLES.MANAGER, ROLES.LND]
     },
     { 
       name: 'ROI in AI', 
@@ -88,38 +92,7 @@ export default function RoleBasedSidebar() {
   ];
   
   // L&D-specific navigation
-  const lndNavigation = [
-    { 
-      name: 'Readiness Overview', 
-      href: '/dashboard/lnd', 
-      icon: GraduationCap,
-      roles: [ROLES.LND]
-    },
-    { 
-      name: 'Skill Readiness', 
-      href: '/dashboard/lnd/skill-readiness', 
-      icon: Target,
-      roles: [ROLES.LND]
-    },
-    { 
-      name: 'ROI in AI', 
-      href: '/dashboard/lnd/training-impact', 
-      icon: TrendingUp,
-      roles: [ROLES.LND]
-    },
-    { 
-      name: 'Upskilling Needs', 
-      href: '/dashboard/lnd/training-needs', 
-      icon: Users,
-      roles: [ROLES.LND]
-    },
-    { 
-      name: 'Learning Paths', 
-      href: '/dashboard/lnd/recommendations', 
-      icon: FileText,
-      roles: [ROLES.LND]
-    },
-  ];
+  const lndNavigation: { name: string; href: string; icon: any; roles: string[] }[] = [];
   
   const adminNavigation = [
     { 
@@ -160,6 +133,11 @@ export default function RoleBasedSidebar() {
   const visibleLndNav = lndNavigation.filter(item => item.roles.includes(userRole as any));
   const visibleAdminNav = adminNavigation.filter(item => item.roles.includes(userRole as any));
 
+  const isLndRole = userRole === ROLES.LND;
+  const effectiveUserNav = isLndRole
+    ? [...visibleUserNav, ...visibleLndNav]
+    : visibleUserNav;
+
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
       {/* Logo */}
@@ -181,12 +159,12 @@ export default function RoleBasedSidebar() {
       </div>
 
       {/* User Navigation */}
-      {visibleUserNav.length > 0 && (
+      {effectiveUserNav.length > 0 && (
         <nav className="px-4 py-6 space-y-1 overflow-y-auto scrollbar-thin">
           <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 px-4">
             Analytics
           </div>
-          {visibleUserNav.map((item) => {
+          {effectiveUserNav.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
             
@@ -240,8 +218,8 @@ export default function RoleBasedSidebar() {
         </nav>
       )}
       
-      {/* L&D Navigation */}
-      {visibleLndNav.length > 0 && (
+      {/* L&D Navigation (only for non-L&D roles if ever used) */}
+      {!isLndRole && visibleLndNav.length > 0 && (
         <nav className="px-4 py-6 border-t border-gray-200 space-y-1">
           <div className="text-xs font-semibold text-purple-600 uppercase tracking-wider mb-3 px-4">
             Learning & Development
@@ -302,6 +280,14 @@ export default function RoleBasedSidebar() {
 
       {/* Version Info */}
       <div className="px-6 py-3 border-t border-gray-200 bg-gray-50">
+        {onHideSidebar && (
+          <button
+            onClick={onHideSidebar}
+            className="mb-2 w-full text-xs font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 py-1"
+          >
+            Hide Sidebar
+          </button>
+        )}
         <p className="text-xs text-gray-500">Version 1.0.0</p>
         <p className="text-xs text-gray-400">Role: {userRole}</p>
       </div>

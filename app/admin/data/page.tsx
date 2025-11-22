@@ -1,7 +1,12 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Database, Upload, RefreshCw, CheckCircle, AlertCircle, FileText, X, Loader2 } from 'lucide-react';
+
+interface DatabaseTable {
+  name: string;
+  rowEstimate: number;
+}
 
 export default function DataManagement() {
   const [uploading, setUploading] = useState(false);
@@ -12,7 +17,50 @@ export default function DataManagement() {
   const [statusMessage, setStatusMessage] = useState('');
   const [validationLogs, setValidationLogs] = useState<any[]>([]);
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [recordCount, setRecordCount] = useState<number | null>(null);
+  const [tables, setTables] = useState<DatabaseTable[]>([]);
+  const [tablesLoading, setTablesLoading] = useState(false);
+  const [tablesError, setTablesError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    async function fetchRecordCount() {
+      try {
+        const response = await fetch('/api/kpis');
+        if (!response.ok) return;
+        const data = await response.json();
+        if (typeof data.totalRespondents === 'number') {
+          setRecordCount(data.totalRespondents);
+        }
+      } catch (error) {
+        console.error('Error fetching record count:', error);
+      }
+    }
+
+    fetchRecordCount();
+  }, []);
+
+  useEffect(() => {
+    async function fetchTables() {
+      try {
+        setTablesLoading(true);
+        const response = await fetch('/api/admin/data');
+        if (!response.ok) {
+          throw new Error('Failed to fetch database tables');
+        }
+        const data = await response.json();
+        setTables(Array.isArray(data.tables) ? data.tables : []);
+        setTablesError(null);
+      } catch (error: any) {
+        console.error('Error fetching tables:', error);
+        setTablesError(error.message || 'Failed to load database tables');
+      } finally {
+        setTablesLoading(false);
+      }
+    }
+
+    fetchTables();
+  }, []);
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -210,7 +258,9 @@ export default function DataManagement() {
             </div>
             <div>
               <p className="text-sm text-gray-600">Total Records</p>
-              <p className="text-2xl font-bold text-gray-900">500</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {recordCount !== null ? recordCount : '—'}
+              </p>
             </div>
           </div>
           
@@ -236,6 +286,38 @@ export default function DataManagement() {
         </div>
       </div>
 
+      <div className="card bg-white p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Database Tables</h3>
+        {tablesLoading ? (
+          <div className="h-24 flex items-center justify-center">
+            <div className="spinner" />
+          </div>
+        ) : tablesError ? (
+          <p className="text-sm text-red-600">{tablesError}</p>
+        ) : tables.length === 0 ? (
+          <p className="text-sm text-gray-600">No database tables found.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="text-left text-gray-500 border-b">
+                  <th className="py-2 pr-4">Table Name</th>
+                  <th className="py-2 pr-4">Approx. Rows</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tables.map((table) => (
+                  <tr key={table.name} className="border-b last:border-b-0">
+                    <td className="py-2 pr-4 font-medium text-gray-900">{table.name}</td>
+                    <td className="py-2 pr-4 text-gray-700">{table.rowEstimate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
       {/* Data Validation */}
       <div className="card bg-white p-6">
         <h3 className="text-xl font-bold text-gray-900 mb-4">Data Validation Logs</h3>
@@ -246,7 +328,11 @@ export default function DataManagement() {
               <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <p className="font-medium text-gray-900">Data validation passed</p>
-                <p className="text-sm text-gray-600">500 records validated successfully</p>
+                <p className="text-sm text-gray-600">
+                  {recordCount !== null
+                    ? `${recordCount} records validated successfully`
+                    : 'Current dataset validated successfully'}
+                </p>
               </div>
             </div>
             

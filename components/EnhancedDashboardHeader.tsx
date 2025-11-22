@@ -3,12 +3,19 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { LogOut, User, Search, Bell, Settings } from 'lucide-react';
+import { LogOut, User, Bell, Settings } from 'lucide-react';
 
-export default function EnhancedDashboardHeader() {
+interface EnhancedDashboardHeaderProps {
+  onToggleSidebar?: () => void;
+  sidebarHidden?: boolean;
+}
+
+export default function EnhancedDashboardHeader({
+  onToggleSidebar,
+  sidebarHidden,
+}: EnhancedDashboardHeaderProps) {
   const { data: session } = useSession();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
 
   // Mock notifications - in real app, fetch from API
@@ -38,13 +45,6 @@ export default function EnhancedDashboardHeader() {
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Searching for:', searchQuery);
-    // TODO: Implement search functionality
-    alert(`Searching for: ${searchQuery}\n\nThis will search across:\n- Reports\n- Insights\n- Metrics\n- Employees`);
-  };
-
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -58,18 +58,6 @@ export default function EnhancedDashboardHeader() {
         </div>
 
         <div className="flex items-center space-x-4">
-          {/* Search Bar */}
-          <form onSubmit={handleSearch} className="relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search insights, reports..."
-              className="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
-            />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-          </form>
-
           {/* Notifications */}
           <div className="relative">
             <button

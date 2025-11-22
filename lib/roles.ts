@@ -58,6 +58,7 @@ export const ROLE_PERMISSIONS = {
     viewSentiment: true,
     viewTraining: true,
     viewReports: true,
+    viewUsage: true,
     viewTeamMetrics: true,
     viewDepartmentOnly: true,
     exportData: true,
@@ -67,8 +68,10 @@ export const ROLE_PERMISSIONS = {
   lnd: {
     // L&D permissions
     viewDashboard: true,
+    viewSentiment: true,
     viewTraining: true,
     viewReports: true,
+    viewUsage: true,
     manageTraining: true,
     viewTrainingAnalytics: true,
     exportData: true,

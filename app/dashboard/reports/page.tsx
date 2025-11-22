@@ -68,7 +68,6 @@ export default function ReportsPage() {
     // Generate sample CSV data based on report type
     if (reportTitle.includes('Adoption')) {
       return `Metric,Value,Percentage
-Total Respondents,500,100%
 AI Users,81,16.2%
 Trained Users,153,30.6%
 Average Productivity Change,3.84%,N/A
@@ -94,7 +93,7 @@ Managers,24.8%,3.8/5
 L&D & HR,28.3%,4.1/5`;
     } else {
       return `Metric,Value
-Sample Size,500
+Sample Size,N/A
 Dashboards,3
 Data Points,29`;
     }

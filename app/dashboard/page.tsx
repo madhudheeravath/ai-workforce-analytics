@@ -160,7 +160,6 @@ export default function DashboardPage() {
 
   const handleExport = () => {
     const csvContent = `Metric,Value
-Total Respondents,${kpis?.totalRespondents || 0}
 AI Adoption Rate,${kpis?.adoptionRate || 0}%
 Average Productivity Change,${kpis?.avgProductivity || 0}%
 Training Rate,${kpis?.trainingRate || 0}%
@@ -243,13 +242,6 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           format="percent"
           icon={TrendingUp}
           change={2.5}
-          loading={loading}
-        />
-        <KPICard
-          title="Total Respondents"
-          value={kpis?.totalRespondents || 0}
-          format="number"
-          icon={Users}
           loading={loading}
         />
         <KPICard

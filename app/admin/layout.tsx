@@ -1,5 +1,8 @@
-import RoleBasedSidebar from '@/components/RoleBasedSidebar';
-import DashboardHeader from '@/components/DashboardHeader';
+ 'use client';
+
+ import { useState } from 'react';
+ import RoleBasedSidebar from '@/components/RoleBasedSidebar';
+ import DashboardHeader from '@/components/DashboardHeader';
 
 export default function AdminLayout({
   children,
@@ -7,10 +10,23 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   // Client-side protection will be handled by middleware
+  const [sidebarHidden, setSidebarHidden] = useState(false);
+
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
       {/* Sidebar */}
-      <RoleBasedSidebar />
+      {sidebarHidden ? (
+        <div className="w-4 bg-white border-r border-gray-200 flex flex-col items-center pt-4">
+          <button
+            onClick={() => setSidebarHidden(false)}
+            className="rotate-90 text-[10px] text-gray-500 hover:text-gray-700"
+          >
+            Show
+          </button>
+        </div>
+      ) : (
+        <RoleBasedSidebar onHideSidebar={() => setSidebarHidden(true)} />
+      )}
       
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
