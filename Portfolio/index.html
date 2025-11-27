@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SheDev - AI Workforce Analytics Platform | A women-led innovation transforming HR analytics with real-time AI adoption insights">
+    <meta name="keywords" content="AI Analytics, Workforce Analytics, HR Technology, Women in Tech, Next.js, TypeScript">
+    <meta name="author" content="SheDev Team">
+    
+    <title>SheDev | AI Workforce Analytics Platform</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo_shedev.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Gradient Orbs -->
+    <div class="bg-gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <span class="logo-text">SheDev</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="https://awap-next-app.onrender.com" class="nav-cta" target="_blank">Live Demo</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>Women-Led Innovation</span>
+                </div>
+                <h1>AI Workforce <span>Analytics Platform</span></h1>
+                <p class="hero-description">
+                    Transforming how organizations understand and optimize AI adoption through real-time analytics, sentiment tracking, and actionable workforce insights.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Team Members</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="6">0</div>
+                        <div class="stat-label">Dashboard Views</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Industry KPIs</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">% Women Team</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://awap-next-app.onrender.com" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-play"></i>
+                        Explore Live Demo
+                    </a>
+                    <a href="#solution" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image fade-in-right">
+                <div class="hero-image-glow"></div>
+                <img src="images/hero_shedev.png" alt="SheDev AI Analytics Dashboard" class="img-responsive img-frame">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    The Challenge
+                </span>
+                <h2 class="section-title">The <span>Problem</span> We're Solving</h2>
+                <p class="section-subtitle">Organizations struggle to measure and optimize AI adoption across their workforce</p>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Invisible Adoption Patterns</h3>
+                    <p>HR leaders can't see which teams embrace AI tools vs. those falling behind, creating dangerous blind spots in workforce transformation.</p>
+                    <div class="problem-stat">73%</div>
+                    <p class="text-muted">lack visibility into AI adoption</p>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>No Sentiment Visibility</h3>
+                    <p>Employee concerns about AI displacement go unheard. Without pulse data, resistance festers until it derails transformation initiatives.</p>
+                    <div class="problem-stat">67%</div>
+                    <p class="text-muted">of employees have AI anxiety</p>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>ROI Remains Unclear</h3>
+                    <p>Millions spent on AI licenses, but executives can't prove productivity gains or justify continued investment in transformative technology.</p>
+                    <div class="problem-stat">$4.2M</div>
+                    <p class="text-muted">average AI investment at risk</p>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Generic Training Programs</h3>
+                    <p>One-size-fits-all AI training wastes resources. Organizations need to target upskilling based on role-specific readiness data.</p>
+                    <div class="problem-stat">82%</div>
+                    <p class="text-muted">of training budgets wasted</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-lightbulb"></i>
+                    Our Approach
+                </span>
+                <h2 class="section-title">The <span>Solution</span></h2>
+                <p class="section-subtitle">A comprehensive analytics platform designed for the AI-first enterprise</p>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Real-Time KPI Dashboards</h3>
+                    <p>Interactive visualizations showing AI adoption rates, tool usage patterns, and productivity metrics across all departments in real-time.</p>
+                </div>
+                
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Sentiment Pulse Tracking</h3>
+                    <p>Continuous monitoring of employee attitudes toward AI with early warning indicators for resistance and engagement opportunities.</p>
+                </div>
+                
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industry Benchmarking</h3>
+                    <p>Compare your organization's AI maturity against industry peers with detailed breakdown by company size and sector.</p>
+                </div>
+                
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Training Recommendations</h3>
+                    <p>AI-powered suggestions for targeted upskilling programs based on skill gaps and role-specific readiness scores.</p>
+                </div>
+                
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>ROI Analytics</h3>
+                    <p>Clear metrics connecting AI adoption to productivity gains, cost savings, and business outcomes for executive reporting.</p>
+                </div>
+                
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Role-Based Access</h3>
+                    <p>Secure, role-specific dashboards for HR, L&D, executives, and team managers with appropriate data visibility controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-cogs"></i>
+                    Technical Foundation
+                </span>
+                <h2 class="section-title">System <span>Architecture</span></h2>
+                <p class="section-subtitle">Built with modern, scalable, cloud-native technologies</p>
+            </div>
+            
+            <div class="architecture-content">
+                <div class="architecture-image fade-in-left">
+                    <img src="images/arch_diagram.jpeg" alt="SheDev System Architecture" class="img-responsive img-frame">
+                </div>
+                
+                <div class="architecture-details fade-in-right">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Next.js 14</h4>
+                                <p>React Framework with App Router</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>TypeScript</h4>
+                                <p>Type-safe development</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Neon PostgreSQL</h4>
+                                <p>Serverless cloud database</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Python ETL</h4>
+                                <p>Data cleaning & validation</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-chart-area"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Recharts</h4>
+                                <p>Interactive visualizations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>NextAuth.js</h4>
+                                <p>Secure authentication</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Tailwind CSS</h4>
+                                <p>Utility-first styling</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Render</h4>
+                                <p>Cloud deployment platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Pipeline Section -->
+    <section class="data-section" id="data">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-stream"></i>
+                    Data Engineering
+                </span>
+                <h2 class="section-title">ETL <span>Pipeline</span></h2>
+                <p class="section-subtitle">Robust data processing ensuring quality and integrity</p>
+            </div>
+            
+            <div class="data-content">
+                <div class="data-details fade-in-left">
+                    <h3>Data Quality Metrics</h3>
+                    <div class="data-stats">
+                        <div class="data-stat-card">
+                            <div class="data-stat-number">1,500+</div>
+                            <div class="data-stat-label">Survey Responses</div>
+                        </div>
+                        <div class="data-stat-card">
+                            <div class="data-stat-number">99.2%</div>
+                            <div class="data-stat-label">Data Completeness</div>
+                        </div>
+                        <div class="data-stat-card">
+                            <div class="data-stat-number">11</div>
+                            <div class="data-stat-label">Industry Sectors</div>
+                        </div>
+                        <div class="data-stat-card">
+                            <div class="data-stat-number">5</div>
+                            <div class="data-stat-label">Company Sizes</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="data-quality-list">
+                        <li><i class="fas fa-check-circle"></i> Automated null value detection & handling</li>
+                        <li><i class="fas fa-check-circle"></i> Duplicate record elimination</li>
+                        <li><i class="fas fa-check-circle"></i> Data type validation & normalization</li>
+                        <li><i class="fas fa-check-circle"></i> Range constraint enforcement</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-field consistency checks</li>
+                    </ul>
+                </div>
+                
+                <div class="data-image fade-in-right">
+                    <img src="images/data_flow.png" alt="ETL Data Flow Diagram" class="img-responsive img-frame">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schema Section -->
+    <section class="schema-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-project-diagram"></i>
+                    Database Design
+                </span>
+                <h2 class="section-title">Data <span>Schema</span></h2>
+                <p class="section-subtitle">Normalized, scalable database structure</p>
+            </div>
+            
+            <div class="schema-content">
+                <div class="schema-details fade-in-left">
+                    <div class="schema-tables">
+                        <div class="schema-table-card">
+                            <div class="table-icon"><i class="fas fa-poll"></i></div>
+                            <div class="table-info">
+                                <h4>survey_responses</h4>
+                                <p>Core survey data with AI adoption metrics</p>
+                            </div>
+                        </div>
+                        <div class="schema-table-card">
+                            <div class="table-icon"><i class="fas fa-smile"></i></div>
+                            <div class="table-info">
+                                <h4>public_opinion</h4>
+                                <p>Public sentiment and attitude tracking</p>
+                            </div>
+                        </div>
+                        <div class="schema-table-card">
+                            <div class="table-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="table-info">
+                                <h4>industry_reports</h4>
+                                <p>Industry benchmarks and KPIs</p>
+                            </div>
+                        </div>
+                        <div class="schema-table-card">
+                            <div class="table-icon"><i class="fas fa-users"></i></div>
+                            <div class="table-info">
+                                <h4>users</h4>
+                                <p>Authentication with role-based access</p>
+                            </div>
+                        </div>
+                        <div class="schema-table-card">
+                            <div class="table-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <div class="table-info">
+                                <h4>admin_logs</h4>
+                                <p>Audit trail for compliance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="dashboard">
+        <div class="container-lg">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-desktop"></i>
+                    Interactive Analytics
+                </span>
+                <h2 class="section-title">Dashboard <span>Insights</span></h2>
+                <p class="section-subtitle">Powerful visualizations driving data-informed decisions</p>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="kpis">KPI Overview</button>
+                <button class="tab-btn" data-tab="adoption">Adoption</button>
+                <button class="tab-btn" data-tab="sentiment">Sentiment</button>
+                <button class="tab-btn" data-tab="productivity">Productivity</button>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-card fade-in" data-category="kpis">
+                    <div class="dashboard-card-image">
+                        <img src="images/kpi_cards.png" alt="KPI Dashboard Cards">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>Real-Time KPI Cards</h3>
+                        <p>At-a-glance metrics showing AI adoption rate, employee sentiment score, and productivity trends.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Live Data</span>
+                            <span class="insight-tag">Auto-refresh</span>
+                            <span class="insight-tag">Trend Indicators</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card fade-in" data-category="adoption kpis">
+                    <div class="dashboard-card-image">
+                        <img src="images/adoption_by_size.png" alt="AI Adoption by Company Size">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>Adoption by Company Size</h3>
+                        <p>Comparative analysis showing how AI adoption varies across enterprises, mid-size, and startups.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Benchmarking</span>
+                            <span class="insight-tag">Size Analysis</span>
+                            <span class="insight-tag">Bar Charts</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card fade-in" data-category="adoption">
+                    <div class="dashboard-card-image">
+                        <img src="images/AI_Adoption_by_Job_Role.png" alt="AI Adoption by Job Role">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>Role-Based Adoption</h3>
+                        <p>Breakdown of AI tool usage patterns across different job functions and departments.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Role Analysis</span>
+                            <span class="insight-tag">Department View</span>
+                            <span class="insight-tag">Comparison</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card fade-in" data-category="sentiment">
+                    <div class="dashboard-card-image">
+                        <img src="images/Sentiment_Distribution_Pie_Chart.png" alt="Sentiment Distribution">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>Sentiment Distribution</h3>
+                        <p>Visual breakdown of employee attitudes: enthusiastic, neutral, concerned, and resistant.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Pie Chart</span>
+                            <span class="insight-tag">Attitude Analysis</span>
+                            <span class="insight-tag">Trend Watch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card fade-in" data-category="productivity">
+                    <div class="dashboard-card-image">
+                        <img src="images/Productivity_Impact_by_Industry.png" alt="Productivity Impact by Industry">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>Productivity by Industry</h3>
+                        <p>Industry-specific productivity gains from AI adoption with sector benchmarking data.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Industry Data</span>
+                            <span class="insight-tag">ROI Metrics</span>
+                            <span class="insight-tag">Benchmarks</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card fade-in" data-category="productivity kpis">
+                    <div class="dashboard-card-image">
+                        <img src="images/roi_heatmap.png" alt="ROI Heatmap Analysis">
+                    </div>
+                    <div class="dashboard-card-content">
+                        <h3>ROI Heatmap</h3>
+                        <p>Visual correlation matrix showing the relationship between AI investment and business outcomes.</p>
+                        <div class="dashboard-insights">
+                            <span class="insight-tag">Heatmap</span>
+                            <span class="insight-tag">Correlation</span>
+                            <span class="insight-tag">Executive View</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ethics Section -->
+    <section class="ethics-section" id="ethics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-balance-scale"></i>
+                    Responsible AI
+                </span>
+                <h2 class="section-title">Ethics & <span>Compliance</span></h2>
+                <p class="section-subtitle">Building trust through transparency and responsible practices</p>
+            </div>
+            
+            <div class="ethics-grid">
+                <div class="ethics-card fade-in">
+                    <div class="ethics-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Data Privacy</h3>
+                    <p>All survey data is anonymized and aggregated. No individual employee data is ever exposed or trackable in our analytics.</p>
+                </div>
+                
+                <div class="ethics-card fade-in">
+                    <div class="ethics-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Bias Monitoring</h3>
+                    <p>Continuous monitoring for demographic biases in AI adoption patterns. Ensuring fair representation across all groups.</p>
+                </div>
+                
+                <div class="ethics-card fade-in">
+                    <div class="ethics-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Transparent Methodology</h3>
+                    <p>All data processing pipelines and scoring algorithms are documented. Full audit trail for compliance verification.</p>
+                </div>
+                
+                <div class="ethics-card fade-in">
+                    <div class="ethics-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Human-Centric Design</h3>
+                    <p>Our platform is designed to empower employees, not replace them. AI is positioned as a tool for augmentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-users"></i>
+                    Women-Led Team
+                </span>
+                <h2 class="section-title">Meet <span>SheDev</span></h2>
+                <p class="section-subtitle">Five talented women driving innovation in AI workforce analytics</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Sai Supriya Ponnaganti</h3>
+                    <p class="team-role">Data Analyst</p>
+                    <p class="team-description">Transforms raw survey data into actionable insights. Expert in data visualization and statistical analysis.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Visualization</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Swathi Royyuru</h3>
+                    <p class="team-role">Business Process Analyst</p>
+                    <p class="team-description">Maps organizational workflows and identifies AI integration opportunities across business processes.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Process Mapping</span>
+                        <span class="skill-tag">Requirements</span>
+                        <span class="skill-tag">Strategy</span>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Kavya Sri Janagani</h3>
+                    <p class="team-role">Data Scientist</p>
+                    <p class="team-description">Develops predictive models for AI adoption trends and sentiment analysis algorithms.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Predictive Models</span>
+                        <span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Divyanjali Arkilla</h3>
+                    <p class="team-role">Dashboard Developer</p>
+                    <p class="team-description">Crafts intuitive, responsive dashboard interfaces with beautiful data visualizations.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Recharts</span>
+                        <span class="skill-tag">UI/UX</span>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>NikhithaSri Vidyemsetti</h3>
+                    <p class="team-role">IT Architect</p>
+                    <p class="team-description">Designs the full-stack architecture, database schema, and deployment infrastructure.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Cloud</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="appendix-section" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-folder-open"></i>
+                    Resources
+                </span>
+                <h2 class="section-title">Project <span>Resources</span></h2>
+                <p class="section-subtitle">Documentation and references</p>
+            </div>
+            
+            <div class="appendix-grid">
+                <div class="appendix-card fade-in">
+                    <div class="appendix-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>Source Code</h3>
+                    <ul class="appendix-list">
+                        <li><i class="fas fa-code"></i> Next.js Application</li>
+                        <li><i class="fas fa-database"></i> Database Schema</li>
+                        <li><i class="fas fa-cog"></i> ETL Pipeline</li>
+                        <li><i class="fas fa-palette"></i> Component Library</li>
+                    </ul>
+                </div>
+                
+                <div class="appendix-card fade-in">
+                    <div class="appendix-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Documentation</h3>
+                    <ul class="appendix-list">
+                        <li><i class="fas fa-file-alt"></i> API Documentation</li>
+                        <li><i class="fas fa-sitemap"></i> Architecture Guide</li>
+                        <li><i class="fas fa-rocket"></i> Deployment Guide</li>
+                        <li><i class="fas fa-user-cog"></i> Admin Manual</li>
+                    </ul>
+                </div>
+                
+                <div class="appendix-card fade-in">
+                    <div class="appendix-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Data Sources</h3>
+                    <ul class="appendix-list">
+                        <li><i class="fas fa-poll"></i> Survey Empirical Data</li>
+                        <li><i class="fas fa-comments"></i> Public Opinion Data</li>
+                        <li><i class="fas fa-industry"></i> Industry Reports</li>
+                        <li><i class="fas fa-chart-bar"></i> Benchmark Data</li>
+                    </ul>
+                </div>
+                
+                <div class="appendix-card fade-in">
+                    <div class="appendix-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Tech Stack</h3>
+                    <ul class="appendix-list">
+                        <li><i class="fab fa-react"></i> Next.js 14 + TypeScript</li>
+                        <li><i class="fas fa-database"></i> Neon PostgreSQL</li>
+                        <li><i class="fab fa-python"></i> Python ETL</li>
+                        <li><i class="fas fa-cloud"></i> Render Hosting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="background: linear-gradient(180deg, var(--dark-light) 0%, var(--dark) 100%); padding: 6rem 2rem;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Ready to Transform Your <span>AI Strategy</span>?</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">Experience the power of data-driven workforce analytics</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="https://awap-next-app.onrender.com" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    Launch Live Demo
+                </a>
+                <a href="mailto:team@shedev.io" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="logo-text">SheDev</span>
+                </a>
+                <p>AI Workforce Analytics Platform — Transforming how organizations understand and optimize AI adoption.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#solution">Features</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="https://awap-next-app.onrender.com" target="_blank">Live Demo</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#data">Data Pipeline</a></li>
+                    <li><a href="#ethics">Ethics</a></li>
+                    <li><a href="#resources">Documentation</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="mailto:team@shedev.io">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 SheDev Team. AI Workforce Analytics Platform. Women-Led Innovation.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
