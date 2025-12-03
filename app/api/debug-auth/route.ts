@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcryptjs";
 
-export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
