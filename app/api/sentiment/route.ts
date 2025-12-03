@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 function buildWhereClause(searchParams: URLSearchParams): string {
   const conditions: string[] = [];
 
-  // Age Group filter -> age_bracket
+  // Age Group filter - use age_bracket (CSV column)
   const ageGroups = searchParams.getAll('ageGroup');
   if (ageGroups.length > 0) {
     const ageConditions = ageGroups
@@ -25,7 +25,7 @@ function buildWhereClause(searchParams: URLSearchParams): string {
     conditions.push(`(${industryConditions})`);
   }
 
-  // Job Role filter -> job_type
+  // Job Role filter - use job_type (CSV column)
   const jobRoles = searchParams.getAll('jobRole');
   if (jobRoles.length > 0) {
     const roleConditions = jobRoles
@@ -44,40 +44,37 @@ export async function GET(request: Request) {
 
     const sqlClient = neon(process.env.DATABASE_URL!);
 
-    // Overall sentiment breakdown using sentiment_toward_ai buckets
-    const sentimentWhere = baseFilter
-      ? `${baseFilter} AND sentiment_toward_ai IS NOT NULL`
-      : 'WHERE sentiment_toward_ai IS NOT NULL';
-
+    // Parse concerns column to determine sentiment
+    // The 'concerns' column contains pipe-separated values like 'privacy|accuracy|job_loss'
     const sentimentQuery = `
       SELECT 
         COUNT(*) as total_respondents,
-        SUM(CASE WHEN sentiment_toward_ai < -0.5 THEN 1 ELSE 0 END) as worried_count,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai < -0.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as worried_pct,
-        SUM(CASE WHEN sentiment_toward_ai >= -0.5 AND sentiment_toward_ai <= 0.5 THEN 1 ELSE 0 END) as hopeful_count,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai >= -0.5 AND sentiment_toward_ai <= 0.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as hopeful_pct,
-        SUM(CASE WHEN sentiment_toward_ai > 0.5 AND sentiment_toward_ai <= 1.5 THEN 1 ELSE 0 END) as overwhelmed_count,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai > 0.5 AND sentiment_toward_ai <= 1.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as overwhelmed_pct,
-        SUM(CASE WHEN sentiment_toward_ai > 1.5 THEN 1 ELSE 0 END) as excited_count,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai > 1.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as excited_pct
+        SUM(CASE WHEN concerns LIKE '%job_loss%' THEN 1 ELSE 0 END) as worried_count,
+        ROUND(AVG(CASE WHEN concerns LIKE '%job_loss%' THEN 1 ELSE 0 END)::numeric * 100, 2) as worried_pct,
+        SUM(CASE WHEN confidence_change > 0 THEN 1 ELSE 0 END) as hopeful_count,
+        ROUND(AVG(CASE WHEN confidence_change > 0 THEN 1 ELSE 0 END)::numeric * 100, 2) as hopeful_pct,
+        SUM(CASE WHEN concerns LIKE '%accuracy%' OR concerns LIKE '%regulation%' THEN 1 ELSE 0 END) as overwhelmed_count,
+        ROUND(AVG(CASE WHEN concerns LIKE '%accuracy%' OR concerns LIKE '%regulation%' THEN 1 ELSE 0 END)::numeric * 100, 2) as overwhelmed_pct,
+        SUM(CASE WHEN self_reported_productivity_change_pct > 5 THEN 1 ELSE 0 END) as excited_count,
+        ROUND(AVG(CASE WHEN self_reported_productivity_change_pct > 5 THEN 1 ELSE 0 END)::numeric * 100, 2) as excited_pct
       FROM survey_respondents
-      ${sentimentWhere};
+      ${baseFilter};
     `;
     const sentimentResult = await sqlClient(sentimentQuery);
 
     // Sentiment by age bracket
     const sentimentByAgeWhere = baseFilter
-      ? `${baseFilter} AND sentiment_toward_ai IS NOT NULL AND age_bracket IS NOT NULL`
-      : 'WHERE sentiment_toward_ai IS NOT NULL AND age_bracket IS NOT NULL';
+      ? `${baseFilter} AND age_bracket IS NOT NULL`
+      : 'WHERE age_bracket IS NOT NULL';
 
     const sentimentByAgeQuery = `
       SELECT 
-        age_bracket,
+        age_bracket as age_group,
         COUNT(*) as total,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai < -0.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as worried_pct,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai >= -0.5 AND sentiment_toward_ai <= 0.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as hopeful_pct,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai > 0.5 AND sentiment_toward_ai <= 1.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as overwhelmed_pct,
-        ROUND(AVG(CASE WHEN sentiment_toward_ai > 1.5 THEN 1 ELSE 0 END)::numeric * 100, 2) as excited_pct
+        ROUND(AVG(CASE WHEN concerns LIKE '%job_loss%' THEN 1 ELSE 0 END)::numeric * 100, 2) as worried_pct,
+        ROUND(AVG(CASE WHEN confidence_change > 0 THEN 1 ELSE 0 END)::numeric * 100, 2) as hopeful_pct,
+        ROUND(AVG(CASE WHEN concerns LIKE '%accuracy%' OR concerns LIKE '%regulation%' THEN 1 ELSE 0 END)::numeric * 100, 2) as overwhelmed_pct,
+        ROUND(AVG(CASE WHEN self_reported_productivity_change_pct > 5 THEN 1 ELSE 0 END)::numeric * 100, 2) as excited_pct
       FROM survey_respondents
       ${sentimentByAgeWhere}
       GROUP BY age_bracket
@@ -85,19 +82,20 @@ export async function GET(request: Request) {
     `;
     const sentimentByAge = await sqlClient(sentimentByAgeQuery);
 
-    // Job opportunity outlook using expected_job_impact
-    const outlookWhereClause = baseFilter
-      ? `${baseFilter} AND expected_job_impact IS NOT NULL`
-      : 'WHERE expected_job_impact IS NOT NULL';
-
+    // Job opportunity outlook based on productivity change
     const outlookQuery = `
       SELECT 
-        expected_job_impact AS job_opportunity_outlook,
+        CASE 
+          WHEN self_reported_productivity_change_pct > 10 THEN 'More'
+          WHEN self_reported_productivity_change_pct > 0 THEN 'Same'
+          WHEN self_reported_productivity_change_pct > -5 THEN 'Unsure'
+          ELSE 'Fewer'
+        END AS job_opportunity_outlook,
         COUNT(*) as count,
         ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) as percentage
       FROM survey_respondents
-      ${outlookWhereClause}
-      GROUP BY expected_job_impact
+      WHERE self_reported_productivity_change_pct IS NOT NULL
+      GROUP BY 1
       ORDER BY count DESC;
     `;
     const outlookResult = await sqlClient(outlookQuery);
@@ -124,7 +122,7 @@ export async function GET(request: Request) {
           percentage: Number(row.excited_pct || 0),
         },
       },
-      byAge: sentimentByAge.map(row => ({
+      byAge: sentimentByAge.map((row: any) => ({
         ageGroup: row.age_group,
         total: Number(row.total),
         worried: Number(row.worried_pct || 0),
@@ -132,7 +130,7 @@ export async function GET(request: Request) {
         overwhelmed: Number(row.overwhelmed_pct || 0),
         excited: Number(row.excited_pct || 0),
       })),
-      outlook: outlookResult.map(row => ({
+      outlook: outlookResult.map((row: any) => ({
         outlook: row.job_opportunity_outlook,
         count: Number(row.count),
         percentage: Number(row.percentage || 0),

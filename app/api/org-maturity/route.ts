@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { sql } from '@/lib/db';
 import { neon } from '@neondatabase/serverless';
 
 export const runtime = 'edge';
@@ -8,10 +7,10 @@ export const dynamic = 'force-dynamic';
 function buildWhereClause(searchParams: URLSearchParams): string {
   const conditions: string[] = [];
   
-  // Age Group filter
+  // Age Group filter - use age_bracket (CSV column)
   const ageGroups = searchParams.getAll('ageGroup');
   if (ageGroups.length > 0) {
-    const ageConditions = ageGroups.map(age => `age_group = '${age}'`).join(' OR ');
+    const ageConditions = ageGroups.map(age => `age_bracket = '${age}'`).join(' OR ');
     conditions.push(`(${ageConditions})`);
   }
   
@@ -22,51 +21,11 @@ function buildWhereClause(searchParams: URLSearchParams): string {
     conditions.push(`(${industryConditions})`);
   }
   
-  // Job Role filter
+  // Job Role filter - use job_type (CSV column)
   const jobRoles = searchParams.getAll('jobRole');
   if (jobRoles.length > 0) {
-    const roleConditions = jobRoles.map(role => `job_role = '${role}'`).join(' OR ');
+    const roleConditions = jobRoles.map(role => `job_type = '${role}'`).join(' OR ');
     conditions.push(`(${roleConditions})`);
-  }
-  
-  // Company Size filter
-  const companySizes = searchParams.getAll('companySize');
-  if (companySizes.length > 0) {
-    const sizeConditions = companySizes.map(size => `company_size = '${size}'`).join(' OR ');
-    conditions.push(`(${sizeConditions})`);
-  }
-  
-  // AI User Status filter
-  const aiUser = searchParams.get('aiUser');
-  if (aiUser === 'yes') {
-    conditions.push('is_ai_user = true');
-  } else if (aiUser === 'no') {
-    conditions.push('is_ai_user = false');
-  }
-  
-  // Training Status filter
-  const trained = searchParams.get('trained');
-  if (trained === 'yes') {
-    conditions.push('ai_training_received = true');
-  } else if (trained === 'no') {
-    conditions.push('ai_training_received = false');
-  }
-  
-  // Sentiment filter
-  const sentiments = searchParams.getAll('sentiment');
-  if (sentiments.length > 0) {
-    const sentimentConditions = sentiments.map(s => {
-      switch (s.toLowerCase()) {
-        case 'worried': return 'is_worried = true';
-        case 'hopeful': return 'is_hopeful = true';
-        case 'overwhelmed': return 'is_overwhelmed = true';
-        case 'excited': return 'is_excited = true';
-        default: return '';
-      }
-    }).filter(c => c).join(' OR ');
-    if (sentimentConditions) {
-      conditions.push(`(${sentimentConditions})`);
-    }
   }
   
   return conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -78,78 +37,83 @@ export async function GET(request: Request) {
     const whereClause = buildWhereClause(searchParams);
     const sqlClient = neon(process.env.DATABASE_URL!);
     
-    // Organizational maturity levels
-    const maturityWhereClause = whereClause ? `${whereClause} AND org_ai_adoption_level IS NOT NULL` : 'WHERE org_ai_adoption_level IS NOT NULL';
+    // Organizational maturity levels based on ai_familiarity_score
     const maturityQuery = `
       SELECT 
-        org_ai_adoption_level,
+        CASE 
+          WHEN ai_familiarity_score <= 2 THEN 'Not Started'
+          WHEN ai_familiarity_score <= 4 THEN 'Exploring'
+          WHEN ai_familiarity_score <= 6 THEN 'Piloting'
+          WHEN ai_familiarity_score <= 8 THEN 'Scaling'
+          ELSE 'Advanced'
+        END AS org_ai_adoption_level,
         COUNT(*) as organizations,
-        ROUND(AVG(CASE WHEN org_has_ai_policy THEN 1 ELSE 0 END) * 100, 2) as policy_rate,
-        ROUND(AVG(CASE WHEN org_ai_sustainability_use THEN 1 ELSE 0 END) * 100, 2) as sustainability_rate,
-        ROUND(AVG(productivity_change), 2) as avg_productivity_change
+        ROUND(AVG(CASE WHEN ai_use_frequency IN ('weekly', 'daily') THEN 1 ELSE 0 END)::numeric * 100, 2) as policy_rate,
+        ROUND(AVG(CASE WHEN self_reported_productivity_change_pct > 5 THEN 1 ELSE 0 END)::numeric * 100, 2) as sustainability_rate,
+        ROUND(AVG(self_reported_productivity_change_pct)::numeric, 2) as avg_productivity_change
       FROM survey_respondents
-      ${maturityWhereClause}
-      GROUP BY org_ai_adoption_level
+      WHERE ai_familiarity_score IS NOT NULL
+      ${whereClause ? 'AND ' + whereClause.replace('WHERE ', '') : ''}
+      GROUP BY 1
       ORDER BY 
-        CASE org_ai_adoption_level
-          WHEN 'Not Started' THEN 1
-          WHEN 'Exploring' THEN 2
-          WHEN 'Piloting' THEN 3
-          WHEN 'Scaling' THEN 4
-          WHEN 'Advanced' THEN 5
+        CASE 
+          WHEN ai_familiarity_score <= 2 THEN 1
+          WHEN ai_familiarity_score <= 4 THEN 2
+          WHEN ai_familiarity_score <= 6 THEN 3
+          WHEN ai_familiarity_score <= 8 THEN 4
+          ELSE 5
         END;
     `;
     const maturityLevels = await sqlClient(maturityQuery);
 
-    // Investment trends
-    const investmentWhereClause = whereClause ? `${whereClause} AND org_ai_investment_trend IS NOT NULL` : 'WHERE org_ai_investment_trend IS NOT NULL';
+    // Investment trends based on productivity change
     const investmentQuery = `
       SELECT 
-        org_ai_investment_trend,
+        CASE 
+          WHEN self_reported_productivity_change_pct < 0 THEN 'Decreasing'
+          WHEN self_reported_productivity_change_pct <= 5 THEN 'Maintaining'
+          ELSE 'Increasing'
+        END AS org_ai_investment_trend,
         COUNT(*) as count,
         ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) as percentage
       FROM survey_respondents
-      ${investmentWhereClause}
-      GROUP BY org_ai_investment_trend
+      WHERE self_reported_productivity_change_pct IS NOT NULL
+      ${whereClause ? 'AND ' + whereClause.replace('WHERE ', '') : ''}
+      GROUP BY 1
       ORDER BY count DESC;
     `;
     const investmentTrends = await sqlClient(investmentQuery);
 
-    // Policy adoption by company size
-    const policyWhereClause = whereClause ? `${whereClause} AND company_size IS NOT NULL` : 'WHERE company_size IS NOT NULL';
+    // Policy adoption by industry
     const policyQuery = `
       SELECT 
-        company_size,
+        industry_sector as company_size,
         COUNT(*) as total,
-        SUM(CASE WHEN org_has_ai_policy THEN 1 ELSE 0 END) as with_policy,
-        ROUND(AVG(CASE WHEN org_has_ai_policy THEN 1 ELSE 0 END) * 100, 2) as policy_rate
+        SUM(CASE WHEN ai_familiarity_score >= 5 THEN 1 ELSE 0 END) as with_policy,
+        ROUND(AVG(CASE WHEN ai_familiarity_score >= 5 THEN 1 ELSE 0 END)::numeric * 100, 2) as policy_rate
       FROM survey_respondents
-      ${policyWhereClause}
-      GROUP BY company_size
-      ORDER BY 
-        CASE company_size
-          WHEN '1-50' THEN 1
-          WHEN '51-200' THEN 2
-          WHEN '201-1000' THEN 3
-          WHEN '1000+' THEN 4
-        END;
+      WHERE industry_sector IS NOT NULL
+      ${whereClause ? 'AND ' + whereClause.replace('WHERE ', '') : ''}
+      GROUP BY industry_sector
+      ORDER BY policy_rate DESC
+      LIMIT 5;
     `;
     const policyBySize = await sqlClient(policyQuery);
 
     return NextResponse.json({
-      maturityLevels: maturityLevels.map(row => ({
+      maturityLevels: maturityLevels.map((row: any) => ({
         level: row.org_ai_adoption_level,
         organizations: Number(row.organizations),
         policyRate: Number(row.policy_rate || 0),
         sustainabilityRate: Number(row.sustainability_rate || 0),
         avgProductivityChange: Number(row.avg_productivity_change || 0),
       })),
-      investmentTrends: investmentTrends.map(row => ({
+      investmentTrends: investmentTrends.map((row: any) => ({
         trend: row.org_ai_investment_trend,
         count: Number(row.count),
         percentage: Number(row.percentage || 0),
       })),
-      policyBySize: policyBySize.map(row => ({
+      policyBySize: policyBySize.map((row: any) => ({
         companySize: row.company_size,
         total: Number(row.total),
         withPolicy: Number(row.with_policy),
