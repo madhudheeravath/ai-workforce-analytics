@@ -93,12 +93,13 @@ export default function TeamDashboardPage() {
         if (!industryResponse.ok) throw new Error('Failed to fetch role data');
         const industryData = await industryResponse.json();
         
-        // Mock role data for demonstration
-        setRoleData([
-          { role: 'Individual Contributor', members: 45, adoptionRate: 18.2, avgProductivity: 12.5 },
-          { role: 'Manager', members: 12, adoptionRate: 22.8, avgProductivity: 15.3 },
-          { role: 'Executive', members: 3, adoptionRate: 25.0, avgProductivity: 18.7 },
-        ]);
+        // Use real industry data as role proxy (industries = different job roles in orgs)
+        setRoleData(industryData.slice(0, 3).map((d: any, i: number) => ({
+          role: d.industry || `Role ${i + 1}`,
+          members: d.totalRespondents || 0,
+          adoptionRate: d.adoptionRate || 0,
+          avgProductivity: d.avgProductivity || 0,
+        })));
 
         setError(null);
       } catch (err) {

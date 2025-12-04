@@ -44,7 +44,9 @@ interface KPIData {
 interface SentimentData {
   overall: {
     worried: { percentage: number };
+    hopeful: { percentage: number };
     excited: { percentage: number };
+    overwhelmed: { percentage: number };
   };
 }
 
@@ -241,8 +243,6 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           value={kpis?.adoptionRate || 0}
           format="percent"
           icon={TrendingUp}
-          change={2.5}
-          changeLabel="above industry avg"
           loading={loading}
         />
         <KPICard
@@ -250,8 +250,6 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           value={kpis?.avgProductivity || 0}
           format="percent"
           icon={Award}
-          change={kpis?.avgProductivity}
-          changeLabel="with AI adoption"
           loading={loading}
         />
         <KPICard
@@ -259,8 +257,6 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           value={kpis?.trainingRate || 0}
           format="percent"
           icon={BarChart3}
-          change={1.8}
-          changeLabel="above target"
           loading={loading}
         />
         <KPICard
@@ -281,12 +277,6 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           format="number"
           icon={Heart}
           suffix="%"
-          change={
-            sentimentData
-              ? sentimentData.overall.excited.percentage + sentimentData.overall.hopeful.percentage - sentimentData.overall.worried.percentage
-              : 0
-          }
-          changeLabel="vs concerned"
           loading={loading}
         />
       </div>

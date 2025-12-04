@@ -50,19 +50,43 @@ export default function TrainingImpactPage() {
         
         const response = await fetch('/api/training-impact');
         if (!response.ok) throw new Error('Failed to fetch training impact data');
+        const data = await response.json();
+        
+        // Extract trained and untrained data from API response
+        const trainedData = data.trainingImpact?.find((d: any) => d.trained === true) || {};
+        const untrainedData = data.trainingImpact?.find((d: any) => d.trained === false) || {};
+        
+        const trainedProductivity = trainedData.avgProductivityChange || 0;
+        const untrainedProductivity = untrainedData.avgProductivityChange || 0;
         
         setMetrics({
-          trainedProductivity: 22.5,
-          untrainedProductivity: 8.2,
-          productivityDelta: 14.3,
-          adoptionImprovement: 40,
+          trainedProductivity: trainedProductivity,
+          untrainedProductivity: untrainedProductivity,
+          productivityDelta: Number((trainedProductivity - untrainedProductivity).toFixed(1)),
+          adoptionImprovement: Number((trainedData.adoptionRate - untrainedData.adoptionRate).toFixed(1)) || 0,
         });
         
         setComparisonData([
-          { metric: 'Productivity Change', trained: 22.5, untrained: 8.2 },
-          { metric: 'AI Adoption Rate', trained: 85, untrained: 45 },
-          { metric: 'Comfort Level', trained: 4.2, untrained: 2.8 },
-          { metric: 'Tools Used', trained: 3.8, untrained: 1.5 },
+          { 
+            metric: 'Productivity Change', 
+            trained: trainedProductivity, 
+            untrained: untrainedProductivity 
+          },
+          { 
+            metric: 'AI Adoption Rate', 
+            trained: trainedData.adoptionRate || 0, 
+            untrained: untrainedData.adoptionRate || 0 
+          },
+          { 
+            metric: 'Comfort Level', 
+            trained: trainedData.avgComfortLevel || 0, 
+            untrained: untrainedData.avgComfortLevel || 0 
+          },
+          { 
+            metric: 'Tools Used', 
+            trained: trainedData.avgToolsUsed || 0, 
+            untrained: untrainedData.avgToolsUsed || 0 
+          },
         ]);
         
         setError(null);
