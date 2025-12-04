@@ -26,20 +26,38 @@ export async function GET(request: Request) {
     
     const sqlClient = neon(process.env.DATABASE_URL!);
     
-    // Group by industry sector as proxy for company size breakdown
-    // Use ai_use_frequency to determine adoption
+    // Use income_bracket as a proxy for company size
+    // Higher income brackets typically correlate with larger companies
+    // Map income brackets to company size categories
     const query = `
       SELECT 
-        industry_sector as company_size,
+        CASE 
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 'Enterprise (1000+)'
+          WHEN income_bracket IN ('50-100k') THEN 'Mid-Size (100-999)'
+          WHEN income_bracket IN ('25-50k') THEN 'Small (10-99)'
+          ELSE 'Startup (<10)'
+        END as company_size,
         COUNT(*) as total_rows,
         SUM(CASE WHEN ai_use_frequency IN ('weekly', 'daily') THEN 1 ELSE 0 END) as ai_users,
         ROUND(AVG(CASE WHEN ai_use_frequency IN ('weekly', 'daily') THEN 1 ELSE 0 END)::numeric * 100, 2) as adoption_rate,
         ROUND(AVG(self_reported_productivity_change_pct)::numeric, 2) as avg_productivity
       FROM survey_respondents
-      WHERE industry_sector IS NOT NULL
+      WHERE income_bracket IS NOT NULL
       ${whereClause ? 'AND ' + whereClause.replace('WHERE ', '') : ''}
-      GROUP BY industry_sector
-      ORDER BY adoption_rate DESC;
+      GROUP BY 
+        CASE 
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 'Enterprise (1000+)'
+          WHEN income_bracket IN ('50-100k') THEN 'Mid-Size (100-999)'
+          WHEN income_bracket IN ('25-50k') THEN 'Small (10-99)'
+          ELSE 'Startup (<10)'
+        END
+      ORDER BY 
+        CASE 
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 1
+          WHEN income_bracket IN ('50-100k') THEN 2
+          WHEN income_bracket IN ('25-50k') THEN 3
+          ELSE 4
+        END;
     `;
     
     const result = await sqlClient(query);
