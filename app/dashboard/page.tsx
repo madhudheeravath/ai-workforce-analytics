@@ -242,6 +242,7 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           format="percent"
           icon={TrendingUp}
           change={2.5}
+          changeLabel="above industry avg"
           loading={loading}
         />
         <KPICard
@@ -250,6 +251,7 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           format="percent"
           icon={Award}
           change={kpis?.avgProductivity}
+          changeLabel="with AI adoption"
           loading={loading}
         />
         <KPICard
@@ -258,6 +260,7 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           format="percent"
           icon={BarChart3}
           change={1.8}
+          changeLabel="above target"
           loading={loading}
         />
         <KPICard
@@ -283,6 +286,7 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
               ? sentimentData.overall.excited.percentage - sentimentData.overall.worried.percentage
               : 0
           }
+          changeLabel="net sentiment"
           loading={loading}
         />
       </div>

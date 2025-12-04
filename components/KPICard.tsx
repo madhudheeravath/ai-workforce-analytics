@@ -5,6 +5,7 @@ interface KPICardProps {
   title: string;
   value: string | number;
   change?: number;
+  changeLabel?: string;
   icon: LucideIcon;
   format?: 'number' | 'currency' | 'percent';
   suffix?: string;
@@ -15,6 +16,7 @@ export default function KPICard({
   title,
   value,
   change,
+  changeLabel,
   icon: Icon,
   format = 'number',
   suffix,
@@ -84,7 +86,7 @@ export default function KPICard({
         <div className={`flex items-center space-x-1 stat-change ${getChangeColor()}`}>
           {getChangeIcon()}
           <span>{Math.abs(change).toFixed(1)}%</span>
-          <span className="text-gray-500">vs last period</span>
+          <span className="text-gray-500">{changeLabel || 'from baseline'}</span>
         </div>
       )}
     </div>
