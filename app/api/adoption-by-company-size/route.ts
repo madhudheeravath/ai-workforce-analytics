@@ -51,13 +51,7 @@ export async function GET(request: Request) {
           WHEN income_bracket IN ('25-50k') THEN 'small'
           ELSE 'micro'
         END
-      ORDER BY 
-        CASE 
-          WHEN income_bracket IN ('200k+', '100-200k') THEN 4
-          WHEN income_bracket IN ('50-100k') THEN 3
-          WHEN income_bracket IN ('25-50k') THEN 2
-          ELSE 1
-        END;
+      ORDER BY adoption_rate DESC;
     `;
     
     const result = await sqlClient(query);
