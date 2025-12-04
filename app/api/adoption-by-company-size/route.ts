@@ -28,14 +28,14 @@ export async function GET(request: Request) {
     
     // Use income_bracket as a proxy for company size
     // Higher income brackets typically correlate with larger companies
-    // Map income brackets to company size categories
+    // Map income brackets to company size categories: micro, small, medium, large
     const query = `
       SELECT 
         CASE 
-          WHEN income_bracket IN ('200k+', '100-200k') THEN 'Enterprise (1000+)'
-          WHEN income_bracket IN ('50-100k') THEN 'Mid-Size (100-999)'
-          WHEN income_bracket IN ('25-50k') THEN 'Small (10-99)'
-          ELSE 'Startup (<10)'
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 'large'
+          WHEN income_bracket IN ('50-100k') THEN 'medium'
+          WHEN income_bracket IN ('25-50k') THEN 'small'
+          ELSE 'micro'
         END as company_size,
         COUNT(*) as total_rows,
         SUM(CASE WHEN ai_use_frequency IN ('weekly', 'daily') THEN 1 ELSE 0 END) as ai_users,
@@ -46,12 +46,18 @@ export async function GET(request: Request) {
       ${whereClause ? 'AND ' + whereClause.replace('WHERE ', '') : ''}
       GROUP BY 
         CASE 
-          WHEN income_bracket IN ('200k+', '100-200k') THEN 'Enterprise (1000+)'
-          WHEN income_bracket IN ('50-100k') THEN 'Mid-Size (100-999)'
-          WHEN income_bracket IN ('25-50k') THEN 'Small (10-99)'
-          ELSE 'Startup (<10)'
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 'large'
+          WHEN income_bracket IN ('50-100k') THEN 'medium'
+          WHEN income_bracket IN ('25-50k') THEN 'small'
+          ELSE 'micro'
         END
-      ORDER BY adoption_rate DESC;
+      ORDER BY 
+        CASE 
+          WHEN income_bracket IN ('200k+', '100-200k') THEN 4
+          WHEN income_bracket IN ('50-100k') THEN 3
+          WHEN income_bracket IN ('25-50k') THEN 2
+          ELSE 1
+        END;
     `;
     
     const result = await sqlClient(query);
