@@ -272,10 +272,10 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           loading={loading}
         />
         <KPICard
-          title="Sentiment Score"
+          title="Positive Sentiment"
           value={
             sentimentData
-              ? sentimentData.overall.excited.percentage - sentimentData.overall.worried.percentage
+              ? (sentimentData.overall.excited.percentage + sentimentData.overall.hopeful.percentage).toFixed(1)
               : 0
           }
           format="number"
@@ -283,10 +283,10 @@ Average Comfort Level,${kpis?.avgComfortLevel || 0}/5`;
           suffix="%"
           change={
             sentimentData
-              ? sentimentData.overall.excited.percentage - sentimentData.overall.worried.percentage
+              ? sentimentData.overall.excited.percentage + sentimentData.overall.hopeful.percentage - sentimentData.overall.worried.percentage
               : 0
           }
-          changeLabel="net sentiment"
+          changeLabel="vs concerned"
           loading={loading}
         />
       </div>
